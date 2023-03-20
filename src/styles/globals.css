@@ -1,13 +1,31 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --background-gradient: hsla(0, 0%, 100%, 1);
+  --background-gradient: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 1) 90%,
+    hsla(0, 0%, 95%, 1) 100%
+  );
+  --background-gradient: -moz-linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 1) 90%,
+    hsla(0, 0%, 95%, 1) 100%
+  );
+  --background-grandient: -webkit-linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 1) 90%,
+    hsla(0, 0%, 95%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#F3F3F3", GradientType=1 );
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -86,13 +104,7 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--background-gradient);
 }
 
 a {
