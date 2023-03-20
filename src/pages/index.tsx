@@ -17,7 +17,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.center}>
           <p className={styles.profileGreeting}>
-            <strong>Hi</strong>, I'm{" "}
+            <strong>Hi</strong>, I am{" "}
             <strong>
               Julio Vaz{" "}
               <span role="img" aria-label="waving hang">
