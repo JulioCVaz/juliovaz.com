@@ -2,8 +2,8 @@
 
 const isPipelineRunning = process.env.GITHUB_ACTIONS || false;
 
-let assetPrefix = "";
-let basePath = "/";
+let basePath = "/juliocvaz.github.io";
+let assetPrefix = "/juliocvaz.github.io/";
 
 if (isPipelineRunning) {
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, ""); // "juliocvaz.github.io"
@@ -17,7 +17,11 @@ const nextConfig = {
   // trailingSlash: true,
   assetPrefix,
   basePath,
+  images: {
+    unoptimized: true,
+  },
   /**
+   * TODO: create account in imgix and config CDN
    * images: {
     loader: 'imgix',
     path: 'the "domain" of your Imigix source',
