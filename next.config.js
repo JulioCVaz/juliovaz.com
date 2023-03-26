@@ -14,8 +14,7 @@ if (isPipelineRunning) {
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
-  distDir: "out",
-  trailingSlash: true,
+  // trailingSlash: true,
   assetPrefix,
   basePath,
   /**
