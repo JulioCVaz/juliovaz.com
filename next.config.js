@@ -1,6 +1,29 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+
+const isPipelineRunning = process.env.GITHUB_ACTIONS || false;
+
+let assetPrefix = "";
+let basePath = "/";
+
+if (isPipelineRunning) {
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, ""); // "juliocvaz.github.io"
+  assetPrefix = `/${repo}/`;
+  basePath = `/${repo}`;
 }
 
-module.exports = nextConfig
+const nextConfig = {
+  reactStrictMode: true,
+  output: "export",
+  distDir: "out",
+  trailingSlash: true,
+  assetPrefix,
+  basePath,
+  /**
+   * images: {
+    loader: 'imgix',
+    path: 'the "domain" of your Imigix source',
+  },
+   */
+};
+
+module.exports = nextConfig;
