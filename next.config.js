@@ -7,7 +7,7 @@ let assetPrefix = "/juliocvaz.github.io/";
 
 if (isPipelineRunning) {
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, ""); // "juliocvaz.github.io"
-  assetPrefix = `/${repo}/`;
+  assetPrefix = `https://${repo}/`;
   basePath = `/${repo}`;
 }
 

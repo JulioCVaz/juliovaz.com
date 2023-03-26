@@ -18,6 +18,7 @@ jobs:
       - name: Build
         run: |
           yarn ci
+          rm -rf out/
           yarn run build
           yarn run export
           touch out/.nojekyll
