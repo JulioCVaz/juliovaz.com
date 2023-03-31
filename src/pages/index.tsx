@@ -3,6 +3,10 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LogoDevIcon from "@mui/icons-material/LogoDev";
+
 export default function Home() {
   return (
     <>
@@ -12,7 +16,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <aside className={styles["menu-left"]}>Left menu</aside>
+      <aside className={styles["menu-left"]}>
+        <Link href="#">Home</Link>
+        <Link href="#">About</Link>
+        <Link href="#">Blog</Link>
+      </aside>
       <section className={styles.main}>
         <div className={styles.center}>
           <p className={styles["profile-greeting"]}>
@@ -46,7 +54,35 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <aside className={styles["menu-rigth"]}>Right menu</aside>
+      <aside className={styles["menu-rigth"]}>
+        <Link
+          href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-vaz-560ab4127"
+          target="_blank"
+        >
+          <LinkedInIcon
+            style={{
+              width: "40px",
+              height: "40px",
+            }}
+          />
+        </Link>
+        <Link href="https://github.com/JulioCVaz" target="_blank">
+          <GitHubIcon
+            style={{
+              width: "40px",
+              height: "40px",
+            }}
+          />
+        </Link>
+        <Link href="#" target="_blank">
+          <LogoDevIcon
+            style={{
+              width: "40px",
+              height: "40px",
+            }}
+          />
+        </Link>
+      </aside>
     </>
   );
 }
