@@ -1,9 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -14,9 +12,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <aside className={styles["menu-left"]}>Left menu</aside>
+      <section className={styles.main}>
         <div className={styles.center}>
-          <p className={styles.profileGreeting}>
+          <p className={styles["profile-greeting"]}>
             <strong>Hi</strong>, I am{" "}
             <strong>
               Julio Vaz{" "}
@@ -26,7 +25,7 @@ export default function Home() {
             </strong>
           </p>
           <Image
-            className={styles.profileImage}
+            className={styles["profile-avatar"]}
             src="/profile.jpg"
             alt="Next.js Logo"
             width={300}
@@ -34,66 +33,20 @@ export default function Home() {
             priority
           />
         </div>
-
-        {/* <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div> */}
-      </main>
+        <div className={styles.center}>
+          <p className={styles["profile-description"]}>
+            I've been working with software engineering for over 6 years,
+            currently I'm working on the core team at{" "}
+            <strong>
+              <Link href="https://juntossomosmais.com.br" target="_blank">
+                Juntos Somos mais
+              </Link>
+            </strong>
+            . Working on projects with Nextjs.
+          </p>
+        </div>
+      </section>
+      <aside className={styles["menu-rigth"]}>Right menu</aside>
     </>
   );
 }
