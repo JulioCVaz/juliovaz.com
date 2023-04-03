@@ -9,7 +9,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LogoDevIcon from "@mui/icons-material/LogoDev";
 
-export default function Home(props) {
+const Home = (props: any) => {
   return (
     <>
       <Head>
@@ -84,9 +84,11 @@ export default function Home(props) {
       </aside>
     </>
   );
-}
+};
 
-export async function getStaticProps({ locale }) {
+export default Home;
+
+export async function getStaticProps({ locale }: any) {
   const t = await getT(locale, "common");
   const greeting = t("greeting");
 
