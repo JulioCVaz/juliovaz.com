@@ -2,16 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
-import useTranslation from "next-translate/useTranslation";
+import getT from "next-translate/getT";
 import { Menu } from "../components/Menu";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LogoDevIcon from "@mui/icons-material/LogoDev";
 
-export default function Home() {
-  const { t } = useTranslation("common");
-
+export default function Home(props) {
   return (
     <>
       <Head>
@@ -23,7 +21,7 @@ export default function Home() {
       <Menu />
       <section className={styles.main}>
         <div className={styles.center}>
-          <p>{t("greeting")}</p>
+          <p>{props?.greeting}</p>
           {/* <p className={styles["profile-greeting"]}>
             <strong>Hi</strong>, I am{" "}
             <strong>
@@ -86,4 +84,13 @@ export default function Home() {
       </aside>
     </>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  const t = await getT(locale, "common");
+  const greeting = t("greeting");
+
+  return {
+    props: { greeting },
+  };
 }
