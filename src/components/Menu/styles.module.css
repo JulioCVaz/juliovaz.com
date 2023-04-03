@@ -1,0 +1,12 @@
+.menu {
+  width: 15%;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  font-weight: 700;
+}

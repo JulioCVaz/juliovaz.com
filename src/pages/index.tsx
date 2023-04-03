@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 
+import { Menu } from "../components/Menu";
+
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LogoDevIcon from "@mui/icons-material/LogoDev";
@@ -16,11 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <aside className={styles["menu-left"]}>
-        <Link href="#">Home</Link>
-        <Link href="#">About</Link>
-        <Link href="#">Blog</Link>
-      </aside>
+      <Menu />
       <section className={styles.main}>
         <div className={styles.center}>
           <p className={styles["profile-greeting"]}>
