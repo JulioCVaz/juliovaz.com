@@ -14,7 +14,7 @@ if (pipelineIsRunning) {
 
   buildOptions.assetPrefix = `https://${repositoryName}/`;
   buildOptions.basePath = `/${repositoryName}`;
-  buildOptions.output = "export";
+  // buildOptions.output = "export";
   buildOptions.images = {
     unoptimized: true,
   };
