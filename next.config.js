@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 
+const nextTranslate = require("next-translate-plugin");
+
 let nextConfig = {
   reactStrictMode: true,
 };
@@ -23,4 +25,6 @@ if (pipelineIsRunning) {
   };
 }
 
-module.exports = nextConfig;
+module.exports = nextTranslate({
+  ...nextConfig,
+});

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
-
+import useTranslation from "next-translate/useTranslation";
 import { Menu } from "../components/Menu";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -10,6 +10,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LogoDevIcon from "@mui/icons-material/LogoDev";
 
 export default function Home() {
+  const { t } = useTranslation("common");
+
   return (
     <>
       <Head>
@@ -21,7 +23,8 @@ export default function Home() {
       <Menu />
       <section className={styles.main}>
         <div className={styles.center}>
-          <p className={styles["profile-greeting"]}>
+          <p>{t("greeting")}</p>
+          {/* <p className={styles["profile-greeting"]}>
             <strong>Hi</strong>, I am{" "}
             <strong>
               Julio Vaz{" "}
@@ -29,7 +32,7 @@ export default function Home() {
                 👋
               </span>
             </strong>
-          </p>
+          </p> */}
           <Image
             className={styles["profile-avatar"]}
             src="/profile.jpg"
