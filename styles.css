@@ -132,7 +132,29 @@ body {
 .page-nav {
   order: 3;
   width: 10%;
-  /* background-color: pink; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.circle-nav::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background-color: #929495;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.circle-nav.circle-nav-current::before {
+  background-color: #4651e5;
 }
 
 #home {
