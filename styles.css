@@ -31,10 +31,13 @@ img {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #0e1317;
+}
+
 .container {
   max-width: 1320px;
   margin: 0 auto;
-  background-color: pink;
 }
 
 @media (min-width: 1200px) and (max-width: 1400px) {
@@ -65,4 +68,20 @@ img {
   .container {
     width: 100%;
   }
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.social a {
+  margin-right: 30px;
 }
