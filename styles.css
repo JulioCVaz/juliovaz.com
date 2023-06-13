@@ -157,6 +157,61 @@ body {
   background-color: #4651e5;
 }
 
+/*home*/
 #home {
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  color: #fefefe;
+}
+
+/* @todo: convert all to rem and em */
+.greeting {
+  font-size: 36px;
+}
+
+.description-carrer,
+.description-technologies {
+  font-size: 18px;
+}
+
+.description-carrer {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.home-links {
+  display: flex;
+  margin-top: 80px;
+  flex-wrap: wrap;
+}
+
+.home-links > a:first-child {
+  margin-right: 16px;
+}
+
+.button.button-outline {
+  background-color: rgba(0, 0, 0, 0);
+  color: #4651e5;
+  transition: 0.2s;
+}
+
+.button.button-outline:hover {
+  color: #fefefe;
+  background-color: #4651e5;
+}
+
+.button {
+  width: 130px;
+  height: 45px;
+  text-align: center;
+  display: inline-block;
+  line-height: 40px;
+  font-size: 14px;
+  border-radius: 100px;
+  border: 3px solid #4651e5;
+  background-color: #4651e5;
+  color: #fefefe;
 }
