@@ -73,9 +73,13 @@ body {
 
 /* header */
 .header {
+  width: 80%;
   display: flex;
   justify-content: space-between;
   padding: 15px;
+  position: fixed;
+  top: 0;
+  background-color: #0e1317;
 }
 
 .social {
@@ -95,7 +99,7 @@ body {
 .page-label {
   order: 1;
   width: 10%;
-  display: flex;
+  display: inline-grid;
   justify-content: center;
   align-items: center;
   color: #fefefe;
@@ -103,7 +107,7 @@ body {
   font-weight: 600;
 }
 
-.page-label > span {
+.page-label div {
   transform: rotate(-90deg);
 
   /* Legacy vendor prefixes that you probably don't need... */
@@ -157,18 +161,33 @@ body {
   background-color: #4651e5;
 }
 
-/*home*/
-#home {
+#home,
+#about-me {
   min-height: 100vh;
+  color: #fefefe;
   display: flex;
   justify-content: center;
+}
+
+/*home*/
+#home {
   align-items: start;
   flex-direction: column;
   color: #fefefe;
 }
 
+/* about-me */
+#about-me {
+  flex-direction: row;
+  align-items: center;
+}
+
+.description {
+  width: 60%;
+}
+
 /* @todo: convert all to rem and em */
-.greeting {
+.description-greeting {
   font-size: 36px;
 }
 
@@ -214,4 +233,32 @@ body {
   border: 3px solid #4651e5;
   background-color: #4651e5;
   color: #fefefe;
+}
+
+/* about-me */
+
+.about-me-avatar,
+.about-me-description {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.about-me-avatar > img {
+  width: 300px;
+  border-radius: 100%;
+  border: 3px solid #fefefe;
+}
+
+.about-me-description {
+  flex-direction: column;
+}
+
+.about-me-description p:first-of-type {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.about-me-description > p {
+  font-size: 18px;
 }
