@@ -162,11 +162,14 @@ body {
 }
 
 #home,
-#about-me {
+#about-me,
+#experiences,
+#projects {
   min-height: 100vh;
   color: #fefefe;
   display: flex;
   justify-content: center;
+  padding-top: 70px;
 }
 
 /*home*/
@@ -180,6 +183,58 @@ body {
 #about-me {
   flex-direction: row;
   align-items: center;
+}
+
+#experiences {
+  flex-direction: column;
+}
+
+#experiences > h2 {
+  margin-top: 60px;
+  margin-bottom: 120px;
+}
+
+.experiences {
+  padding-bottom: 32px;
+}
+
+.experiences-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.experiences-timeline,
+.experiencies-mosaic {
+  width: 50%;
+}
+
+.experience-title > h3 {
+  margin: 0;
+}
+
+.experience-title {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-bottom: 44px;
+}
+
+.experience-subtitle {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+
+.experience-description {
+  color: #929495;
+}
+
+.current-experience {
+  color: #4651e5;
+}
+
+.current-section {
+  background-color: #4651e5;
 }
 
 .description {
