@@ -132,12 +132,54 @@
                 </p>
               </div>
             </div>
+            <div class="experiences-mosaic"></div>
           </div>
-          <div class="experiencies-mosaic"></div>
         </section>
         <!-- projects -->
         <section id="projects"></section>
       </div>
     </div>
+    <script>
+      window.onload = function () {
+        const list = [
+          "HTML",
+          "Docker",
+          "Redux",
+          "Firebase",
+          "ReactJS",
+          "Git",
+          "Javascript",
+          "NodeJS",
+          "CSS",
+          "Expo",
+          "RobotFramework",
+          "Fastlane",
+          "Jest",
+          "Azure Pipelines",
+          "TypeScript",
+          "React Native",
+          "AWS",
+          "Sentry",
+          "Cypress",
+          "NextJS",
+        ];
+        const mosaic = document.querySelector(".experiences-mosaic");
+        const withGaps = list.length * 2;
+
+        for (let i = 1; i < withGaps; i++) {
+          const isEven = i % 2 == 0;
+
+          if (isEven) {
+            const element = document.createElement("span");
+            element.innerText = list[i / 2];
+            // currentLabel++;
+            mosaic.appendChild(element);
+          } else {
+            const element = document.createElement("span");
+            mosaic.appendChild(element);
+          }
+        }
+      };
+    </script>
   </body>
 </html>
