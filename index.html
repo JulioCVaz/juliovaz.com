@@ -170,9 +170,10 @@
           const isEven = i % 2 == 0;
 
           if (isEven) {
+            const randomNumber = (Math.random() * (2 - 1) + 1).toFixed(2);
             const element = document.createElement("span");
             element.innerText = list[i / 2];
-            // currentLabel++;
+            element.style.transform = `scale(${randomNumber})`;
             mosaic.appendChild(element);
           } else {
             const element = document.createElement("span");
