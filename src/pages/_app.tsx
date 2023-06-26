@@ -1,7 +1,8 @@
-import "@/styles/globals.css";
+import "@/styles/main.module.scss";
 import type { AppProps } from "next/app";
 import { Roboto } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+
+import variables from "@/styles/_variables.module.scss";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -10,8 +11,8 @@ const roboto = Roboto({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={[roboto.className, styles.container].join(" ")}>
-      <Component {...pageProps} />
+    <main className={roboto.className}>
+      <Component {...pageProps} className={variables} />
     </main>
   );
 }
