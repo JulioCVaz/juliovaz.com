@@ -9,6 +9,7 @@ import LinkedInIcon from "../../icons/LinkedIn.svg";
 import DevToIcon from "../../icons/Code.svg";
 import TwitterIcon from "../../icons/Twitter.svg";
 import MenuIcon from "../../icons/Menu.svg";
+import AvatarImg from "../../public/profile.jpg";
 
 import styles from "./index.module.scss";
 
@@ -98,7 +99,12 @@ const Home = (props: any) => {
           </section>
           <section id={styles["about-me"]}>
             <div className={styles["about-me-avatar"]}>
-              <img src="./public/profile.jpg" alt="avatar-profile" />
+              <Image
+                width={300}
+                height={300}
+                src={AvatarImg}
+                alt="avatar-profile"
+              />
             </div>
             <div className={styles["about-me-description"]}>
               <p>
