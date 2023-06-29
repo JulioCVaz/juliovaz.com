@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import getT from "next-translate/getT";
-import { Menu } from "../components/Menu";
+import { Button } from "../components/Button";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -18,21 +17,12 @@ const Home = (props: any) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Menu />
-      <section className={styles.main}>
-        <div className={styles.center}>
+      <Button type="outline">outline</Button>
+      <Button>content</Button>
+      <section>
+        <div>
           <p>{props?.greeting}</p>
-          {/* <p className={styles["profile-greeting"]}>
-            <strong>Hi</strong>, I am{" "}
-            <strong>
-              Julio Vaz{" "}
-              <span role="img" aria-label="waving hang">
-                👋
-              </span>
-            </strong>
-          </p> */}
           <Image
-            className={styles["profile-avatar"]}
             src="/profile.jpg"
             alt="Next.js Logo"
             width={300}
@@ -40,8 +30,8 @@ const Home = (props: any) => {
             priority
           />
         </div>
-        <div className={styles.center}>
-          <p className={styles["profile-description"]}>
+        <div>
+          <p>
             I've been working with software engineering for over 6 years,
             currently I'm working on the core team at{" "}
             <strong>
@@ -53,7 +43,7 @@ const Home = (props: any) => {
           </p>
         </div>
       </section>
-      <aside className={styles["menu-rigth"]}>
+      <aside>
         <Link
           href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-vaz-560ab4127"
           target="_blank"
