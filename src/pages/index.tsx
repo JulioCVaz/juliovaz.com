@@ -4,9 +4,11 @@ import Link from "next/link";
 import getT from "next-translate/getT";
 import { Button } from "../components/Button";
 
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LogoDevIcon from "@mui/icons-material/LogoDev";
+import GitHubIcon from "../../icons/GitHub.svg";
+import LinkedInIcon from "../../icons/LinkedIn.svg";
+import DevToIcon from "../../icons/Code.svg";
+import TwitterIcon from "../../icons/Twitter.svg";
+import MenuIcon from "../../icons/Menu.svg";
 
 import styles from "./index.module.scss";
 
@@ -46,24 +48,24 @@ const Home = (props: any) => {
           <header className={styles.header}>
             <div className={styles.social}>
               <a href="https://github.com/JulioCVaz" target="_blank">
-                <img src="./icons/GitHub.svg" alt="github" />
+                <Image priority src={GitHubIcon} alt="github icon" />
               </a>
               <a
                 href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-vaz-560ab4127/"
                 target="_blank"
               >
-                <img src="./icons/LinkedIn.svg" alt="linkedin" />
+                <Image priority src={LinkedInIcon} alt="linkedin icon" />
               </a>
               <a href="https://dev.to/juliovaz" target="_blank">
-                <img src="./icons/Code.svg" alt="dev.to" />
+                <Image priority src={DevToIcon} alt="dev.to icon" />
               </a>
               <a href="https://twitter.com/juliovazbr" target="_blank">
-                <img src="./icons/Twitter.svg" alt="twitter" />
+                <Image priority src={TwitterIcon} alt="twitter icon" />
               </a>
             </div>
             <div className={styles.menu}>
               <a href="#">
-                <img src="./icons/Menu.svg" alt="menu" />
+                <Image priority src={MenuIcon} alt="menu icon" />
               </a>
             </div>
           </header>
