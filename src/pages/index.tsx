@@ -21,8 +21,6 @@ const Home = (props: any) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Button type="outline">outline</Button>
-      <Button>content</Button>
       <div className={styles.main}>
         <div className={styles["page-label"]}>
           <div className="label">
@@ -88,17 +86,13 @@ const Home = (props: any) => {
                 <span className={styles["description-technology"]}>nextjs</span>
               </p>
               <div className={styles["home-links"]}>
-                <a
-                  className="button button-outline"
-                  href="https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view?usp=sharing"
-                  target="_blank"
-                  role="button"
+                <Button
+                  type="outline"
+                  link="https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view?usp=sharing"
                 >
                   Resume
-                </a>
-                <a className="button" href="" role="button">
-                  Blog
-                </a>
+                </Button>
+                <Button link="#">Blog</Button>
               </div>
             </div>
           </section>

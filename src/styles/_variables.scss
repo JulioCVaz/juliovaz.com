@@ -20,32 +20,5 @@ $color-gray: #929495;
 $font-weight-regular: 400px;
 $font-weight-medium: 500px;
 $font-weight-bold: 600px;
-$border-blue: 3px solid var($color-blue);
-$border-white: 3px solid var($color-white);
-
-:export {
-  spacingXxsmall: $spacing-xxsmall;
-  spacingXsmall: $spacing-xsmall;
-  spacingSmall: $spacing-small;
-  spacingBase: $spacing-base;
-  spacingMedium: $spacing-medium;
-  spacingLarge: $spacing-large;
-  spacingXlarge: $spacing-xlarge;
-  spacingXxlarge: $spacing-xxlarge;
-  spacingXxxlarge: $spacing-xxxlarge;
-  spacingXxxxlarge: $spacing-xxxxlarge;
-  spacingGiant: $spacing-giant;
-  spacingXgiant: $spacing-xgiant;
-  textSmall: $text-small;
-  textMedium: $text-medium;
-  textLarge: $text-large;
-  colorDark: $color-dark;
-  colorBlue: $color-blue;
-  colorWhite: $color-white;
-  colorGray: $color-gray;
-  fontWeightRegular: $font-weight-regular;
-  fontWeightMedium: $font-weight-medium;
-  fontWeightBold: $font-weight-bold;
-  borderBlue: $border-blue;
-  borderWhite: $border-white;
-}
+$border-blue: 3px solid $color-blue;
+$border-white: 3px solid $color-white;

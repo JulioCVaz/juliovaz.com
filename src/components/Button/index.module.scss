@@ -11,6 +11,11 @@
   }
 }
 
+.button-default {
+  background-color: $color-blue;
+  color: $color-white;
+}
+
 .button {
   border-radius: 100px;
   text-align: center;
@@ -20,6 +25,4 @@
   line-height: calc($spacing-xxlarge + $spacing-xxsmall);
   font-size: $text-small;
   border: $border-blue;
-  background-color: $color-blue;
-  color: $color-white;
 }
