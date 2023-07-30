@@ -221,30 +221,20 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .about-me-avatar > img {
-    max-width: 250px;
-  }
-}
-
-@media (max-width: 767.98px) {
-  #about-me {
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .about-me-avatar,
-  .about-me-description {
+@media (max-width: 768px) {
+  .about-me {
     width: 100%;
-  }
-
-  .about-me-description {
-    margin-top: $spacing-xlarge;
+    padding: 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .about-me-avatar > img {
-    width: 200px;
+  .about-me-avatar {
+    float: none;
+    padding-bottom: 10px;
+    shape-outside: none;
   }
 }
 
@@ -259,6 +249,7 @@
 
 .experiences-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -311,14 +302,6 @@
 .current-experience {
   color: $color-blue;
 }
-
-// /* https://codepen.io/traceypooh/pen/pWjOdq */
-// .experiences-mosaic::after {
-//   content: "";
-//   position: absolute;
-//   filter: blur(var(--spacing-base));
-//   border-radius: 300px;
-// }
 
 @media (max-width: 768px) {
   #experiences {
