@@ -24,9 +24,6 @@ const Home = (props: any) => {
       <div className={styles.main}>
         <div className={styles["page-label"]}>
           <div className="label">
-            <span>HOME</span>
-          </div>
-          <div className="label">
             <span>ABOUT</span>
           </div>
           <div className="label">
@@ -96,29 +93,6 @@ const Home = (props: any) => {
               </div>
             </div>
           </section>
-          <section id={styles["about-me"]}>
-            <div className={styles["about-me-avatar"]}>
-              <Image
-                width={300}
-                height={300}
-                src={AvatarImg}
-                alt="avatar-profile"
-              />
-            </div>
-            <div className={styles["about-me-description"]}>
-              <p>
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-              </p>
-              <p>
-                Working on projects with <span>nextjs</span>
-              </p>
-            </div>
-          </section>
           <section id={styles.experiences}>
             <div className={styles["experiences-container"]}>
               <div className={styles["experiences-timeline"]}>
@@ -167,7 +141,64 @@ const Home = (props: any) => {
                   </p>
                 </div>
               </div>
-              <div className={styles["experiences-mosaic"]}></div>
+              <div className={styles["about-me"]}>
+                <div className={styles["about-me-avatar"]}>
+                  <Image
+                    width={200}
+                    height={200}
+                    src={AvatarImg}
+                    alt="avatar-profile"
+                  />
+                </div>
+                <div className={styles["about-me-description"]}>
+                  <p>
+                    I've been working with software engineering for over 6
+                    years, currently I'm working on the core team at Juntos
+                    Somos mais. I've been working with software engineering for
+                    over 6 years, currently I'm working on the core team at
+                    Juntos Somos mais. I've been working with software
+                    engineering for over 6 years, currently I'm working on the
+                    core team at Juntos Somos mais. I've been working with
+                    software engineering for over 6 years, currently I'm working
+                    on the core team at Juntos Somos mais. I've been working
+                    with software engineering for over 6 years, currently I'm
+                    working on the core team at Juntos Somos mais.
+                  </p>
+                  <p>
+                    I've been working with software engineering for over 6
+                    years, currently I'm working on the core team at Juntos
+                    Somos mais. I've been working with software engineering for
+                    over 6 years, currently I'm working on the core team at
+                    Juntos Somos mais. I've been working with software
+                    engineering for over 6 years, currently I'm working on the
+                    core team at Juntos Somos mais. I've been working with
+                    software engineering for over 6 years, currently I'm working
+                    on the core team at Juntos Somos mais.
+                  </p>
+                </div>
+                {/* <div className={styles["about-me-avatar"]}>
+                  <Image
+                    width={150}
+                    height={150}
+                    src={AvatarImg}
+                    alt="avatar-profile"
+                  />
+                </div>
+                <div className={styles["about-me-description"]}>
+                  <p>
+                    I've been working with software engineering for over 6
+                    years, currently I'm working on the core team at Juntos
+                    Somos mais. I've been working with software engineering for
+                    over 6 years, currently I'm working on the core team at
+                    Juntos Somos mais. I've been working with software
+                    engineering for over 6 years, currently I'm working on the
+                    core team at Juntos Somos mais.
+                  </p>
+                  <p>
+                    Working on projects with <span>nextjs</span>
+                  </p>
+                </div> */}
+              </div>
             </div>
           </section>
           <section id={styles.projects}></section>

@@ -190,35 +190,35 @@
 }
 
 // /* about-me */
-#about-me {
-  flex-direction: row;
-  align-items: center;
-}
-
-.about-me-avatar,
-.about-me-description {
+.about-me {
   width: 50%;
-  display: flex;
-  justify-content: center;
+  padding-left: 80px;
+
+  p {
+    text-align: justify;
+  }
 }
 
-.about-me-avatar > img {
-  width: 300px;
-  border-radius: 100%;
-  border: var(--border-white);
+.about-me-avatar {
+  float: left;
+  shape-outside: circle();
+  padding: 20px;
+
+  > img {
+    border-radius: 50%;
+    border: var(--border-white);
+  }
 }
 
 .about-me-description {
-  flex-direction: column;
-}
+  p {
+    font-size: var(--text-medium);
 
-.about-me-description p:first-of-type {
-  padding-top: $spacing-xxxxlarge;
-  padding-bottom: $spacing-xxxxlarge;
-}
-
-.about-me-description > p {
-  font-size: var(--text-medium);
+    &:first-of-type {
+      padding-top: $spacing-xxxxlarge;
+      padding-bottom: $spacing-xxxxlarge;
+    }
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
