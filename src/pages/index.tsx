@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Image from "next/image";
 import getT from "next-translate/getT";
 import { Button } from "../components/Button";
@@ -12,11 +13,12 @@ import AvatarImg from "../../public/profile.jpg";
 
 import styles from "./index.module.scss";
 
-const Home = (props: any) => {
+const Home = ({ i18n }: any) => {
+  console.log({ i18n });
   return (
     <>
       <Head>
-        <title>Julio Vaz - Home</title>
+        <title>Julio Vaz</title>
         <meta name="description" content="Julio's Vaz website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -24,13 +26,13 @@ const Home = (props: any) => {
       <div className={styles.main}>
         <div className={styles["page-label"]}>
           <div className="label">
-            <span>ABOUT</span>
+            <span>{i18n.sections.about.title}</span>
           </div>
           <div className="label">
-            <span>EXPERIENCES</span>
+            <span>{i18n.sections.experiences}</span>
           </div>
           <div className="label">
-            <span>PROJECTS</span>
+            <span>{i18n.sections.projects}</span>
           </div>
         </div>
         <div className={styles["page-nav"]}>
@@ -68,18 +70,22 @@ const Home = (props: any) => {
           <section id={styles.home}>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>
-                <strong>Hi</strong>, I'm <strong>Julio Vaz</strong>
+                <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "}
+                <strong>{i18n.greeting.name}</strong>
               </h1>
               <p className={styles["description-carrer"]}>
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
+                {i18n.sections.about.content.about}{" "}
+                <Link
+                  href="https://juntossomosmais.com.br"
+                  target="_blank"
+                  about="juntos somos mais - fidelizacao"
+                >
+                  {i18n.sections.about.content.aboutCompany}
+                </Link>{" "}
+                {i18n.sections.about.content.aboutExperience}
               </p>
               <p className={styles["description-technologies"]}>
-                Working on projects with
+                {i18n.sections.about.content.aboutTechnologies}{" "}
                 <span className={styles["description-technology"]}>nextjs</span>
               </p>
               <div className={styles["home-links"]}>
@@ -87,9 +93,11 @@ const Home = (props: any) => {
                   type="outline"
                   link="https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view?usp=sharing"
                 >
-                  Resume
+                  {i18n.sections.about.actions.buttons.resume}
                 </Button>
-                <Button link="#">Blog</Button>
+                <Button link="#">
+                  {i18n.sections.about.actions.buttons.blog}
+                </Button>
               </div>
             </div>
           </section>
@@ -176,28 +184,6 @@ const Home = (props: any) => {
                     on the core team at Juntos Somos mais.
                   </p>
                 </div>
-                {/* <div className={styles["about-me-avatar"]}>
-                  <Image
-                    width={150}
-                    height={150}
-                    src={AvatarImg}
-                    alt="avatar-profile"
-                  />
-                </div>
-                <div className={styles["about-me-description"]}>
-                  <p>
-                    I've been working with software engineering for over 6
-                    years, currently I'm working on the core team at Juntos
-                    Somos mais. I've been working with software engineering for
-                    over 6 years, currently I'm working on the core team at
-                    Juntos Somos mais. I've been working with software
-                    engineering for over 6 years, currently I'm working on the
-                    core team at Juntos Somos mais.
-                  </p>
-                  <p>
-                    Working on projects with <span>nextjs</span>
-                  </p>
-                </div> */}
               </div>
             </div>
           </section>
@@ -212,9 +198,39 @@ export default Home;
 
 export async function getStaticProps({ locale }: any) {
   const t = await getT(locale, "common");
-  const greeting = t("greeting");
+  const i18n = {
+    greeting: {
+      greeting: t("greeting.greeting"),
+      iam: t("greeting.iam"),
+      name: t("greeting.name"),
+    },
+    menu: {},
+    sections: {
+      about: {
+        title: t("page.sections.about.title"),
+        content: {
+          about: t("page.sections.about.content.about"),
+          aboutCompany: t("page.sections.about.content.about-company"),
+          aboutExperience: t("page.sections.about.content.about-experience"),
+          aboutTechnologies: t(
+            "page.sections.about.content.about-technologies"
+          ),
+        },
+        actions: {
+          buttons: {
+            resume: t("page.sections.about.actions.buttons.resume"),
+            blog: t("page.sections.about.actions.buttons.blog"),
+          },
+        },
+      },
+      experiences: t("page.sections.experiences"),
+      projects: t("page.sections.projects"),
+    },
+  };
 
   return {
-    props: { greeting },
+    props: {
+      i18n,
+    },
   };
 }

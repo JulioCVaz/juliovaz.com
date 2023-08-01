@@ -1,3 +1,29 @@
 {
-  "greeting": "Hi I'm Julio Vaz 👋"
+  "greeting": {
+    "greeting": "Hi",
+    "iam": "I'm",
+    "name": "Julio Vaz 👋"
+  },
+  "page": {
+    "menu": {},
+    "sections": {
+      "about": {
+        "title": "ABOUT",
+        "content": {
+          "about": "I've been working with software engineering for over 6 years, currently I'm working in the core team at",
+          "about-company": "Juntos Somos Mais",
+          "about-experience": "as a frontend and mobile developer. During all these years, I worked with different technologies, languages and frameworks. I was able to acquire experience to lead projects and carry out quality deliveries. I currently focus on software architecture, CI/CD, testing and monitoring. Work on training new developers in the team, share and acquire new knowledge.",
+          "about-technologies": "Working on projects with"
+        },
+        "actions": {
+          "buttons": {
+            "resume": "Resume",
+            "blog": "Blog"
+          }
+        }
+      },
+      "experiences": "EXPERIENCES",
+      "projects": "PROJECTS"
+    }
+  }
 }

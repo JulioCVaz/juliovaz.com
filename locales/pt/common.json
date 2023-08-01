@@ -1,3 +1,29 @@
 {
-  "greeting": "Oi Eu sou Julio Vaz 👋"
+  "greeting": {
+    "greeting": "Oi",
+    "iam": "eu sou",
+    "name": "Julio Vaz 👋"
+  },
+  "page": {
+    "menu": {},
+    "sections": {
+      "about": {
+        "title": "SOBRE",
+        "content": {
+          "about": "Trabalho com engenharia de software há mais de 6 anos, atualmente estou trabalhando no time core da",
+          "about-company": "Juntos Somos Mais",
+          "about-experience": "como desenvolver frontend e mobile. Durante todos esses anos, trabalhei com diversas tecnologias, linguagens e frameworks. Pude adquirir experiência para liderar projetos e realizar entregas de qualidade. Atualmente foco em arquitetura de software, CI/CD, testes e monitoramento. Trabalhar na formação de novos desenvolvedores na equipe, compartilhar e adquirir novos conhecimentos.",
+          "about-technologies": "Trabalhando em projetos com"
+        },
+        "actions": {
+          "buttons": {
+            "resume": "Currículo",
+            "blog": "Blog"
+          }
+        }
+      },
+      "experiences": "EXPERIÊNCIAS",
+      "projects": "PROJETOS"
+    }
+  }
 }
