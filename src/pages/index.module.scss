@@ -286,7 +286,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding-bottom: $spacing-xxxlarge;
+  padding-bottom: $spacing-xlarge;
 }
 
 .experience-subtitle {
@@ -297,6 +297,10 @@
 
 .experience-description {
   color: $color-gray;
+
+  ul li {
+    padding-bottom: $spacing-base;
+  }
 }
 
 .current-experience {

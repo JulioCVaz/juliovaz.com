@@ -39,7 +39,6 @@ const Home = ({ i18n }: any) => {
           <div className={styles["circle-nav"]}></div>
           <div className={styles["circle-nav"]}></div>
           <div className={styles["circle-nav"]}></div>
-          <div className={styles["circle-nav"]}></div>
         </div>
         <div className={styles.container}>
           <header className={styles.header}>
@@ -115,9 +114,36 @@ const Home = ({ i18n }: any) => {
                     </div>
                   </div>
                   <p className={styles["experience-description"]}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                    laoreet metus vel sem eleifend iaculis. Quisque lacinia arcu
-                    ac sem bibendum, non blandit est blandit.
+                    <ul>
+                      <li>
+                        Currently contribution over time in improvements and
+                        deliveries on the{" "}
+                        <Link
+                          href="https://www.juntossomosmais.com.br/home/profissional-de-obra"
+                          target="_blank"
+                        >
+                          website
+                        </Link>{" "}
+                        and{" "}
+                        <Link
+                          href="https://play.google.com/store/apps/details?id=br.com.votorantim.votorantim.jsmpro"
+                          target="_blank"
+                        >
+                          mobile
+                        </Link>
+                        , generating value for the end user. Integration with
+                        partner APIs and creation of development flows used by
+                        squads. Contribute for the{" "}
+                        <Link
+                          href="https://github.com/oracle/pushiomanager-react-native"
+                          target="_blank"
+                        >
+                          @oracle
+                        </Link>{" "}
+                        library to ensure push notification on mobile
+                        application.
+                      </li>
+                    </ul>
                   </p>
                 </div>
                 <div className={styles.experiences}>
@@ -129,9 +155,24 @@ const Home = ({ i18n }: any) => {
                     </div>
                   </div>
                   <p className={styles["experience-description"]}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                    laoreet metus vel sem eleifend iaculis. Quisque lacinia arcu
-                    ac sem bibendum, non blandit est blandit.
+                    <ul>
+                      <li>
+                        My job was creating the new{" "}
+                        <Link
+                          href="https://play.google.com/store/apps/details?id=com.looqbox.app"
+                          target="_blank"
+                        >
+                          Looqbox app
+                        </Link>
+                        , where users can interact with corporate info through
+                        their questions. I've built push notifications with Expo
+                        services. Also, I added deeplinks for easy access using
+                        a universal mechanism and app links. Implemented the
+                        Firebase dynamic links to facilitate the download app
+                        for the clients. Configured a version delivery workflow
+                        using development and Expo Release Channels.
+                      </li>
+                    </ul>
                   </p>
                 </div>
                 <div className={styles.experiences}>
@@ -143,9 +184,27 @@ const Home = ({ i18n }: any) => {
                     </div>
                   </div>
                   <p className={styles["experience-description"]}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                    laoreet metus vel sem eleifend iaculis. Quisque lacinia arcu
-                    ac sem bibendum, non blandit est blandit.
+                    <ul>
+                      <li>
+                        My job involved reconstructing screens and creating new
+                        functionalities for the{" "}
+                        <Link
+                          href="https://physicaltest.com.br/"
+                          target="_blank"
+                        >
+                          Physical Test
+                        </Link>{" "}
+                        web system, catering to physical assessments and body
+                        measurement planning. I've streamlined the
+                        componentization process through atomic design concepts.
+                        Additionally, I developed a websocket communication
+                        feature between web and mobile using WebSocket API and
+                        Golang (Beego). Moreover, I took on the challenge of
+                        developing the mobile app Physical Test. It enables
+                        Bluetooth connectivity with a specific tool (adipometer)
+                        for accurate body measurement capture.
+                      </li>
+                    </ul>
                   </p>
                 </div>
               </div>
