@@ -22,7 +22,31 @@
           }
         }
       },
-      "experiences": "EXPERIÊNCIAS",
+      "experiences": {
+        "title": "EXPERIÊNCIAS",
+        "content": {
+          "timeline": {
+            "current": {
+              "about": "Atualmente, contribuindo com melhorias e entregas no",
+              "about-experience": ", gerando valor para o usuário final. Integração com APIs de parceiros e criação de fluxos de desenvolvimento utilizados pelos squads. Contribui para a biblioteca",
+              "about-notification": "para garantir notificações push no app.",
+              "conector": "e",
+              "links": {
+                "website": "site",
+                "mobile": "app"
+              }
+            },
+            "prev": {
+              "about": "Meu trabalho foi criar o novo aplicativo",
+              "about-experience": ", onde os usuários podem interagir com informações corporativas por meio de suas perguntas. Criei notificações push com os serviços da Expo. Além disso, adicionei deeplinks para facilitar o acesso usando um mecanismo universal e links de aplicativos. Implementei os links dinâmicos do Firebase para facilitar o download do aplicativo para os clientes. Configurei um fluxo de trabalho de entrega de versão usando canais de desenvolvimento e lançamento da Expo."
+            },
+            "last": {
+              "about": "Meu trabalho envolvia reconstruir telas e criar novas funcionalidades para o sistema web",
+              "about-experience": ", atendendo a avaliações físicas e planejamento de medidas corporais. Simplifiquei o processo de componentização por meio de conceitos de design atômico. Adicionalmente. Participou do desenvolvimento de um recurso de comunicação websocket entre a web e mobile utilizando WebSocket API e Golang (Beego). Além disso, aceitei o desafio de desenvolver o aplicativo Physical Test. Permite a conectividade Bluetooth com uma ferramenta específica (adipômetro) para a captura precisa das medidas corporais."
+            }
+          }
+        }
+      },
       "projects": "PROJETOS"
     }
   }

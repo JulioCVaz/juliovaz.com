@@ -29,7 +29,7 @@ const Home = ({ i18n }: any) => {
             <span>{i18n.sections.about.title}</span>
           </div>
           <div className="label">
-            <span>{i18n.sections.experiences}</span>
+            <span>{i18n.sections.experiences.title}</span>
           </div>
           <div className="label">
             <span>{i18n.sections.projects}</span>
@@ -116,32 +116,46 @@ const Home = ({ i18n }: any) => {
                   <p className={styles["experience-description"]}>
                     <ul>
                       <li>
-                        Currently contribution over time in improvements and
-                        deliveries on the{" "}
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .about
+                        }{" "}
                         <Link
                           href="https://www.juntossomosmais.com.br/home/profissional-de-obra"
                           target="_blank"
                         >
-                          website
+                          {
+                            i18n.sections.experiences.content.timeline.current
+                              .links.website
+                          }
                         </Link>{" "}
-                        and{" "}
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .conector
+                        }{" "}
                         <Link
                           href="https://play.google.com/store/apps/details?id=br.com.votorantim.votorantim.jsmpro"
                           target="_blank"
                         >
-                          mobile
+                          {
+                            i18n.sections.experiences.content.timeline.current
+                              .links.mobile
+                          }
                         </Link>
-                        , generating value for the end user. Integration with
-                        partner APIs and creation of development flows used by
-                        squads. Contribute for the{" "}
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .aboutExperience
+                        }{" "}
                         <Link
                           href="https://github.com/oracle/pushiomanager-react-native"
                           target="_blank"
                         >
                           @oracle
                         </Link>{" "}
-                        library to ensure push notification on mobile
-                        application.
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .aboutNotification
+                        }
                       </li>
                     </ul>
                   </p>
@@ -157,20 +171,17 @@ const Home = ({ i18n }: any) => {
                   <p className={styles["experience-description"]}>
                     <ul>
                       <li>
-                        My job was creating the new{" "}
+                        {i18n.sections.experiences.content.timeline.prev.about}{" "}
                         <Link
                           href="https://play.google.com/store/apps/details?id=com.looqbox.app"
                           target="_blank"
                         >
                           Looqbox app
                         </Link>
-                        , where users can interact with corporate info through
-                        their questions. I've built push notifications with Expo
-                        services. Also, I added deeplinks for easy access using
-                        a universal mechanism and app links. Implemented the
-                        Firebase dynamic links to facilitate the download app
-                        for the clients. Configured a version delivery workflow
-                        using development and Expo Release Channels.
+                        {
+                          i18n.sections.experiences.content.timeline.prev
+                            .aboutExperience
+                        }
                       </li>
                     </ul>
                   </p>
@@ -186,23 +197,17 @@ const Home = ({ i18n }: any) => {
                   <p className={styles["experience-description"]}>
                     <ul>
                       <li>
-                        My job involved reconstructing screens and creating new
-                        functionalities for the{" "}
+                        {i18n.sections.experiences.content.timeline.last.about}{" "}
                         <Link
                           href="https://physicaltest.com.br/"
                           target="_blank"
                         >
                           Physical Test
                         </Link>{" "}
-                        web system, catering to physical assessments and body
-                        measurement planning. I've streamlined the
-                        componentization process through atomic design concepts.
-                        Additionally, I developed a websocket communication
-                        feature between web and mobile using WebSocket API and
-                        Golang (Beego). Moreover, I took on the challenge of
-                        developing the mobile app Physical Test. It enables
-                        Bluetooth connectivity with a specific tool (adipometer)
-                        for accurate body measurement capture.
+                        {
+                          i18n.sections.experiences.content.timeline.last
+                            .aboutExperience
+                        }
                       </li>
                     </ul>
                   </p>
@@ -282,7 +287,47 @@ export async function getStaticProps({ locale }: any) {
           },
         },
       },
-      experiences: t("page.sections.experiences"),
+      experiences: {
+        title: t("page.sections.experiences.title"),
+        content: {
+          timeline: {
+            current: {
+              about: t(
+                "page.sections.experiences.content.timeline.current.about"
+              ),
+              aboutExperience: t(
+                "page.sections.experiences.content.timeline.current.about-experience"
+              ),
+              aboutNotification: t(
+                "page.sections.experiences.content.timeline.current.about-notification"
+              ),
+              conector: t(
+                "page.sections.experiences.content.timeline.current.conector"
+              ),
+              links: {
+                website: t(
+                  "page.sections.experiences.content.timeline.current.links.website"
+                ),
+                mobile: t(
+                  "page.sections.experiences.content.timeline.current.links.mobile"
+                ),
+              },
+            },
+            prev: {
+              about: t("page.sections.experiences.content.timeline.prev.about"),
+              aboutExperience: t(
+                "page.sections.experiences.content.timeline.prev.about-experience"
+              ),
+            },
+            last: {
+              about: t("page.sections.experiences.content.timeline.last.about"),
+              aboutExperience: t(
+                "page.sections.experiences.content.timeline.last.about-experience"
+              ),
+            },
+          },
+        },
+      },
       projects: t("page.sections.projects"),
     },
   };
