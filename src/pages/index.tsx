@@ -14,7 +14,6 @@ import AvatarImg from "../../public/profile.jpg";
 import styles from "./index.module.scss";
 
 const Home = ({ i18n }: any) => {
-  console.log({ i18n });
   return (
     <>
       <Head>
