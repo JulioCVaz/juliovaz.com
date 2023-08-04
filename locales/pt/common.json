@@ -47,7 +47,15 @@
           }
         }
       },
-      "projects": "PROJETOS"
+      "projects": {
+        "title": "PROJETOS",
+        "content": {
+          "first": "Atualmente trabalhando na Juntos somos mais como desenvolvedor frontend e mobile, com foco em entregas de impacto estrutural, monitoramento, escalabilidade e entrega continua. Em constante evolução no ambiente web e mobile utilizando nextjs, typescript, react native, jest, css-in-js e outras tecnologias.",
+          "second": "Previamente trabalhei em uma startup chamada looqbox, onde pude construir a nova versão do app mobile, utilizando react-native com expo, styled-components e firebase, pude iniciar o projeto do zero e liderar entregas de novas versões para os clientes.",
+          "third": "Inicialmente trabalhei em uma empresa pequena, chamada Grupo KRS, eramos em 5 funcionários, porem considero uma das melhores épocas que programei, pois, pude adquirir uma gama enorme de conhecimento e se aprofundar nas tecnologias em que trabalhamos na época, pude implementar features no backend utilizando PHP, golang e websocket. Além de se aprofundar e se especializar no frontend utilizando reactjs, angular, jQuery e react native.",
+          "fourth": "Sou apaixonado por tecnologia e arquitetura. Gosto de definir bons padrões de projeto, estudar sobre desenvolvimento frontend e mobile, programação orientada a objetos, system design e algoritmos."
+        }
+      }
     }
   }
 }

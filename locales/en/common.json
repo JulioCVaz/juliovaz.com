@@ -47,7 +47,15 @@
           }
         }
       },
-      "projects": "PROJECTS"
+      "projects": {
+        "title": "PROJETOS",
+        "content": {
+          "first": "Currently working at Juntos Somos Mais as a frontend and mobile developer, focusing on deliveries with structural impact, monitoring, scalability and continuous delivery. Constantly evolving in the web and mobile environment using nextjs, typescript, react native, jest, css-in-js and other technologies.",
+          "second": "Previously I worked in a startup called looqbox, where I was able to build the new version of the mobile app, using react-native with expo, styled-components and firebase, I was able to start the project from scratch and lead deliveries of new versions for customers.",
+          "third": "Initially I worked in a small company, called Grupo KRS, we had 5 employees, but I consider it one of the best times I've programmed, because I was able to acquire a huge range of knowledge and delve into the technologies we worked on at the time, I was able to implement features in the backend using PHP, golang and websocket. In addition to deepening and specializing in the frontend using reactjs, angular, jQuery and react native.",
+          "fourth": "I am passionate about technology and architecture. I like to define good design standards, study about frontend and mobile development, object-oriented programming, system design and algorithms."
+        }
+      }
     }
   }
 }

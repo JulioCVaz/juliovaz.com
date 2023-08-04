@@ -32,7 +32,7 @@ const Home = ({ i18n }: any) => {
             <span>{i18n.sections.experiences.title}</span>
           </div>
           <div className="label">
-            <span>{i18n.sections.projects}</span>
+            <span>{i18n.sections.projects.title}</span>
           </div>
         </div>
         <div className={styles["page-nav"]}>
@@ -223,30 +223,12 @@ const Home = ({ i18n }: any) => {
                   />
                 </div>
                 <div className={styles["about-me-description"]}>
-                  <p>
-                    I've been working with software engineering for over 6
-                    years, currently I'm working on the core team at Juntos
-                    Somos mais. I've been working with software engineering for
-                    over 6 years, currently I'm working on the core team at
-                    Juntos Somos mais. I've been working with software
-                    engineering for over 6 years, currently I'm working on the
-                    core team at Juntos Somos mais. I've been working with
-                    software engineering for over 6 years, currently I'm working
-                    on the core team at Juntos Somos mais. I've been working
-                    with software engineering for over 6 years, currently I'm
-                    working on the core team at Juntos Somos mais.
-                  </p>
-                  <p>
-                    I've been working with software engineering for over 6
-                    years, currently I'm working on the core team at Juntos
-                    Somos mais. I've been working with software engineering for
-                    over 6 years, currently I'm working on the core team at
-                    Juntos Somos mais. I've been working with software
-                    engineering for over 6 years, currently I'm working on the
-                    core team at Juntos Somos mais. I've been working with
-                    software engineering for over 6 years, currently I'm working
-                    on the core team at Juntos Somos mais.
-                  </p>
+                  <p>{i18n.sections.projects.content.first}</p>
+                  <p>{i18n.sections.projects.content.second}</p>
+                  <br />
+                  <p>{i18n.sections.projects.content.third}</p>
+                  <br />
+                  <p>{i18n.sections.projects.content.fourth}</p>
                 </div>
               </div>
             </div>
@@ -328,7 +310,15 @@ export async function getStaticProps({ locale }: any) {
           },
         },
       },
-      projects: t("page.sections.projects"),
+      projects: {
+        title: t("page.sections.projects.title"),
+        content: {
+          first: t("page.sections.projects.content.first"),
+          second: t("page.sections.projects.content.second"),
+          third: t("page.sections.projects.content.third"),
+          fourth: t("page.sections.projects.content.fourth"),
+        },
+      },
     },
   };
 
