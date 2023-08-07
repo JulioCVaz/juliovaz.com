@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Image from "next/image";
 import getT from "next-translate/getT";
 import { Button } from "../components/Button";
@@ -12,11 +13,11 @@ import AvatarImg from "../../public/profile.jpg";
 
 import styles from "./index.module.scss";
 
-const Home = (props: any) => {
+const Home = ({ i18n }: any) => {
   return (
     <>
       <Head>
-        <title>Julio Vaz - Home</title>
+        <title>Julio Vaz</title>
         <meta name="description" content="Julio's Vaz website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -24,20 +25,16 @@ const Home = (props: any) => {
       <div className={styles.main}>
         <div className={styles["page-label"]}>
           <div className="label">
-            <span>HOME</span>
+            <span>{i18n.sections.about.title}</span>
           </div>
           <div className="label">
-            <span>ABOUT</span>
+            <span>{i18n.sections.experiences.title}</span>
           </div>
           <div className="label">
-            <span>EXPERIENCES</span>
-          </div>
-          <div className="label">
-            <span>PROJECTS</span>
+            <span>{i18n.sections.projects.title}</span>
           </div>
         </div>
         <div className={styles["page-nav"]}>
-          <div className={styles["circle-nav"]}></div>
           <div className={styles["circle-nav"]}></div>
           <div className={styles["circle-nav"]}></div>
           <div className={styles["circle-nav"]}></div>
@@ -71,18 +68,22 @@ const Home = (props: any) => {
           <section id={styles.home}>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>
-                <strong>Hi</strong>, I'm <strong>Julio Vaz</strong>
+                <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "}
+                <strong>{i18n.greeting.name}</strong>
               </h1>
               <p className={styles["description-carrer"]}>
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
+                {i18n.sections.about.content.about}{" "}
+                <Link
+                  href="https://juntossomosmais.com.br"
+                  target="_blank"
+                  about="juntos somos mais - fidelizacao"
+                >
+                  {i18n.sections.about.content.aboutCompany}
+                </Link>{" "}
+                {i18n.sections.about.content.aboutExperience}
               </p>
               <p className={styles["description-technologies"]}>
-                Working on projects with
+                {i18n.sections.about.content.aboutTechnologies}{" "}
                 <span className={styles["description-technology"]}>nextjs</span>
               </p>
               <div className={styles["home-links"]}>
@@ -90,33 +91,12 @@ const Home = (props: any) => {
                   type="outline"
                   link="https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view?usp=sharing"
                 >
-                  Resume
+                  {i18n.sections.about.actions.buttons.resume}
                 </Button>
-                <Button link="#">Blog</Button>
+                <Button link="#">
+                  {i18n.sections.about.actions.buttons.blog}
+                </Button>
               </div>
-            </div>
-          </section>
-          <section id={styles["about-me"]}>
-            <div className={styles["about-me-avatar"]}>
-              <Image
-                width={300}
-                height={300}
-                src={AvatarImg}
-                alt="avatar-profile"
-              />
-            </div>
-            <div className={styles["about-me-description"]}>
-              <p>
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-                I've been working with software engineering for over 6 years,
-                currently I'm working on the core team at Juntos Somos mais.
-              </p>
-              <p>
-                Working on projects with <span>nextjs</span>
-              </p>
             </div>
           </section>
           <section id={styles.experiences}>
@@ -133,9 +113,50 @@ const Home = (props: any) => {
                     </div>
                   </div>
                   <p className={styles["experience-description"]}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                    laoreet metus vel sem eleifend iaculis. Quisque lacinia arcu
-                    ac sem bibendum, non blandit est blandit.
+                    <ul>
+                      <li>
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .about
+                        }{" "}
+                        <Link
+                          href="https://www.juntossomosmais.com.br/home/profissional-de-obra"
+                          target="_blank"
+                        >
+                          {
+                            i18n.sections.experiences.content.timeline.current
+                              .links.website
+                          }
+                        </Link>{" "}
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .conector
+                        }{" "}
+                        <Link
+                          href="https://play.google.com/store/apps/details?id=br.com.votorantim.votorantim.jsmpro"
+                          target="_blank"
+                        >
+                          {
+                            i18n.sections.experiences.content.timeline.current
+                              .links.mobile
+                          }
+                        </Link>
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .aboutExperience
+                        }{" "}
+                        <Link
+                          href="https://github.com/oracle/pushiomanager-react-native"
+                          target="_blank"
+                        >
+                          @oracle
+                        </Link>{" "}
+                        {
+                          i18n.sections.experiences.content.timeline.current
+                            .aboutNotification
+                        }
+                      </li>
+                    </ul>
                   </p>
                 </div>
                 <div className={styles.experiences}>
@@ -147,9 +168,21 @@ const Home = (props: any) => {
                     </div>
                   </div>
                   <p className={styles["experience-description"]}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                    laoreet metus vel sem eleifend iaculis. Quisque lacinia arcu
-                    ac sem bibendum, non blandit est blandit.
+                    <ul>
+                      <li>
+                        {i18n.sections.experiences.content.timeline.prev.about}{" "}
+                        <Link
+                          href="https://play.google.com/store/apps/details?id=com.looqbox.app"
+                          target="_blank"
+                        >
+                          Looqbox app
+                        </Link>
+                        {
+                          i18n.sections.experiences.content.timeline.prev
+                            .aboutExperience
+                        }
+                      </li>
+                    </ul>
                   </p>
                 </div>
                 <div className={styles.experiences}>
@@ -161,13 +194,42 @@ const Home = (props: any) => {
                     </div>
                   </div>
                   <p className={styles["experience-description"]}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                    laoreet metus vel sem eleifend iaculis. Quisque lacinia arcu
-                    ac sem bibendum, non blandit est blandit.
+                    <ul>
+                      <li>
+                        {i18n.sections.experiences.content.timeline.last.about}{" "}
+                        <Link
+                          href="https://physicaltest.com.br/"
+                          target="_blank"
+                        >
+                          Physical Test
+                        </Link>{" "}
+                        {
+                          i18n.sections.experiences.content.timeline.last
+                            .aboutExperience
+                        }
+                      </li>
+                    </ul>
                   </p>
                 </div>
               </div>
-              <div className={styles["experiences-mosaic"]}></div>
+              <div className={styles["about-me"]}>
+                <div className={styles["about-me-avatar"]}>
+                  <Image
+                    width={200}
+                    height={200}
+                    src={AvatarImg}
+                    alt="avatar-profile"
+                  />
+                </div>
+                <div className={styles["about-me-description"]}>
+                  <p>{i18n.sections.projects.content.first}</p>
+                  <p>{i18n.sections.projects.content.second}</p>
+                  <br />
+                  <p>{i18n.sections.projects.content.third}</p>
+                  <br />
+                  <p>{i18n.sections.projects.content.fourth}</p>
+                </div>
+              </div>
             </div>
           </section>
           <section id={styles.projects}></section>
@@ -181,9 +243,87 @@ export default Home;
 
 export async function getStaticProps({ locale }: any) {
   const t = await getT(locale, "common");
-  const greeting = t("greeting");
+  const i18n = {
+    greeting: {
+      greeting: t("greeting.greeting"),
+      iam: t("greeting.iam"),
+      name: t("greeting.name"),
+    },
+    menu: {},
+    sections: {
+      about: {
+        title: t("page.sections.about.title"),
+        content: {
+          about: t("page.sections.about.content.about"),
+          aboutCompany: t("page.sections.about.content.about-company"),
+          aboutExperience: t("page.sections.about.content.about-experience"),
+          aboutTechnologies: t(
+            "page.sections.about.content.about-technologies"
+          ),
+        },
+        actions: {
+          buttons: {
+            resume: t("page.sections.about.actions.buttons.resume"),
+            blog: t("page.sections.about.actions.buttons.blog"),
+          },
+        },
+      },
+      experiences: {
+        title: t("page.sections.experiences.title"),
+        content: {
+          timeline: {
+            current: {
+              about: t(
+                "page.sections.experiences.content.timeline.current.about"
+              ),
+              aboutExperience: t(
+                "page.sections.experiences.content.timeline.current.about-experience"
+              ),
+              aboutNotification: t(
+                "page.sections.experiences.content.timeline.current.about-notification"
+              ),
+              conector: t(
+                "page.sections.experiences.content.timeline.current.conector"
+              ),
+              links: {
+                website: t(
+                  "page.sections.experiences.content.timeline.current.links.website"
+                ),
+                mobile: t(
+                  "page.sections.experiences.content.timeline.current.links.mobile"
+                ),
+              },
+            },
+            prev: {
+              about: t("page.sections.experiences.content.timeline.prev.about"),
+              aboutExperience: t(
+                "page.sections.experiences.content.timeline.prev.about-experience"
+              ),
+            },
+            last: {
+              about: t("page.sections.experiences.content.timeline.last.about"),
+              aboutExperience: t(
+                "page.sections.experiences.content.timeline.last.about-experience"
+              ),
+            },
+          },
+        },
+      },
+      projects: {
+        title: t("page.sections.projects.title"),
+        content: {
+          first: t("page.sections.projects.content.first"),
+          second: t("page.sections.projects.content.second"),
+          third: t("page.sections.projects.content.third"),
+          fourth: t("page.sections.projects.content.fourth"),
+        },
+      },
+    },
+  };
 
   return {
-    props: { greeting },
+    props: {
+      i18n,
+    },
   };
 }

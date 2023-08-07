@@ -1,3 +1,61 @@
 {
-  "greeting": "Oi Eu sou Julio Vaz 👋"
+  "greeting": {
+    "greeting": "Oi",
+    "iam": "eu sou",
+    "name": "Julio Vaz 👋"
+  },
+  "page": {
+    "menu": {},
+    "sections": {
+      "about": {
+        "title": "SOBRE",
+        "content": {
+          "about": "Trabalho com engenharia de software há mais de 6 anos, atualmente estou trabalhando no time core da",
+          "about-company": "Juntos Somos Mais",
+          "about-experience": "como desenvolver frontend e mobile. Durante todos esses anos, trabalhei com diversas tecnologias, linguagens e frameworks. Pude adquirir experiência para liderar projetos e realizar entregas de qualidade. Atualmente foco em arquitetura de software, CI/CD, testes e monitoramento. Trabalhar na formação de novos desenvolvedores na equipe, compartilhar e adquirir novos conhecimentos.",
+          "about-technologies": "Trabalhando em projetos com"
+        },
+        "actions": {
+          "buttons": {
+            "resume": "Currículo",
+            "blog": "Blog"
+          }
+        }
+      },
+      "experiences": {
+        "title": "EXPERIÊNCIAS",
+        "content": {
+          "timeline": {
+            "current": {
+              "about": "Atualmente, contribuindo com melhorias e entregas no",
+              "about-experience": ", gerando valor para o usuário final. Integração com APIs de parceiros e criação de fluxos de desenvolvimento utilizados pelos squads. Contribui para a biblioteca",
+              "about-notification": "para garantir notificações push no app.",
+              "conector": "e",
+              "links": {
+                "website": "site",
+                "mobile": "app"
+              }
+            },
+            "prev": {
+              "about": "Meu trabalho foi criar o novo aplicativo",
+              "about-experience": ", onde os usuários podem interagir com informações corporativas por meio de suas perguntas. Criei notificações push com os serviços da Expo. Além disso, adicionei deeplinks para facilitar o acesso usando um mecanismo universal e links de aplicativos. Implementei os links dinâmicos do Firebase para facilitar o download do aplicativo para os clientes. Configurei um fluxo de trabalho de entrega de versão usando canais de desenvolvimento e lançamento da Expo."
+            },
+            "last": {
+              "about": "Meu trabalho envolvia reconstruir telas e criar novas funcionalidades para o sistema web",
+              "about-experience": ", atendendo a avaliações físicas e planejamento de medidas corporais. Simplifiquei o processo de componentização por meio de conceitos de design atômico. Adicionalmente. Participou do desenvolvimento de um recurso de comunicação websocket entre a web e mobile utilizando WebSocket API e Golang (Beego). Além disso, aceitei o desafio de desenvolver o aplicativo Physical Test. Permite a conectividade Bluetooth com uma ferramenta específica (adipômetro) para a captura precisa das medidas corporais."
+            }
+          }
+        }
+      },
+      "projects": {
+        "title": "PROJETOS",
+        "content": {
+          "first": "Atualmente trabalhando na Juntos somos mais como desenvolvedor frontend e mobile, com foco em entregas de impacto estrutural, monitoramento, escalabilidade e entrega continua. Em constante evolução no ambiente web e mobile utilizando nextjs, typescript, react native, jest, css-in-js e outras tecnologias.",
+          "second": "Previamente trabalhei em uma startup chamada looqbox, onde pude construir a nova versão do app mobile, utilizando react-native com expo, styled-components e firebase, pude iniciar o projeto do zero e liderar entregas de novas versões para os clientes.",
+          "third": "Inicialmente trabalhei em uma empresa pequena, chamada Grupo KRS, eramos em 5 funcionários, porem considero uma das melhores épocas que programei, pois, pude adquirir uma gama enorme de conhecimento e se aprofundar nas tecnologias em que trabalhamos na época, pude implementar features no backend utilizando PHP, golang e websocket. Além de se aprofundar e se especializar no frontend utilizando reactjs, angular, jQuery e react native.",
+          "fourth": "Sou apaixonado por tecnologia e arquitetura. Gosto de definir bons padrões de projeto, estudar sobre desenvolvimento frontend e mobile, programação orientada a objetos, system design e algoritmos."
+        }
+      }
+    }
+  }
 }
