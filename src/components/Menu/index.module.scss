@@ -3,14 +3,18 @@
 .sidenav {
   display: none;
   height: 100%;
-  width: 250px;
+  width: 350px;
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
-  background-color: #111;
+  right: 0;
+  background-color: $color-dark;
   overflow-x: hidden;
   padding-top: 60px;
+
+  box-shadow: -5px -1px 12px -8px rgba(0, 0, 0, 0.66);
+  -webkit-box-shadow: -5px -1px 12px -8px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: -5px -1px 12px -8px rgba(0, 0, 0, 0.66);
 
   a {
     padding: 8px 8px 8px 32px;

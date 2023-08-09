@@ -61,11 +61,8 @@ const Home = ({ i18n }: any) => {
               </a>
             </div>
             <div className={styles.menu}>
-              <a href="#">
-                <Image priority src={MenuIcon} alt="menu icon" />
-              </a>
+              <Menu />
             </div>
-            <Menu />
           </header>
 
           <section id={styles.home}>
