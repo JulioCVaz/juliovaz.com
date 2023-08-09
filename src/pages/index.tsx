@@ -11,6 +11,8 @@ import TwitterIcon from "../../icons/Twitter.svg";
 import MenuIcon from "../../icons/Menu.svg";
 import AvatarImg from "../../public/profile.jpg";
 
+import { Menu } from "../components/Menu";
+
 import styles from "./index.module.scss";
 
 const Home = ({ i18n }: any) => {
@@ -63,6 +65,7 @@ const Home = ({ i18n }: any) => {
                 <Image priority src={MenuIcon} alt="menu icon" />
               </a>
             </div>
+            <Menu />
           </header>
 
           <section id={styles.home}>
