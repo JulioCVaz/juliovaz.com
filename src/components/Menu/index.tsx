@@ -7,13 +7,21 @@ import MenuIcon from "../../../icons/Menu.svg";
 import styles from "./index.module.scss";
 
 const menuItems = {
-  home: {
-    link: "#",
-    label: "Home",
-  },
   about: {
     link: "#",
     label: "About",
+  },
+  experiences: {
+    link: "#",
+    label: "Experiences",
+  },
+  projects: {
+    link: "#",
+    label: "Projects",
+  },
+  resume: {
+    link: "#",
+    label: "Resume",
   },
   blog: {
     link: "#",
@@ -33,19 +41,23 @@ export const Menu = () => {
           display: open ? "block" : "none",
         }}
       >
-        <a className={styles.closebtn} onClick={() => setOpen(false)}>
-          &times;
-        </a>
-        {Object.entries(menuItems).map(([key, item]) => (
-          <MenuItem key={key} link={item.link} label={item.label} />
-        ))}
+        <div className={styles.sidenavLinkContainer}>
+          <a className={styles.closeMenuToggle} onClick={() => setOpen(false)}>
+            &times;
+          </a>
+          {Object.entries(menuItems).map(([key, item]) => (
+            <MenuItem key={key} link={item.link} label={item.label} />
+          ))}
+        </div>
       </div>
-      <Image
-        priority
-        src={MenuIcon}
-        alt="menu icon"
-        onClick={() => setOpen(true)}
-      />
+      <a className={styles.menuToggle}>
+        <Image
+          priority
+          src={MenuIcon}
+          alt="menu icon"
+          onClick={() => setOpen(true)}
+        />
+      </a>
     </>
   );
 };
