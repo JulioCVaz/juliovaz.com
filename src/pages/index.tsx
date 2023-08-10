@@ -241,6 +241,8 @@ const Home = ({ i18n }: any) => {
 
 export default Home;
 
+// https://github.com/aralroca/next-translate#loadnamespaces
+// https://github.com/aralroca/next-translate/blob/ba63f4dcdb65ed258185b2851a4574a2feeb2ebb/examples/without-loader/pages/index.js#L23
 export async function getStaticProps({ locale }: any) {
   const t = await getT(locale, "common");
   const i18n = {
