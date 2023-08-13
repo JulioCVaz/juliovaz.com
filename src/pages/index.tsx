@@ -65,7 +65,7 @@ const Home = ({ i18n }: any) => {
             </div>
           </header>
 
-          <section id={styles.home}>
+          <section id="home" className={styles.home}>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>
                 <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "}
@@ -99,7 +99,7 @@ const Home = ({ i18n }: any) => {
               </div>
             </div>
           </section>
-          <section id={styles.experiences}>
+          <section id="experiences" className={styles["experiences-id"]}>
             <div className={styles["experiences-container"]}>
               <div className={styles["experiences-timeline"]}>
                 <div className={styles.experiences}>
@@ -232,7 +232,7 @@ const Home = ({ i18n }: any) => {
               </div>
             </div>
           </section>
-          <section id={styles.projects}></section>
+          <section id="projects" className={styles.projects}></section>
         </div>
       </div>
     </>

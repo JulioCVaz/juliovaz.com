@@ -8,23 +8,23 @@ import styles from "./index.module.scss";
 
 const menuItems = {
   about: {
-    link: "#",
+    link: "#home",
     label: "About",
   },
   experiences: {
-    link: "#",
+    link: "#experiences",
     label: "Experiences",
   },
   projects: {
-    link: "#",
+    link: "#projects",
     label: "Projects",
   },
   resume: {
-    link: "#",
+    link: "#home",
     label: "Resume",
   },
   blog: {
-    link: "#",
+    link: "#home",
     label: "Blog",
   },
 };
