@@ -29,7 +29,7 @@ const menuItems = {
   },
 };
 
-export const Menu = () => {
+export const Menu = ({ translations }: any) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -45,9 +45,18 @@ export const Menu = () => {
           <a className={styles.closeMenuToggle} onClick={() => setOpen(false)}>
             &times;
           </a>
-          {Object.entries(menuItems).map(([key, item]) => (
-            <MenuItem key={key} link={item.link} label={item.label} />
-          ))}
+          {Object.entries(menuItems).map(([key, item]) => {
+            const translation: string | any = Object.keys(translations).find(
+              (word) => word == key
+            );
+            return (
+              <MenuItem
+                key={key}
+                link={item.link}
+                label={translations[translation]}
+              />
+            );
+          })}
         </div>
       </div>
       <a className={styles.menuToggle}>

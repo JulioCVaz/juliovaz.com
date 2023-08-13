@@ -61,7 +61,7 @@ const Home = ({ i18n }: any) => {
               </a>
             </div>
             <div className={styles.menu}>
-              <Menu />
+              <Menu translations={i18n.menu} />
             </div>
           </header>
 
@@ -251,7 +251,13 @@ export async function getStaticProps({ locale }: any) {
       iam: t("greeting.iam"),
       name: t("greeting.name"),
     },
-    menu: {},
+    menu: {
+      about: t("page.menu.about"),
+      experiences: t("page.menu.experiences"),
+      projects: t("page.menu.projects"),
+      blog: t("page.menu.blog"),
+      resume: t("page.menu.resume"),
+    },
     sections: {
       about: {
         title: t("page.sections.about.title"),

@@ -8,7 +8,9 @@
     "menu": {
       "about": "About",
       "experiences": "Experiences",
-      "projects": "Projects"
+      "projects": "Projects",
+      "resume": "Resume",
+      "blog": "Blog"
     },
     "sections": {
       "about": {
