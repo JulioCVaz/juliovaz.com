@@ -11,6 +11,8 @@ import TwitterIcon from "../../icons/Twitter.svg";
 import MenuIcon from "../../icons/Menu.svg";
 import AvatarImg from "../../public/profile.jpg";
 
+import { Menu } from "../components/Menu";
+
 import styles from "./index.module.scss";
 
 const Home = ({ i18n }: any) => {
@@ -59,13 +61,11 @@ const Home = ({ i18n }: any) => {
               </a>
             </div>
             <div className={styles.menu}>
-              <a href="#">
-                <Image priority src={MenuIcon} alt="menu icon" />
-              </a>
+              <Menu translations={i18n.menu} />
             </div>
           </header>
 
-          <section id={styles.home}>
+          <section id="home" className={styles.home}>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>
                 <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "}
@@ -99,7 +99,7 @@ const Home = ({ i18n }: any) => {
               </div>
             </div>
           </section>
-          <section id={styles.experiences}>
+          <section id="experiences" className={styles["experiences-id"]}>
             <div className={styles["experiences-container"]}>
               <div className={styles["experiences-timeline"]}>
                 <div className={styles.experiences}>
@@ -232,7 +232,7 @@ const Home = ({ i18n }: any) => {
               </div>
             </div>
           </section>
-          <section id={styles.projects}></section>
+          <section id="projects" className={styles.projects}></section>
         </div>
       </div>
     </>
@@ -241,6 +241,8 @@ const Home = ({ i18n }: any) => {
 
 export default Home;
 
+// https://github.com/aralroca/next-translate#loadnamespaces
+// https://github.com/aralroca/next-translate/blob/ba63f4dcdb65ed258185b2851a4574a2feeb2ebb/examples/without-loader/pages/index.js#L23
 export async function getStaticProps({ locale }: any) {
   const t = await getT(locale, "common");
   const i18n = {
@@ -249,7 +251,13 @@ export async function getStaticProps({ locale }: any) {
       iam: t("greeting.iam"),
       name: t("greeting.name"),
     },
-    menu: {},
+    menu: {
+      about: t("page.menu.about"),
+      experiences: t("page.menu.experiences"),
+      projects: t("page.menu.projects"),
+      blog: t("page.menu.blog"),
+      resume: t("page.menu.resume"),
+    },
     sections: {
       about: {
         title: t("page.sections.about.title"),

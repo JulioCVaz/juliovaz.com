@@ -5,7 +5,13 @@
     "name": "Julio Vaz 👋"
   },
   "page": {
-    "menu": {},
+    "menu": {
+      "about": "About",
+      "experiences": "Experiences",
+      "projects": "Projects",
+      "resume": "Resume",
+      "blog": "Blog"
+    },
     "sections": {
       "about": {
         "title": "ABOUT",

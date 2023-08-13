@@ -79,20 +79,18 @@
   background-color: $color-blue;
 }
 
-#home,
-#about-me,
-#experiences,
-#projects {
+.home,
+.experiences-id,
+.projects {
   min-height: 100vh;
   color: $color-white;
   display: flex;
   justify-content: center;
 
   @media (max-width: 767.98px) {
-    #home,
-    #about-me,
-    #experiences,
-    #projects {
+    .home,
+    .experiences-id,
+    .projects {
       padding: 0;
     }
 
@@ -113,7 +111,7 @@
 }
 
 // /*home*/
-#home {
+.home {
   align-items: start;
   flex-direction: column;
   color: $color-white;
@@ -239,7 +237,7 @@
 }
 
 // /* experiences */
-#experiences {
+.experiences-id {
   flex-direction: column;
 }
 
@@ -308,7 +306,7 @@
 }
 
 @media (max-width: 768px) {
-  #experiences {
+  .experiences-id {
     padding: 0;
   }
   .experiences-mosaic {
