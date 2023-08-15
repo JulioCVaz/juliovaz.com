@@ -5,10 +5,12 @@
   "scripts": {
     "ci": "yarn install --frozen-lockfile",
     "dev": "next dev",
+    "test": "yarn lint",
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -30,6 +32,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.15",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.0",
     "next-translate-plugin": "^2.0.4",
     "postcss": "^8.4.27",
     "sass": "^1.63.6",
