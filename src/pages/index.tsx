@@ -1,3 +1,8 @@
+import {
+  GetStaticPropsContext,
+  GetStaticProps,
+  InferGetStaticPropsType,
+} from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,7 +20,13 @@ import { Menu } from "../components/Menu";
 
 import styles from "./index.module.scss";
 
-const Home = ({ i18n }: any) => {
+const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { locale, locales, defaultLocale } = context;
+  console.log({
+    locale,
+    locales,
+    defaultLocale,
+  });
   return (
     <>
       <Head>
@@ -27,13 +38,13 @@ const Home = ({ i18n }: any) => {
       <div className={styles.main}>
         <div className={styles["page-label"]}>
           <div className="label">
-            <span>{i18n.sections.about.title}</span>
+            {/* <span>{i18n.sections.about.title}</span> */}
           </div>
           <div className="label">
-            <span>{i18n.sections.experiences.title}</span>
+            {/* <span>{i18n.sections.experiences.title}</span> */}
           </div>
           <div className="label">
-            <span>{i18n.sections.projects.title}</span>
+            {/* <span>{i18n.sections.projects.title}</span> */}
           </div>
         </div>
         <div className={styles["page-nav"]}>
@@ -61,29 +72,29 @@ const Home = ({ i18n }: any) => {
               </a>
             </div>
             <div className={styles.menu}>
-              <Menu translations={i18n.menu} />
+              {/* <Menu translations={i18n.menu} /> */}
             </div>
           </header>
 
           <section id="home" className={styles.home}>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>
-                <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "}
-                <strong>{i18n.greeting.name}</strong>
+                {/* <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "} */}
+                {/* <strong>{i18n.greeting.name}</strong> */}
               </h1>
               <p className={styles["description-carrer"]}>
-                {i18n.sections.about.content.about}{" "}
+                {/* {i18n.sections.about.content.about}{" "} */}
                 <Link
                   href="https://juntossomosmais.com.br"
                   target="_blank"
                   about="juntos somos mais - fidelizacao"
                 >
-                  {i18n.sections.about.content.aboutCompany}
+                  {/* {i18n.sections.about.content.aboutCompany} */}
                 </Link>{" "}
-                {i18n.sections.about.content.aboutExperience}
+                {/* {i18n.sections.about.content.aboutExperience} */}
               </p>
               <p className={styles["description-technologies"]}>
-                {i18n.sections.about.content.aboutTechnologies}{" "}
+                {/* {i18n.sections.about.content.aboutTechnologies}{" "} */}
                 <span className={styles["description-technology"]}>nextjs</span>
               </p>
               <div className={styles["home-links"]}>
@@ -91,10 +102,10 @@ const Home = ({ i18n }: any) => {
                   type="outline"
                   link="https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view?usp=sharing"
                 >
-                  {i18n.sections.about.actions.buttons.resume}
+                  {/* {i18n.sections.about.actions.buttons.resume} */}
                 </Button>
                 <Button link="#">
-                  {i18n.sections.about.actions.buttons.blog}
+                  {/* {i18n.sections.about.actions.buttons.blog} */}
                 </Button>
               </div>
             </div>
@@ -115,46 +126,46 @@ const Home = ({ i18n }: any) => {
                   <p className={styles["experience-description"]}>
                     <ul>
                       <li>
-                        {
+                        {/*{
                           i18n.sections.experiences.content.timeline.current
                             .about
-                        }{" "}
+                        }{" "} */}
                         <Link
                           href="https://www.juntossomosmais.com.br/home/profissional-de-obra"
                           target="_blank"
                         >
-                          {
+                          {/* {
                             i18n.sections.experiences.content.timeline.current
                               .links.website
-                          }
+                          } */}
                         </Link>{" "}
-                        {
+                        {/* {
                           i18n.sections.experiences.content.timeline.current
                             .conector
-                        }{" "}
+                        }{" "} */}
                         <Link
                           href="https://play.google.com/store/apps/details?id=br.com.votorantim.votorantim.jsmpro"
                           target="_blank"
                         >
-                          {
+                          {/* {
                             i18n.sections.experiences.content.timeline.current
                               .links.mobile
-                          }
+                          } */}
                         </Link>
-                        {
+                        {/* {
                           i18n.sections.experiences.content.timeline.current
                             .aboutExperience
-                        }{" "}
+                        }{" "} */}
                         <Link
                           href="https://github.com/oracle/pushiomanager-react-native"
                           target="_blank"
                         >
                           @oracle
                         </Link>{" "}
-                        {
+                        {/* {
                           i18n.sections.experiences.content.timeline.current
                             .aboutNotification
-                        }
+                        } */}
                       </li>
                     </ul>
                   </p>
@@ -170,17 +181,17 @@ const Home = ({ i18n }: any) => {
                   <p className={styles["experience-description"]}>
                     <ul>
                       <li>
-                        {i18n.sections.experiences.content.timeline.prev.about}{" "}
+                        {/* {i18n.sections.experiences.content.timeline.prev.about}{" "} */}
                         <Link
                           href="https://play.google.com/store/apps/details?id=com.looqbox.app"
                           target="_blank"
                         >
                           Looqbox app
                         </Link>
-                        {
+                        {/* {
                           i18n.sections.experiences.content.timeline.prev
                             .aboutExperience
-                        }
+                        } */}
                       </li>
                     </ul>
                   </p>
@@ -196,17 +207,17 @@ const Home = ({ i18n }: any) => {
                   <p className={styles["experience-description"]}>
                     <ul>
                       <li>
-                        {i18n.sections.experiences.content.timeline.last.about}{" "}
+                        {/* {i18n.sections.experiences.content.timeline.last.about}{" "} */}
                         <Link
                           href="https://physicaltest.com.br/"
                           target="_blank"
                         >
                           Physical Test
                         </Link>{" "}
-                        {
+                        {/* {
                           i18n.sections.experiences.content.timeline.last
                             .aboutExperience
-                        }
+                        } */}
                       </li>
                     </ul>
                   </p>
@@ -222,12 +233,12 @@ const Home = ({ i18n }: any) => {
                   />
                 </div>
                 <div className={styles["about-me-description"]}>
-                  <p>{i18n.sections.projects.content.first}</p>
-                  <p>{i18n.sections.projects.content.second}</p>
+                  {/* <p>{i18n.sections.projects.content.first}</p> */}
+                  {/* <p>{i18n.sections.projects.content.second}</p> */}
                   <br />
-                  <p>{i18n.sections.projects.content.third}</p>
+                  {/* <p>{i18n.sections.projects.content.third}</p> */}
                   <br />
-                  <p>{i18n.sections.projects.content.fourth}</p>
+                  {/* <p>{i18n.sections.projects.content.fourth}</p> */}
                 </div>
               </div>
             </div>
@@ -243,95 +254,102 @@ export default Home;
 
 // https://github.com/aralroca/next-translate#loadnamespaces
 // https://github.com/aralroca/next-translate/blob/ba63f4dcdb65ed258185b2851a4574a2feeb2ebb/examples/without-loader/pages/index.js#L23
-export async function getStaticProps({ locale }: any) {
-  const t = await getT(locale, "common");
-  const i18n = {
-    greeting: {
-      greeting: t("greeting.greeting"),
-      iam: t("greeting.iam"),
-      name: t("greeting.name"),
-    },
-    menu: {
-      about: t("page.menu.about"),
-      experiences: t("page.menu.experiences"),
-      projects: t("page.menu.projects"),
-      blog: t("page.menu.blog"),
-      resume: t("page.menu.resume"),
-    },
-    sections: {
-      about: {
-        title: t("page.sections.about.title"),
-        content: {
-          about: t("page.sections.about.content.about"),
-          aboutCompany: t("page.sections.about.content.about-company"),
-          aboutExperience: t("page.sections.about.content.about-experience"),
-          aboutTechnologies: t(
-            "page.sections.about.content.about-technologies"
-          ),
-        },
-        actions: {
-          buttons: {
-            resume: t("page.sections.about.actions.buttons.resume"),
-            blog: t("page.sections.about.actions.buttons.blog"),
-          },
-        },
-      },
-      experiences: {
-        title: t("page.sections.experiences.title"),
-        content: {
-          timeline: {
-            current: {
-              about: t(
-                "page.sections.experiences.content.timeline.current.about"
-              ),
-              aboutExperience: t(
-                "page.sections.experiences.content.timeline.current.about-experience"
-              ),
-              aboutNotification: t(
-                "page.sections.experiences.content.timeline.current.about-notification"
-              ),
-              conector: t(
-                "page.sections.experiences.content.timeline.current.conector"
-              ),
-              links: {
-                website: t(
-                  "page.sections.experiences.content.timeline.current.links.website"
-                ),
-                mobile: t(
-                  "page.sections.experiences.content.timeline.current.links.mobile"
-                ),
-              },
-            },
-            prev: {
-              about: t("page.sections.experiences.content.timeline.prev.about"),
-              aboutExperience: t(
-                "page.sections.experiences.content.timeline.prev.about-experience"
-              ),
-            },
-            last: {
-              about: t("page.sections.experiences.content.timeline.last.about"),
-              aboutExperience: t(
-                "page.sections.experiences.content.timeline.last.about-experience"
-              ),
-            },
-          },
-        },
-      },
-      projects: {
-        title: t("page.sections.projects.title"),
-        content: {
-          first: t("page.sections.projects.content.first"),
-          second: t("page.sections.projects.content.second"),
-          third: t("page.sections.projects.content.third"),
-          fourth: t("page.sections.projects.content.fourth"),
-        },
-      },
+export const getStaticProps: GetStaticProps = (
+  context: GetStaticPropsContext
+) => {
+  return {
+    props: {
+      context,
     },
   };
 
-  return {
-    props: {
-      i18n,
-    },
-  };
-}
+  // const t = await getT(locale, "common");
+  // const i18n = {
+  //   greeting: {
+  //     greeting: t("greeting.greeting"),
+  //     iam: t("greeting.iam"),
+  //     name: t("greeting.name"),
+  //   },
+  //   menu: {
+  //     about: t("page.menu.about"),
+  //     experiences: t("page.menu.experiences"),
+  //     projects: t("page.menu.projects"),
+  //     blog: t("page.menu.blog"),
+  //     resume: t("page.menu.resume"),
+  //   },
+  //   sections: {
+  //     about: {
+  //       title: t("page.sections.about.title"),
+  //       content: {
+  //         about: t("page.sections.about.content.about"),
+  //         aboutCompany: t("page.sections.about.content.about-company"),
+  //         aboutExperience: t("page.sections.about.content.about-experience"),
+  //         aboutTechnologies: t(
+  //           "page.sections.about.content.about-technologies"
+  //         ),
+  //       },
+  //       actions: {
+  //         buttons: {
+  //           resume: t("page.sections.about.actions.buttons.resume"),
+  //           blog: t("page.sections.about.actions.buttons.blog"),
+  //         },
+  //       },
+  //     },
+  //     experiences: {
+  //       title: t("page.sections.experiences.title"),
+  //       content: {
+  //         timeline: {
+  //           current: {
+  //             about: t(
+  //               "page.sections.experiences.content.timeline.current.about"
+  //             ),
+  //             aboutExperience: t(
+  //               "page.sections.experiences.content.timeline.current.about-experience"
+  //             ),
+  //             aboutNotification: t(
+  //               "page.sections.experiences.content.timeline.current.about-notification"
+  //             ),
+  //             conector: t(
+  //               "page.sections.experiences.content.timeline.current.conector"
+  //             ),
+  //             links: {
+  //               website: t(
+  //                 "page.sections.experiences.content.timeline.current.links.website"
+  //               ),
+  //               mobile: t(
+  //                 "page.sections.experiences.content.timeline.current.links.mobile"
+  //               ),
+  //             },
+  //           },
+  //           prev: {
+  //             about: t("page.sections.experiences.content.timeline.prev.about"),
+  //             aboutExperience: t(
+  //               "page.sections.experiences.content.timeline.prev.about-experience"
+  //             ),
+  //           },
+  //           last: {
+  //             about: t("page.sections.experiences.content.timeline.last.about"),
+  //             aboutExperience: t(
+  //               "page.sections.experiences.content.timeline.last.about-experience"
+  //             ),
+  //           },
+  //         },
+  //       },
+  //     },
+  //     projects: {
+  //       title: t("page.sections.projects.title"),
+  //       content: {
+  //         first: t("page.sections.projects.content.first"),
+  //         second: t("page.sections.projects.content.second"),
+  //         third: t("page.sections.projects.content.third"),
+  //         fourth: t("page.sections.projects.content.fourth"),
+  //       },
+  //     },
+  //   },
+  // };
+  // return {
+  //   props: {
+  //     i18n,
+  //   },
+  // };
+};
