@@ -5,23 +5,30 @@
   "scripts": {
     "ci": "yarn install --frozen-lockfile",
     "dev": "next dev",
+    "test": "yarn lint",
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15",
+    "@next/mdx": "^13.4.16",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@vercel/analytics": "^1.0.2",
     "clsx": "^1.2.1",
     "eslint": "8.34.0",
     "eslint-config-next": "13.2.1",
     "next": "13.2.1",
+    "next-compose-plugins": "^2.2.1",
     "next-translate": "^2.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -29,8 +36,12 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.0",
     "next-translate-plugin": "^2.0.4",
     "postcss": "^8.4.27",
+    "prettier-plugin-tailwindcss": "^0.5.2",
     "sass": "^1.63.6",
     "tailwindcss": "^3.3.3"
   }
