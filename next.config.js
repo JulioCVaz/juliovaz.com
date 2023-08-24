@@ -22,9 +22,9 @@ const nextConfig = {
   },
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  sassOptions: {
-    includePaths: [path.join(__dirname, "src/styles")],
-  },
+  // sassOptions: {
+  //   includePaths: [path.join(__dirname, "src/styles")],
+  // },
 };
 
 // @note: use multiple plugins: https://thehotcode.com/nextjs-add-multiple-plugins/

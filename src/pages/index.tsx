@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import getT from "next-translate/getT";
 import { Button } from "../components/Button";
+import { Button as ButtonMain } from "../components/Button/Button";
 
 import GitHubIcon from "../../icons/GitHub.svg";
 import LinkedInIcon from "../../icons/LinkedIn.svg";
@@ -77,6 +78,12 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </header>
 
           <section id="home" className={styles.home}>
+            <ButtonMain success className="w-20">
+              Sign in
+            </ButtonMain>
+            <ButtonMain size="sm">Sign in</ButtonMain>
+            <ButtonMain size="xs">Sign in</ButtonMain>
+            <ButtonMain>Sign in</ButtonMain>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>
                 {/* <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "} */}

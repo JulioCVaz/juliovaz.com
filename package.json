@@ -32,6 +32,7 @@
     "next-translate": "^2.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tailwind-variants": "^0.1.13",
     "typescript": "4.9.5"
   },
   "devDependencies": {
