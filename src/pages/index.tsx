@@ -8,7 +8,6 @@ import Link from "next/link";
 import Image from "next/image";
 import getT from "next-translate/getT";
 import { Button } from "../components/Button";
-import { Button as ButtonMain } from "../components/Button/Button";
 
 import GitHubIcon from "../../icons/GitHub.svg";
 import LinkedInIcon from "../../icons/LinkedIn.svg";
@@ -78,12 +77,6 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </header>
 
           <section id="home" className={styles.home}>
-            <ButtonMain success className="w-20">
-              Sign in
-            </ButtonMain>
-            <ButtonMain size="sm">Sign in</ButtonMain>
-            <ButtonMain size="xs">Sign in</ButtonMain>
-            <ButtonMain>Sign in</ButtonMain>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>
                 {/* <strong>{i18n.greeting.greeting}</strong>, {i18n.greeting.iam}{" "} */}
@@ -105,13 +98,12 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <span className={styles["description-technology"]}>nextjs</span>
               </p>
               <div className={styles["home-links"]}>
-                <Button
-                  type="outline"
-                  link="https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view?usp=sharing"
-                >
+                <Button outline>
+                  <Link target="_blank" href="https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view?usp=sharing">Resume</Link>
                   {/* {i18n.sections.about.actions.buttons.resume} */}
                 </Button>
-                <Button link="#">
+                <Button>
+                  <Link href="#">Blog</Link>
                   {/* {i18n.sections.about.actions.buttons.blog} */}
                 </Button>
               </div>
@@ -130,7 +122,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
                       </span>
                     </div>
                   </div>
-                  <p className={styles["experience-description"]}>
+                  <div className={styles["experience-description"]}>
                     <ul>
                       <li>
                         {/*{
@@ -175,7 +167,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
                         } */}
                       </li>
                     </ul>
-                  </p>
+                  </div>
                 </div>
                 <div className={styles.experiences}>
                   <div className={styles["experience-title"]}>
@@ -185,7 +177,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
                       <span>2020 - 2021</span>
                     </div>
                   </div>
-                  <p className={styles["experience-description"]}>
+                  <div className={styles["experience-description"]}>
                     <ul>
                       <li>
                         {/* {i18n.sections.experiences.content.timeline.prev.about}{" "} */}
@@ -201,7 +193,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
                         } */}
                       </li>
                     </ul>
-                  </p>
+                  </div>
                 </div>
                 <div className={styles.experiences}>
                   <div className={styles["experience-title"]}>
@@ -211,7 +203,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
                       <span>2017 - 2020</span>
                     </div>
                   </div>
-                  <p className={styles["experience-description"]}>
+                  <div className={styles["experience-description"]}>
                     <ul>
                       <li>
                         {/* {i18n.sections.experiences.content.timeline.last.about}{" "} */}
@@ -227,7 +219,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
                         } */}
                       </li>
                     </ul>
-                  </p>
+                  </div>
                 </div>
               </div>
               <div className={styles["about-me"]}>
