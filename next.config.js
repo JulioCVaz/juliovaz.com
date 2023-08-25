@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const path = require("path");
 const withPlugins = require("next-compose-plugins");
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
@@ -7,10 +6,10 @@ const withMDX = require("@next/mdx")({
     // If you use remark-gfm, you'll need to use next.config.mjs
     // as the package is ESM only
     // https://github.com/remarkjs/remark-gfm#install
-    // remarkPlugins: [],
-    // rehypePlugins: [],
+    remarkPlugins: [],
+    rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
-    providerImportSource: "@mdx-js/react",
+    // providerImportSource: "@mdx-js/react",
   },
 });
 
@@ -21,9 +20,7 @@ const nextConfig = {
   },
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  // sassOptions: {
-  //   includePaths: [path.join(__dirname, "src/styles")],
-  // },
+  reactStrictMode: true,
 };
 
 // @note: use multiple plugins: https://thehotcode.com/nextjs-add-multiple-plugins/
