@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
 const withPlugins = require("next-compose-plugins");
-const withTranslate = require("next-translate-plugin");
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
@@ -29,7 +28,7 @@ const nextConfig = {
 
 // @note: use multiple plugins: https://thehotcode.com/nextjs-add-multiple-plugins/
 module.exports = async (phase, { defaultConfig }) =>
-  withPlugins([withTranslate, withMDX], nextConfig)(phase, {
+  withPlugins([withMDX], nextConfig)(phase, {
     ...defaultConfig,
     ...nextConfig,
   });

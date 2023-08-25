@@ -18,8 +18,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components": ["./src/components"],
-      "@i18n": ["./src/locales"],
-      "@styles": ["./src/styles"]
+      "@i18n": ["./src/locales"]
+      // "@styles": ["./src/styles"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
