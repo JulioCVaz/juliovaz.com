@@ -2,14 +2,14 @@ import { ComponentProps } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 
 const button = tv({
-  base: "inline-block text-sm text-center text-white leading-9 rounded-full border-solid border-2 border-blue",
+  base: "inline-block text-sm text-center text-white leading-9 rounded-full border-solid border-2 border-primary",
   variants: {
     size: {
       default: "w-32 h-10 px-4",
     },
     outline: {
-      true: "hover:bg-blue text-white transition duration-0.2",
-      false: "bg-blue hover:bg-blue text-white",
+      true: "hover:bg-primary text-white transition duration-0.2",
+      false: "bg-primary hover:bg-primary text-white",
     },
   },
   defaultVariants: {
