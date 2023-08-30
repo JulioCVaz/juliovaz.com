@@ -7,7 +7,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import getT from "next-translate/getT";
-import { Button } from "../components/Button";
+import { Button } from "@uikit/Button";
+import { Header } from "@uikit/Layout/Header"
 
 import GitHubIcon from "../../icons/GitHub.svg";
 import LinkedInIcon from "../../icons/LinkedIn.svg";
@@ -16,7 +17,7 @@ import TwitterIcon from "../../icons/Twitter.svg";
 import MenuIcon from "../../icons/Menu.svg";
 import AvatarImg from "../../public/profile.jpg";
 
-import { Menu } from "../components/Menu";
+import { Menu } from "../uikit/Menu";
 
 import styles from "./index.module.scss";
 
@@ -53,6 +54,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <div className={styles["circle-nav"]}></div>
         </div>
         <div className={styles.container}>
+          <Header />
           <header className={styles.header}>
             <div className={styles.social}>
               <a href="https://github.com/JulioCVaz" target="_blank">
