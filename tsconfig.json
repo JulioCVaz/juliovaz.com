@@ -17,9 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@components": ["./src/components"],
-      "@i18n": ["./src/locales"]
-      // "@styles": ["./src/styles"]
+      "@uikit/*": ["./src/uikit/*"],
+      "@i18n/*": ["./src/locales/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
