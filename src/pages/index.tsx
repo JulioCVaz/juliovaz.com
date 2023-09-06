@@ -55,28 +55,7 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </div>
         <div className={styles.container}>
           <Header />
-          <header className={styles.header}>
-            <div className={styles.social}>
-              <a href="https://github.com/JulioCVaz" target="_blank">
-                <Image priority src={GitHubIcon} alt="github icon" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-vaz-560ab4127/"
-                target="_blank"
-              >
-                <Image priority src={LinkedInIcon} alt="linkedin icon" />
-              </a>
-              <a href="https://dev.to/juliovaz" target="_blank">
-                <Image priority src={DevToIcon} alt="dev.to icon" />
-              </a>
-              <a href="https://twitter.com/juliovazbr" target="_blank">
-                <Image priority src={TwitterIcon} alt="twitter icon" />
-              </a>
-            </div>
-            <div className={styles.menu}>
-              {/* <Menu translations={i18n.menu} /> */}
-            </div>
-          </header>
+          {/* <Menu translations={i18n.menu} /> */}
 
           <section id="home" className={styles.home}>
             <div className={styles.description}>
