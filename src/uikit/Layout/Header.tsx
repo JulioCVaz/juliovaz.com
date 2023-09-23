@@ -83,12 +83,20 @@ export const Menu = () => {
 
 
 export const Header = () => {
-    return (
-      <header className='w-4/5 flex justify-between p-base rounded-lg fixed top-0 bg-dark'>
-        <div className='flex align-center flex-wrap'>
-          <SocialLinks />
-        </div>
-        <Menu />
-      </header>
-    )
+  return (
+    <header className='w-4/5 flex justify-between p-base rounded-lg fixed top-0 bg-dark'>
+      <div className='flex align-center flex-wrap'>
+        <SocialLinks />
+      </div>
+      <Menu />
+    </header>
+  )
+}
+
+export const NavigationIndicator = () => {
+  return (
+    <div className="order-3 flex flex-col justify-center align-center right-0 bottom-0 top-0">
+      <div className="before:content-[''] block w-small h-small rounded-full bg-gray mt-xlarge mb-xlarge"/>
+    </div>
+  )
 }

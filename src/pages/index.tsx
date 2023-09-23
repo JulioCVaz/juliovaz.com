@@ -9,6 +9,7 @@ import Image from "next/image";
 import getT from "next-translate/getT";
 import { Button } from "@uikit/Button";
 import { Header } from "@uikit/Layout/Header"
+import { NavigationIndicator } from "@uikit/Layout/Header"
 
 import GitHubIcon from "../../icons/GitHub.svg";
 import LinkedInIcon from "../../icons/LinkedIn.svg";
