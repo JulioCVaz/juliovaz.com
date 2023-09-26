@@ -49,15 +49,10 @@ const Home = ({ context }: InferGetStaticPropsType<typeof getStaticProps>) => {
             {/* <span>{i18n.sections.projects.title}</span> */}
           </div>
         </div>
-        <div className={styles["page-nav"]}>
-          <div className={styles["circle-nav"]}></div>
-          <div className={styles["circle-nav"]}></div>
-          <div className={styles["circle-nav"]}></div>
-        </div>
+        <NavigationIndicator />
         <div className={styles.container}>
           <Header />
           {/* <Menu translations={i18n.menu} /> */}
-
           <section id="home" className={styles.home}>
             <div className={styles.description}>
               <h1 className={styles["description-greeting"]}>

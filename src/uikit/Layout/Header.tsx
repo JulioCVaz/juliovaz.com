@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Icon } from '@uikit/Icon'
 
@@ -94,9 +94,36 @@ export const Header = () => {
 }
 
 export const NavigationIndicator = () => {
+  const [sections, setSections] = useState<HTMLElement[]>([])
+  const [pageScrollY, setPageScrollY] = useState<number>(0)
+  useEffect(() => {
+    const findSectionsEl: NodeListOf<HTMLElement> = document.querySelectorAll('section')
+
+    if (findSectionsEl) {
+      setSections(Array.from(findSectionsEl))
+    }
+
+    function updateCurrentPagePosition() {
+      setPageScrollY(window.scrollY)
+    }
+
+
+    window.addEventListener("scroll", updateCurrentPagePosition)
+    return () => window.removeEventListener("scroll", updateCurrentPagePosition)
+  }, [])
+
   return (
-    <div className="order-3 flex flex-col justify-center align-center right-0 bottom-0 top-0">
-      <div className="before:content-[''] block w-small h-small rounded-full bg-gray mt-xlarge mb-xlarge"/>
+    <div className="order-3 w-24 fixed flex flex-col justify-center align-center right-0 bottom-0 top-0">
+      {
+        sections?.map((section) => {
+          let activeIndicator = false
+          // @note: section.offsetTop + section.clientHeight is the sum of offset top distance and size of element<section>
+          if((pageScrollY >= section.offsetTop) && (pageScrollY < section.offsetTop + section.clientHeight)) {
+            activeIndicator = true
+          }
+         return <Link key={section.id} href={`#${section.id}`}><div data-indicator={activeIndicator} className="data-[indicator=true]:bg-primary before:content-[''] block w-small h-small rounded-full bg-gray mt-xlarge mb-xlarge"/></Link>
+        })
+      }
     </div>
   )
 }
