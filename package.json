@@ -1,34 +1,23 @@
 {
-  "name": "juliocvaz.github.io",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "ci": "yarn install --frozen-lockfile",
-    "dev": "next dev",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.11.11",
-    "@mui/material": "^5.11.15",
-    "@types/node": "18.14.1",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "clsx": "^1.2.1",
-    "eslint": "8.34.0",
-    "eslint-config-next": "13.2.1",
-    "next": "13.2.1",
-    "next-translate": "^2.0.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.5"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "dev:web": "turbo dev --filter=./packages/* --filter=web",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "next-translate-plugin": "^2.0.4",
-    "sass": "^1.63.6"
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "@westeros/typescript-config": "workspace:*",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
   }
 }
