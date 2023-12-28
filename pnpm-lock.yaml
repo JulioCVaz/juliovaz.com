@@ -8,7 +8,7 @@ importers:
 
   .:
     devDependencies:
-      '@repo/typescript-config':
+      '@westeros/typescript-config':
         specifier: workspace:*
         version: link:packages/config-typescript
       eslint:
@@ -26,7 +26,7 @@ importers:
 
   apps/docs:
     dependencies:
-      '@repo/ui':
+      '@westeros/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:
@@ -42,13 +42,13 @@ importers:
       '@next/eslint-plugin-next':
         specifier: ^14.0.3
         version: 14.0.3
-      '@repo/eslint-config':
+      '@westeros/eslint-config':
         specifier: workspace:*
         version: link:../../packages/config-eslint
-      '@repo/tailwind-config':
+      '@westeros/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@repo/typescript-config':
+      '@westeros/typescript-config':
         specifier: workspace:*
         version: link:../../packages/config-typescript
       '@types/node':
@@ -75,7 +75,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@repo/ui':
+      '@westeros/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:
@@ -91,13 +91,13 @@ importers:
       '@next/eslint-plugin-next':
         specifier: ^14.0.3
         version: 14.0.3
-      '@repo/eslint-config':
+      '@westeros/eslint-config':
         specifier: workspace:*
         version: link:../../packages/config-eslint
-      '@repo/tailwind-config':
+      '@westeros/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@repo/typescript-config':
+      '@westeros/typescript-config':
         specifier: workspace:*
         version: link:../../packages/config-typescript
       '@types/node':
@@ -135,7 +135,7 @@ importers:
 
   packages/tailwind-config:
     devDependencies:
-      '@repo/typescript-config':
+      '@westeros/typescript-config':
         specifier: workspace:*
         version: link:../config-typescript
       tailwindcss:
@@ -144,13 +144,13 @@ importers:
 
   packages/ui:
     devDependencies:
-      '@repo/eslint-config':
+      '@westeros/eslint-config':
         specifier: workspace:*
         version: link:../config-eslint
-      '@repo/tailwind-config':
+      '@westeros/tailwind-config':
         specifier: workspace:*
         version: link:../tailwind-config
-      '@repo/typescript-config':
+      '@westeros/typescript-config':
         specifier: workspace:*
         version: link:../config-typescript
       '@types/react':
