@@ -3,6 +3,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "dev:web": "turbo dev --filter=./packages/* --filter=web",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
