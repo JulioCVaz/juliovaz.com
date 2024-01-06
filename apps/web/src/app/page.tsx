@@ -4,100 +4,220 @@ import { Icon } from "@westeros/ui/icon";
 
 export default function Page(): JSX.Element {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-dark text-white">
+    <div className="flex min-h-screen justify-center bg-dark text-white">
       {/* container */}
-      <div className="w-full p-8 md:max-w-full lg:max-w-5xl">
-        {/* navbar */}
-        <nav className="mb-20 mt-6 flex w-full justify-between">
-          <Link className="" href="#">
+      <div className="w-full max-w-5xl px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+        {/* header */}
+        <header className="border-gray-700 flex flex-col items-center justify-between border-b p-4 sm:flex-row">
+          <Link className="mb-4 text-xl font-semibold sm:mb-0" href="#">
             juliovaz.com
           </Link>
-          <div className="flex w-1/6 justify-between">
-            <Link className="" href="#">
-              <Icon color="white" name="text" />
-              Posts
-            </Link>
-            <Link className="" href="#">
-              <Icon color="white" name="user-round" />
-              About
-            </Link>
-          </div>
-        </nav>
-        {/* header */}
-        <div className="flex justify-between">
-          {/* avatar */}
-          <div className="flex w-1/3 items-center justify-center">
-            <Image
-              alt="profile image"
-              className="rounded-full"
-              height={200}
-              src="https://d111erjd7vhu4f.cloudfront.net/profile.jpg"
-              width={200}
-            />
-          </div>
-          {/* about */}
-          <div className="w-2/3">
-            <h1 className="pb-8 text-medium">Oi, eu sou Julio Vaz 👋</h1>
-            <p className="pb-3 text-small">
-              Trabalho com desenvolvimento de software há 6 anos.
-            </p>
-            <p className="pb-3 text-small">
-              Durante todos esses anos, trabalhei com diversas tecnologias,
-              linguagens e frameworks. Pude adquirir experiência para liderar
-              projetos e realizar entregas de qualidade.
-            </p>
-            <p className="pb-3 text-small">
-              Atualmente foco em arquitetura de software, CI/CD, testes e
-              monitoramento. Trabalhar na formação de novos desenvolvedores na
-              equipe, compartilhar e adquirir novos conhecimentos.
-            </p>
-          </div>
-        </div>
-        {/* social media */}
-        <div className="mt-large">
-          <h2>Get in touch</h2>
-          <div className="mt-large flex w-1/6 justify-between">
-            <Link
-              href="mailto:julio.oliveiravaz0@gmail.com"
-              target="_blank"
-              title="e-mail"
-            >
-              <Icon color="white" name="mail" />
-            </Link>
-            <Link href="#" target="_blank" title="linkedin">
-              <Icon color="white" name="linkedin" />
-            </Link>
-            <Link href="#" target="_blank" title="twitter/x">
-              <Icon color="white" name="twitter" />
-            </Link>
-            <Link href="#" target="_blank" title="dev.to">
-              <Icon color="white" name="newspaper" />
-            </Link>
-          </div>
-        </div>
-        {/* blog */}
-        <div className="mt-large">
-          <h2>Posts</h2>
-          <div className="mt-large">
-            <div className="border-white-500 mb-large h-12 w-full border" />
-            <div className="border-white-500 mb-large h-12 w-full border" />
-            <div className="border-white-500 mb-large h-12 w-full border" />
-          </div>
-        </div>
-        <div className="mt-large">
-          <h2>Projects</h2>
-          <div className="mt-large">
-            <div className="grid grid-cols-2 gap-2">
-              <div className="border-white-500 mb-large h-xgiant w-full border" />
-              <div className="border-white-500 mb-large h-xgiant w-full border" />
-              <div className="border-white-500 mb-large h-xgiant w-full border" />
-              <div className="border-white-500 mb-large h-xgiant w-full border" />
-              <div className="border-white-500 mb-large h-xgiant w-full border" />
-              <div className="border-white-500 mb-large h-xgiant w-full border" />
+          <nav>
+            <ul className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+              <li>
+                <Link className="flex hover:underline" href="#">
+                  <Icon className="mr-xxsmall" color="white" name="text" />
+                  Posts
+                </Link>
+              </li>
+              <li>
+                <Link className="mr-xxsmall flex hover:underline" href="#">
+                  <Icon
+                    className="mr-xxsmall"
+                    color="white"
+                    name="user-round"
+                  />
+                  About
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        {/* main */}
+        <main className="p-4">
+          <section className="mb-8 flex items-center justify-between">
+            {/* avatar */}
+            <div className="w-1/4">
+              <Image
+                alt="profile image"
+                className="rounded-full"
+                height={160}
+                src="https://d111erjd7vhu4f.cloudfront.net/profile.jpg"
+                width={160}
+              />
             </div>
-          </div>
-        </div>
+            {/* about */}
+            <div className="w-full">
+              <h1 className="mb-2 text-3xl font-bold">
+                Oi, eu sou Julio Vaz 👋
+              </h1>
+              <p className="mb-4">
+                Trabalho com desenvolvimento de software há 6 anos.
+              </p>
+              <p className="mb-4">
+                Durante todos esses anos, trabalhei com diversas tecnologias,
+                linguagens e frameworks. Pude adquirir experiência para liderar
+                projetos e realizar entregas de qualidade.
+              </p>
+              <p className="mb-4">
+                Atualmente foco em arquitetura de software, CI/CD, testes e
+                monitoramento. Trabalhar na formação de novos desenvolvedores na
+                equipe, compartilhar e adquirir novos conhecimentos.
+              </p>
+            </div>
+          </section>
+          {/* social media */}
+          <section className="mb-8">
+            <h2 className="mb-4 text-2xl font-semibold">Get in touch</h2>
+            <div className="flex space-x-4">
+              <Link
+                className="h-6 w-6"
+                href="mailto:julio.oliveiravaz0@gmail.com"
+                target="_blank"
+                title="e-mail"
+              >
+                <Icon color="white" name="mail" />
+              </Link>
+              <Link
+                className="h-6 w-6"
+                href="https://github.com/JulioCVaz"
+                target="_blank"
+                title="github"
+              >
+                <Icon color="white" name="github" />
+              </Link>
+              <Link
+                className="h-6 w-6"
+                href="https://dev.to/juliovaz"
+                target="_blank"
+                title="dev.to"
+              >
+                <Icon color="white" name="newspaper" />
+              </Link>
+              <Link
+                className="h-6 w-6"
+                href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-vaz-560ab4127/"
+                target="_blank"
+                title="linkedin"
+              >
+                <Icon color="white" name="linkedin" />
+              </Link>
+              <Link
+                className="h-6 w-6"
+                href="https://twitter.com/juliovazbr"
+                target="_blank"
+                title="twitter/x"
+              >
+                <Icon color="white" name="twitter" />
+              </Link>
+            </div>
+          </section>
+          {/* blog */}
+          <section className="mb-8">
+            <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
+              <h2 className="text-2xl font-semibold">Posts</h2>
+              <Link
+                className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
+                href="#"
+              >
+                <span>See more</span>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              {/* space-y-4 */}
+              <Link className="mb-2" href="#">
+                <div className="bg-gray-700 group/item hover:bg-gray-600 rounded-md p-4 transition duration-150 ease-out hover:ease-in">
+                  <div className="flex items-center justify-between">
+                    <div className="col-auto w-4/5">
+                      <h3 className="mb-2 text-xl font-bold">
+                        Event Loop, como funciona
+                      </h3>
+                      <p className="mb-2">
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the standard
+                        dummy text ever since the 1500s, when an unknown printer
+                        took a galley of type and scrambled it to make a type
+                        specimen book
+                      </p>
+                    </div>
+
+                    <Icon
+                      className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
+                      name="arrow-right"
+                    />
+                  </div>
+                  <p className="text-gray-400 mb-2 text-sm">Jan 29, 2023</p>
+                </div>
+              </Link>
+              <Link className="mb-2" href="#">
+                <div className="bg-gray-700 group/item hover:bg-gray-600 rounded-md p-4 transition duration-150 ease-out hover:ease-in">
+                  <div className="flex items-center justify-between">
+                    <div className="col-auto w-4/5">
+                      <h3 className="mb-2 text-xl font-bold">
+                        Event Loop, como funciona
+                      </h3>
+                      <p className="mb-2">
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the standard
+                        dummy text ever since the 1500s, when an unknown printer
+                        took a galley of type and scrambled it to make a type
+                        specimen book
+                      </p>
+                    </div>
+
+                    <Icon
+                      className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
+                      name="arrow-right"
+                    />
+                  </div>
+                  <p className="text-gray-400 mb-2 text-sm">Jan 29, 2023</p>
+                </div>
+              </Link>
+            </div>
+          </section>
+          <section>
+            <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
+              <h2 className="text-2xl font-semibold">Projects</h2>
+              <Link
+                className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
+                href="#"
+              >
+                <span>See more</span>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <Link className="mb-2" href="#">
+                <div className="bg-gray-700 bg-gray-700 group/item hover:bg-gray-600 rounded-md p-4 transition duration-150 ease-out hover:ease-in">
+                  <Image
+                    alt="Project 1"
+                    className="mb-2 h-32 w-full object-cover"
+                    height="100"
+                    // TODO: add correct URL
+                    src="https://placehold.co/100x100"
+                    style={{
+                      aspectRatio: "100/100",
+                      objectFit: "cover",
+                    }}
+                    width="100"
+                  />
+                  <h3 className="mb-2 text-xl font-bold">
+                    Etec Zona Leste - Site institucional
+                  </h3>
+                  <p className="mb-2">
+                    Site institucional da escola tecnica Etec zona leste e
+                    desenvolvimento de admin para gerar novos conteudos para o
+                    site.
+                  </p>
+                  <Icon
+                    className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
+                    name="arrow-right"
+                  />
+                </div>
+              </Link>
+            </div>
+          </section>
+        </main>
       </div>
-    </main>
+    </div>
   );
 }

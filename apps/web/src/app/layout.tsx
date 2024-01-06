@@ -18,10 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
-      <script>
-        Inspired in https://demo.maxencewolff.com/ astro theme for portfolio
-        template
-      </script>
     </html>
   );
 }
