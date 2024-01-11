@@ -6,7 +6,8 @@
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./card": "./src/card.tsx"
+    "./card": "./src/card.tsx",
+    "./icon": "./src/icon.tsx"
   },
   "license": "MIT",
   "scripts": {
@@ -19,15 +20,18 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@types/react": "^18.2.38",
     "@westeros/eslint-config": "workspace:*",
     "@westeros/tailwind-config": "workspace:*",
     "@westeros/typescript-config": "workspace:*",
-    "@types/react": "^18.2.38",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "tailwindcss": "^3.3.5",
     "tsup": "^8.0.1",
     "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "lucide-react": "^0.303.0"
   }
 }

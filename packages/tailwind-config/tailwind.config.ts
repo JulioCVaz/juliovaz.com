@@ -7,7 +7,7 @@ const config: Omit<Config, "content"> = {
         dark: "#0e1317",
         primary: "#4651e5",
         white: "#fefefe",
-        gray: "#929495",
+        // gray: "#929495",
       },
       fontSize: {
         small: "14px",
@@ -15,11 +15,12 @@ const config: Omit<Config, "content"> = {
         large: "36px",
       },
       fontWeight: {
-        regular: "400px",
-        medium: "500px",
-        bold: "600px",
+        regular: "400",
+        medium: "500",
+        bold: "600",
       },
       spacing: {
+        xxxsmall: "2px",
         xxsmall: "4px",
         xsmall: "8px",
         small: "12px",

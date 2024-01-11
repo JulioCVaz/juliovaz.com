@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["@westeros/ui"],
+  transpilePackages: ["lucide-react", "@westeros/ui"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "d111erjd7vhu4f.cloudfront.net",
+      },
+    ],
+  },
 };
