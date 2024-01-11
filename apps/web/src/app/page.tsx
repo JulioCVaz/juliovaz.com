@@ -8,7 +8,7 @@ export default function Page(): JSX.Element {
       {/* container */}
       <div className="w-full max-w-5xl px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         {/* header */}
-        <header className="border-gray-700 flex flex-col items-center justify-between border-b p-4 sm:flex-row">
+        <header className="flex flex-col items-center justify-between border-b border-gray-700 p-4 sm:flex-row">
           <Link className="mb-4 text-xl font-semibold sm:mb-0" href="#">
             juliovaz.com
           </Link>
@@ -37,7 +37,7 @@ export default function Page(): JSX.Element {
         <main className="p-4">
           <section className="mb-8 flex items-center justify-between">
             {/* avatar */}
-            <div className="w-1/4">
+            <div className="w-1/4 max-md:hidden md:max-lg:w-2/5">
               <Image
                 alt="profile image"
                 className="rounded-full"
@@ -126,7 +126,7 @@ export default function Page(): JSX.Element {
             <div className="grid grid-cols-1 gap-4">
               {/* space-y-4 */}
               <Link className="mb-2" href="#">
-                <div className="bg-gray-700 group/item hover:bg-gray-600 rounded-md p-4 transition duration-150 ease-out hover:ease-in">
+                <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
                   <div className="flex items-center justify-between">
                     <div className="col-auto w-4/5">
                       <h3 className="mb-2 text-xl font-bold">
@@ -146,11 +146,11 @@ export default function Page(): JSX.Element {
                       name="arrow-right"
                     />
                   </div>
-                  <p className="text-gray-400 mb-2 text-sm">Jan 29, 2023</p>
+                  <p className="mb-2 text-sm text-gray-400">Jan 29, 2023</p>
                 </div>
               </Link>
               <Link className="mb-2" href="#">
-                <div className="bg-gray-700 group/item hover:bg-gray-600 rounded-md p-4 transition duration-150 ease-out hover:ease-in">
+                <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
                   <div className="flex items-center justify-between">
                     <div className="col-auto w-4/5">
                       <h3 className="mb-2 text-xl font-bold">
@@ -170,7 +170,7 @@ export default function Page(): JSX.Element {
                       name="arrow-right"
                     />
                   </div>
-                  <p className="text-gray-400 mb-2 text-sm">Jan 29, 2023</p>
+                  <p className="mb-2 text-sm text-gray-400">Jan 29, 2023</p>
                 </div>
               </Link>
             </div>
@@ -186,19 +186,24 @@ export default function Page(): JSX.Element {
               </Link>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <Link className="mb-2" href="#">
-                <div className="bg-gray-700 bg-gray-700 group/item hover:bg-gray-600 rounded-md p-4 transition duration-150 ease-out hover:ease-in">
+              <Link
+                className="mb-2"
+                href="https://eteczonaleste.com.br/"
+                target="_blank"
+              >
+                <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
+                  {/* add loader = https://nextjs.org/docs/app/api-reference/components/image#loader */}
                   <Image
                     alt="Project 1"
-                    className="mb-2 h-32 w-full object-cover"
-                    height="100"
-                    // TODO: add correct URL
-                    src="https://placehold.co/100x100"
+                    className="mb-2 h-48 w-full"
+                    height={500}
+                    quality={75}
+                    src="https://d111erjd7vhu4f.cloudfront.net/project_etec_zl.png"
                     style={{
                       aspectRatio: "100/100",
                       objectFit: "cover",
                     }}
-                    width="100"
+                    width={500}
                   />
                   <h3 className="mb-2 text-xl font-bold">
                     Etec Zona Leste - Site institucional
