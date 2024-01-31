@@ -22,12 +22,8 @@ export default function Page(): JSX.Element {
               </li>
               <li>
                 <Link className="mr-xxsmall flex hover:underline" href="#">
-                  <Icon
-                    className="mr-xxsmall"
-                    color="white"
-                    name="user-round"
-                  />
-                  About
+                  <Icon className="mr-xxsmall" color="white" name="file-text" />
+                  Resume
                 </Link>
               </li>
             </ul>
