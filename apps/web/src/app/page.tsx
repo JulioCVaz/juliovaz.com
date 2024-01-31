@@ -128,7 +128,7 @@ export default function Page(): JSX.Element {
               <Link className="mb-2" href="#">
                 <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
                   <div className="flex items-center justify-between">
-                    <div className="col-auto w-4/5">
+                    <div className="col-auto md:w-full lg:w-4/5">
                       <h3 className="mb-2 text-xl font-bold">
                         Event Loop, como funciona
                       </h3>
@@ -140,11 +140,12 @@ export default function Page(): JSX.Element {
                         specimen book
                       </p>
                     </div>
-
-                    <Icon
-                      className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
-                      name="arrow-right"
-                    />
+                    <div className="max-md:hidden">
+                      <Icon
+                        className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
+                        name="arrow-right"
+                      />
+                    </div>
                   </div>
                   <p className="mb-2 text-sm text-gray-400">Jan 29, 2023</p>
                 </div>
