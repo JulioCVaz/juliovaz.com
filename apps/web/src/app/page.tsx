@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@westeros/ui/icon";
 import Menu from "../components/menu";
+import Card from "../components/card";
 import Container from "../components/container";
 
 export default function Page(): JSX.Element {
@@ -99,6 +100,22 @@ export default function Page(): JSX.Element {
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-4">
+            <Card.Base
+              extended
+              link={{
+                href: "#",
+              }}
+              linkable
+            >
+              <Card.Title>Event Loop, como funciona</Card.Title>
+              <Card.Body>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book
+              </Card.Body>
+              <Card.Footer>Jan 29, 2023</Card.Footer>
+            </Card.Base>
             {/* space-y-4 */}
             <Link className="mb-2" href="#">
               <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
@@ -195,6 +212,25 @@ export default function Page(): JSX.Element {
                 />
               </div>
             </Link>
+            <Card.Base
+              link={{
+                href: "#",
+              }}
+              linkable
+            >
+              <Card.Image
+                alt="Image Example"
+                height={500}
+                quality={75}
+                src="https://d111erjd7vhu4f.cloudfront.net/project_etec_zl.png"
+                width={500}
+              />
+              <Card.Title>Etec Zona Leste - Site institucional</Card.Title>
+              <Card.Body>
+                Site institucional da escola tecnica Etec zona leste e
+                desenvolvimento de admin para gerar novos conteudos para o site.
+              </Card.Body>
+            </Card.Base>
           </div>
         </section>
       </main>
