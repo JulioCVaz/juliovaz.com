@@ -85,7 +85,7 @@ interface CardBaseProps {
   linkable?: boolean;
   extended?: boolean;
   children: JSX.Element | JSX.Element[];
-  link: LinkProps;
+  link: LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 
 function CardBase({
@@ -95,11 +95,11 @@ function CardBase({
   link,
 }: CardBaseProps): JSX.Element {
   return linkable ? (
-    <Link {...link}>
+    <Link target="_blank" {...link}>
       <BaseComponent extended={extended}>{children}</BaseComponent>
     </Link>
   ) : (
-    <BaseComponent>{children}</BaseComponent>
+    <BaseComponent extended={extended}>{children}</BaseComponent>
   );
 }
 
