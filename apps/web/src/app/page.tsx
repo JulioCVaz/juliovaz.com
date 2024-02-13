@@ -24,9 +24,9 @@ export default function Page(): JSX.Element {
             Trabalho com desenvolvimento de software há 6 anos.
           </p>
           <p className="mb-4">
-            Durante todos esses anos, trabalhei com diversas tecnologias,
-            linguagens e frameworks. Pude adquirir experiência para liderar
-            projetos e realizar entregas de qualidade.
+            Durante esses anos, trabalhei com diversas tecnologias, linguagens e
+            frameworks. Pude adquirir experiência para liderar projetos e
+            realizar entregas de qualidade.
           </p>
           <p className="mb-4">
             Atualmente foco em arquitetura de software, CI/CD, testes e

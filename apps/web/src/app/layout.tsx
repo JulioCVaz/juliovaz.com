@@ -22,8 +22,18 @@ export default function RootLayout({
       <body className={inter.className}>
         <Container>
           <Menu.Root>
-            <Menu.Item icon="text">Posts</Menu.Item>
-            <Menu.Item icon="file-text">Resume</Menu.Item>
+            <Menu.Item icon="text" link={{ href: "/blog", target: "_self" }}>
+              Blog
+            </Menu.Item>
+            <Menu.Item
+              icon="file-text"
+              link={{
+                href: "https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view",
+                target: "_blank",
+              }}
+            >
+              Resume
+            </Menu.Item>
           </Menu.Root>
           <main className="p-4">{children}</main>
         </Container>
