@@ -1,23 +1,17 @@
-/* eslint-disable eslint-comments/require-description */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
-import { allPosts } from "contentlayer/generated";
+import { allPosts, type Post } from "contentlayer/generated";
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 }
 
-export async function generateMetadata({ params }) {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+export function generateMetadata({ params }: { params: { slug: string } }): {
+  title: Pick<Post, "title">;
+} {
+  const post: Post = allPosts.find(
+    (post: Post) => post._raw.flattenedPath === params.slug,
+  )!;
   return { title: post.title };
 }
 
