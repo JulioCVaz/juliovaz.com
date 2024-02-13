@@ -21,7 +21,7 @@ function MenuItem({ icon, children: label }: MenuLinkType): JSX.Element {
 function Root({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <header className="flex flex-col items-center justify-between border-b border-gray-700 p-4 sm:flex-row">
-      <Link className="mb-4 text-xl font-semibold sm:mb-0" href="#">
+      <Link className="mb-4 text-xl font-semibold sm:mb-0" href="/">
         juliovaz.com
       </Link>
       <nav>

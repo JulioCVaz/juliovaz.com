@@ -25,7 +25,7 @@ export default function RootLayout({
             <Menu.Item icon="text">Posts</Menu.Item>
             <Menu.Item icon="file-text">Resume</Menu.Item>
           </Menu.Root>
-          {children}
+          <main className="p-4">{children}</main>
         </Container>
       </body>
     </html>

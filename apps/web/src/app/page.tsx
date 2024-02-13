@@ -5,7 +5,7 @@ import Card from "../components/card";
 
 export default function Page(): JSX.Element {
   return (
-    <main className="p-4">
+    <>
       <section className="mb-8 flex items-center justify-between">
         {/* avatar */}
         <div className="w-1/4 max-md:hidden md:max-lg:w-2/5">
@@ -87,7 +87,7 @@ export default function Page(): JSX.Element {
           <h2 className="text-2xl font-semibold">Posts</h2>
           <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
-            href="#"
+            href="/blog"
           >
             <span>See more</span>
           </Link>
@@ -96,7 +96,8 @@ export default function Page(): JSX.Element {
           <Card.Base
             extended
             link={{
-              href: "#",
+              href: "/blog/event-loop",
+              target: "_self",
             }}
             linkable
           >
@@ -109,55 +110,23 @@ export default function Page(): JSX.Element {
             </Card.Body>
             <Card.Footer>Jan 29, 2023</Card.Footer>
           </Card.Base>
-          <Link className="mb-2" href="#">
-            <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
-              <div className="flex items-center justify-between">
-                <div className="col-auto md:w-full lg:w-4/5">
-                  <h3 className="mb-2 text-xl font-bold">
-                    Event Loop, como funciona
-                  </h3>
-                  <p className="mb-2">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the standard
-                    dummy text ever since the 1500s, when an unknown printer
-                    took a galley of type and scrambled it to make a type
-                    specimen book
-                  </p>
-                </div>
-                <div className="max-md:hidden">
-                  <Icon
-                    className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
-                    name="arrow-right"
-                  />
-                </div>
-              </div>
-              <p className="mb-2 text-sm text-gray-400">Jan 29, 2023</p>
-            </div>
-          </Link>
-          <Link className="mb-2" href="#">
-            <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
-              <div className="flex items-center justify-between">
-                <div className="col-auto w-4/5">
-                  <h3 className="mb-2 text-xl font-bold">
-                    Event Loop, como funciona
-                  </h3>
-                  <p className="mb-2">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the standard
-                    dummy text ever since the 1500s, when an unknown printer
-                    took a galley of type and scrambled it to make a type
-                    specimen book
-                  </p>
-                </div>
-
-                <Icon
-                  className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
-                  name="arrow-right"
-                />
-              </div>
-              <p className="mb-2 text-sm text-gray-400">Jan 29, 2023</p>
-            </div>
-          </Link>
+          <Card.Base
+            extended
+            link={{
+              href: "/blog/event-loop-2",
+              target: "_self",
+            }}
+            linkable
+          >
+            <Card.Title>Event Loop, como funciona</Card.Title>
+            <Card.Body>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the standard dummy text ever since
+              the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book
+            </Card.Body>
+            <Card.Footer>Jan 29, 2023</Card.Footer>
+          </Card.Base>
         </div>
       </section>
       <section>
@@ -165,7 +134,7 @@ export default function Page(): JSX.Element {
           <h2 className="text-2xl font-semibold">Projects</h2>
           <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
-            href="#"
+            href="/projetos"
           >
             <span>See more</span>
           </Link>
@@ -225,6 +194,6 @@ export default function Page(): JSX.Element {
           </Card.Base>
         </div>
       </section>
-    </main>
+    </>
   );
 }

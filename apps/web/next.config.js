@@ -2,6 +2,15 @@
 module.exports = {
   reactStrictMode: true,
   transpilePackages: ["lucide-react", "@westeros/ui"],
+  async redirects() {
+    return [
+      {
+        source: "/projetos",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
