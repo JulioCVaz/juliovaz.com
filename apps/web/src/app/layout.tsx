@@ -2,6 +2,8 @@ import "./globals.css";
 import "@westeros/ui/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Menu from "../components/menu";
+import Container from "../components/container";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,15 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Container>
+          <Menu.Root>
+            <Menu.Item icon="text">Posts</Menu.Item>
+            <Menu.Item icon="file-text">Resume</Menu.Item>
+          </Menu.Root>
+          {children}
+        </Container>
+      </body>
     </html>
   );
 }
