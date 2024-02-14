@@ -2,17 +2,22 @@ import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 
-export function generateStaticParams() {
+export function generateStaticParams(): { slug: string }[] {
   return allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): {
-  title: Pick<Post, "title">;
+  title: string;
 } {
-  const post: Post = allPosts.find(
+  const findPostBySlug = allPosts.find(
     (post: Post) => post._raw.flattenedPath === params.slug,
-  )!;
-  return { title: post.title };
+  );
+
+  if (!findPostBySlug) {
+    return { title: "Post not found by slug" };
+  }
+
+  return { title: findPostBySlug.title };
 }
 
 export default function PostPage({
@@ -20,16 +25,30 @@ export default function PostPage({
 }: {
   params: { slug: string };
 }): JSX.Element {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  const Content = getMDXComponent(post.body.code);
+  const findPostBySlug = allPosts.find(
+    (post) => post._raw.flattenedPath === params.slug,
+  );
+
+  if (!findPostBySlug) {
+    return (
+      <div>
+        <h1>Post not found</h1>
+      </div>
+    );
+  }
+
+  const Content = getMDXComponent(findPostBySlug.body.code);
 
   return (
     <article className="mx-auto max-w-xl py-8">
       <div className="mb-8 text-center">
-        <time className="mb-1 text-xs text-gray-600" dateTime={post.date}>
-          {format(parseISO(post.date), "LLLL d, yyyy")}
+        <time
+          className="mb-1 text-xs text-gray-600"
+          dateTime={findPostBySlug.date}
+        >
+          {format(parseISO(findPostBySlug.date), "LLLL d, yyyy")}
         </time>
-        <h1>{post.title}</h1>
+        <h1>{findPostBySlug.title}</h1>
       </div>
       <Content />
     </article>
