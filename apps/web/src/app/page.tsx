@@ -113,7 +113,7 @@ export default function Page(): JSX.Element {
           <Card.Base
             extended
             link={{
-              href: "/blog/event-loop-2",
+              href: "/blog/blog-post-2",
               target: "_self",
             }}
             linkable

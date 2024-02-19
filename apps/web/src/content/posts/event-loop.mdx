@@ -3,11 +3,8 @@ title: Lorem Ipsum is simply dummy text of the printing and typesetting industry
 description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
 date: 2021-12-24
 ---
-# What are we building ? 🏗️
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-```ts title="actions.ts"
+```ts title="teste.tsx" showLineNumbers
 "use server";
 
 import { Unkey } from "@unkey/api";
@@ -30,35 +27,37 @@ export async function revoke(keyId: string) {
 }
 ```
 
+# Hardware setup
 
-```sql
-ALTER TABLE `incident` RENAME TO `incident_old`;--> statement-breakpoint
-ALTER TABLE `incident_update` RENAME TO `incident_update_old`;--> statement-breakpoint
+- Apple Watch Series 7, 40mm, Starlight
+- iPhone 14 Pro, Deep Purple
+  - AirPods Pro (2nd generation)
+  - AirPods Max, Pink
+- 2021 iPad mini, Purple, 256GB, 5G
+  - Apple Pencil (with [Paperlike Pencil Grips](https://paperlike.com/products/pencil-grip-set))
+  - Smart Folio, English Lavender
+  - [Compass Pro](https://www.twelvesouth.com/products/compass-pro?variant=17674732732473) stand
+- M1 iPad Pro, 12.9”, Silver, 1TB, 5G
+  - Apple Pencil
+  - Magic Keyboard for iPad
+  - [PaperLike Charcoal Folio Case](https://paperlike.com/products/paperlike-folio-case)
+  - [HoverBar Duo](https://www.twelvesouth.com/products/hoverbar-duo) desk stand
+- 2021 MacBook Pro with M1 Pro, 16”, Silver, 32GB RAM/1TB SSD
+  - Magic Trackpad 2
+  - [Logitech LIFT](https://www.logitech.com/en-us/products/mice/lift-vertical-ergonomic-mouse.html) vertical mouse
+  - [Kinesis Advantage2 Keyboard](https://kinesis-ergo.com/shop/advantage2/)
+  - [Roost Stand](https://www.therooststand.com/)
+- 2022 Studio Display, tilt and height-adjustable
 
-DROP TABLE `incident_old`;--> statement-breakpoint
-DROP TABLE `incident_update_old`;--> statement-breakpoint
+## Chargers
 
-CREATE TABLE `incident` (
-`id` integer PRIMARY KEY NOT NULL,
-`status` text(4) NOT NULL,
-`title` text(256) NOT NULL,
-`created_at` integer DEFAULT (strftime('%s', 'now')),
-`updated_at` integer DEFAULT (strftime('%s', 'now')),
-`workspace_id` integer NOT NULL,
-FOREIGN KEY (`workspace_id`) REFERENCES `workspace`(`id`) ON UPDATE no action ON DELETE cascade
-);
---> statement-breakpoint
+For home:
 
-CREATE TABLE `incident_update` (
-`id` integer PRIMARY KEY NOT NULL,
-`status` text(4) NOT NULL,
-`date` integer NOT NULL,
-`message` text NOT NULL,
-`created_at` integer DEFAULT (strftime('%s', 'now')),
-`updated_at` integer DEFAULT (strftime('%s', 'now')),
-`incident_id` integer NOT NULL,
-FOREIGN KEY (`incident_id`) REFERENCES `incident`(`id`) ON UPDATE no action ON DELETE cascade
-);
---> statement-breakpoint
+- [Anker 3-in-1 Cube with MagSafe](https://www.anker.com/products/y1811) for bedside
+- [Satechi 165W USB-C 4-Port PD GaN Charger](https://satechi.net/products/165w-usb-c-4-port-pd-gan-charger) (buy a separate C7 cable for EU/UK to have USB-C power when traveling)
 
-```
+For on-the-go:
+
+- [Anker Nano Pro](https://www.anker.com/products/a2637?variant=42621670457494) in any bag
+- [Anker 735 Charger](https://www.anker.com/products/a2668) for backpack
+- [Satechi Quatro Power Bank](https://satechi.net/products/quatro-wireless-power-bank) for long days
