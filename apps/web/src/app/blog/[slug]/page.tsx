@@ -1,4 +1,4 @@
-import { getMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 
@@ -29,6 +29,8 @@ export default function PostPage({
     (post) => post._raw.flattenedPath === params.slug,
   );
 
+  const Content = useMDXComponent(findPostBySlug.body.code);
+
   if (!findPostBySlug) {
     return (
       <div>
@@ -37,20 +39,18 @@ export default function PostPage({
     );
   }
 
-  const Content = getMDXComponent(findPostBySlug.body.code);
-
   return (
-    <article className="mx-auto max-w-xl py-8">
-      <div className="mb-8 text-center">
-        <time
-          className="mb-1 text-xs text-gray-600"
-          dateTime={findPostBySlug.date}
-        >
-          {format(parseISO(findPostBySlug.date), "LLLL d, yyyy")}
-        </time>
-        <h1>{findPostBySlug.title}</h1>
+    <article className="mb-8 mt-8">
+      <h1 className="mb-2 text-3xl font-bold">{findPostBySlug.title}</h1>
+      <time
+        className="mb-1 text-xs text-gray-600"
+        dateTime={findPostBySlug.date}
+      >
+        {format(parseISO(findPostBySlug.date), "LLLL d, yyyy")}
+      </time>
+      <div className="mt-4">
+        <Content />
       </div>
-      <Content />
     </article>
   );
 }

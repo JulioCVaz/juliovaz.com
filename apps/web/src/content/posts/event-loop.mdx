@@ -1,0 +1,64 @@
+---
+title: Lorem Ipsum is simply dummy text of the printing and typesetting industry
+description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+date: 2021-12-24
+---
+# What are we building ? 🏗️
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+```ts title="actions.ts"
+"use server";
+
+import { Unkey } from "@unkey/api";
+
+const unkey = new Unkey({ token: process.env.UNKEY_TOKEN });
+
+export async function create(ownerId: number) {
+  const key = await unkey.keys.create({
+    apiId: process.env.UNKEY_API_ID,
+    ownerId: String(ownerId), // workspaceId
+    prefix: "os", // os_1234567890
+    // include more options like 'ratelimit', 'expires', 'remaining'
+  });
+  return key;
+}
+
+export async function revoke(keyId: string) {
+  const res = await unkey.keys.revoke({ keyId });
+  return res;
+}
+```
+
+
+```sql
+ALTER TABLE `incident` RENAME TO `incident_old`;--> statement-breakpoint
+ALTER TABLE `incident_update` RENAME TO `incident_update_old`;--> statement-breakpoint
+
+DROP TABLE `incident_old`;--> statement-breakpoint
+DROP TABLE `incident_update_old`;--> statement-breakpoint
+
+CREATE TABLE `incident` (
+`id` integer PRIMARY KEY NOT NULL,
+`status` text(4) NOT NULL,
+`title` text(256) NOT NULL,
+`created_at` integer DEFAULT (strftime('%s', 'now')),
+`updated_at` integer DEFAULT (strftime('%s', 'now')),
+`workspace_id` integer NOT NULL,
+FOREIGN KEY (`workspace_id`) REFERENCES `workspace`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
+
+CREATE TABLE `incident_update` (
+`id` integer PRIMARY KEY NOT NULL,
+`status` text(4) NOT NULL,
+`date` integer NOT NULL,
+`message` text NOT NULL,
+`created_at` integer DEFAULT (strftime('%s', 'now')),
+`updated_at` integer DEFAULT (strftime('%s', 'now')),
+`incident_id` integer NOT NULL,
+FOREIGN KEY (`incident_id`) REFERENCES `incident`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
+
+```
