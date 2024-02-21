@@ -19,7 +19,9 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`flex min-h-screen justify-center bg-dark text-slate-50 ${inter.className}`}
+      >
         <Container>
           <Menu.Root>
             <Menu.Item icon="text" link={{ href: "/blog", target: "_self" }}>
