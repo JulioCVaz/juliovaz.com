@@ -1,16 +1,16 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 
 export function generateStaticParams(): { slug: string }[] {
-  return allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+  return allPosts.map((post) => ({ slug: post.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): {
   title: string;
 } {
   const findPostBySlug = allPosts.find(
-    (post: Post) => post._raw.flattenedPath === params.slug,
+    (post: Post) => post.slug === params.slug,
   );
 
   if (!findPostBySlug) {
@@ -25,11 +25,9 @@ export default function PostPage({
 }: {
   params: { slug: string };
 }): JSX.Element {
-  const findPostBySlug = allPosts.find(
-    (post) => post._raw.flattenedPath === params.slug,
-  );
-
-  const Content = useMDXComponent(findPostBySlug.body.code);
+  const findPostBySlug = allPosts.find((post) => {
+    return post.slug === params.slug;
+  });
 
   if (!findPostBySlug) {
     return (
@@ -38,6 +36,8 @@ export default function PostPage({
       </div>
     );
   }
+
+  const Content = getMDXComponent(findPostBySlug.body.code);
 
   return (
     <article className="mb-8 mt-8">
@@ -48,7 +48,7 @@ export default function PostPage({
       >
         {format(parseISO(findPostBySlug.date), "LLLL d, yyyy")}
       </time>
-      <div className="mt-4">
+      <div className="prose prose-invert mt-4">
         <Content />
       </div>
     </article>
