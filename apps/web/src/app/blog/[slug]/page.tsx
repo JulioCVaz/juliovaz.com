@@ -48,7 +48,7 @@ export default function PostPage({
       >
         {format(parseISO(findPostBySlug.date), "LLLL d, yyyy")}
       </time>
-      <div className="prose prose-invert mt-4">
+      <div className="prose prose-invert">
         <Content />
       </div>
     </article>
