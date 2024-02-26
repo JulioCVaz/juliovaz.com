@@ -114,7 +114,6 @@ export default function Page(): JSX.Element {
               <Card.Footer>
                 {format(parseISO(post.date), "LLLL d, yyyy")}
               </Card.Footer>
-              {/* Jan 29, 2023 */}
             </Card.Base>
           ))}
         </div>
@@ -122,12 +121,12 @@ export default function Page(): JSX.Element {
       <section>
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
           <h2 className="text-2xl font-semibold">Projects</h2>
-          <Link
+          {/* <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
             href="/projetos"
           >
-            <span>See more</span>
-          </Link>
+            <span>Veja mais</span>
+          </Link> */}
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Link
@@ -162,26 +161,6 @@ export default function Page(): JSX.Element {
               />
             </div>
           </Link>
-          <Card.Base
-            link={{
-              href: "https://eteczonaleste.com.br/",
-              target: "_blank",
-            }}
-            linkable
-          >
-            <Card.Image
-              alt="Image Example"
-              height={500}
-              quality={75}
-              src="https://d111erjd7vhu4f.cloudfront.net/project_etec_zl.png"
-              width={500}
-            />
-            <Card.Title>Etec Zona Leste - Site institucional</Card.Title>
-            <Card.Body>
-              Site institucional da escola tecnica Etec zona leste e
-              desenvolvimento de admin para gerar novos conteudos para o site.
-            </Card.Body>
-          </Card.Base>
         </div>
       </section>
     </>
