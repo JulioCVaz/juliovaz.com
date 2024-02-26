@@ -1,9 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@westeros/ui/icon";
+import { compareDesc, format, parseISO } from "date-fns";
+import { allPosts, type Post } from "contentlayer/generated";
 import Card from "../components/card";
 
 export default function Page(): JSX.Element {
+  const posts = allPosts.sort((a, b) => {
+    return compareDesc(new Date(a.date), new Date(b.date));
+  });
+
   return (
     <>
       <section className="mb-8 flex items-center justify-between">
@@ -93,40 +99,24 @@ export default function Page(): JSX.Element {
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4">
-          <Card.Base
-            extended
-            link={{
-              href: "/blog/event-loop",
-              target: "_self",
-            }}
-            linkable
-          >
-            <Card.Title>Event Loop, como funciona</Card.Title>
-            <Card.Body>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book
-            </Card.Body>
-            <Card.Footer>Jan 29, 2023</Card.Footer>
-          </Card.Base>
-          <Card.Base
-            extended
-            link={{
-              href: "/blog/blog-post-2",
-              target: "_self",
-            }}
-            linkable
-          >
-            <Card.Title>Event Loop, como funciona</Card.Title>
-            <Card.Body>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book
-            </Card.Body>
-            <Card.Footer>Jan 29, 2023</Card.Footer>
-          </Card.Base>
+          {posts.map((post: Post) => (
+            <Card.Base
+              extended
+              key={post._id}
+              link={{
+                href: `/blog/${post.slug}`,
+                target: "_self",
+              }}
+              linkable
+            >
+              <Card.Title>{post.title}</Card.Title>
+              <Card.Body>{post.description}</Card.Body>
+              <Card.Footer>
+                {format(parseISO(post.date), "LLLL d, yyyy")}
+              </Card.Footer>
+              {/* Jan 29, 2023 */}
+            </Card.Base>
+          ))}
         </div>
       </section>
       <section>
