@@ -53,7 +53,6 @@ export default makeSource({
           onVisitHighlightedLine(node: any) {
             // node.properties.className.push("highlighted");
             const nodeClass = node.properties.className;
-            console.log("Highlighted Line", { node })
             if (nodeClass && nodeClass.length > 0) {
               node.properties.className.push("line--highlighted");
             } else {
