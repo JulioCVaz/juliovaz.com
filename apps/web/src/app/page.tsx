@@ -1,9 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@westeros/ui/icon";
+import { compareDesc, format, parseISO } from "date-fns";
+import { allPosts, type Post } from "contentlayer/generated";
 import Card from "../components/card";
 
 export default function Page(): JSX.Element {
+  const posts = allPosts.sort((a, b) => {
+    return compareDesc(new Date(a.date), new Date(b.date));
+  });
+
   return (
     <>
       <section className="mb-8 flex items-center justify-between">
@@ -24,9 +30,9 @@ export default function Page(): JSX.Element {
             Trabalho com desenvolvimento de software há 6 anos.
           </p>
           <p className="mb-4">
-            Durante todos esses anos, trabalhei com diversas tecnologias,
-            linguagens e frameworks. Pude adquirir experiência para liderar
-            projetos e realizar entregas de qualidade.
+            Durante esses anos, trabalhei com diversas tecnologias, linguagens e
+            frameworks. Pude adquirir experiência para liderar projetos e
+            realizar entregas de qualidade.
           </p>
           <p className="mb-4">
             Atualmente foco em arquitetura de software, CI/CD, testes e
@@ -93,51 +99,34 @@ export default function Page(): JSX.Element {
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4">
-          <Card.Base
-            extended
-            link={{
-              href: "/blog/event-loop",
-              target: "_self",
-            }}
-            linkable
-          >
-            <Card.Title>Event Loop, como funciona</Card.Title>
-            <Card.Body>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book
-            </Card.Body>
-            <Card.Footer>Jan 29, 2023</Card.Footer>
-          </Card.Base>
-          <Card.Base
-            extended
-            link={{
-              href: "/blog/event-loop-2",
-              target: "_self",
-            }}
-            linkable
-          >
-            <Card.Title>Event Loop, como funciona</Card.Title>
-            <Card.Body>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book
-            </Card.Body>
-            <Card.Footer>Jan 29, 2023</Card.Footer>
-          </Card.Base>
+          {posts.map((post: Post) => (
+            <Card.Base
+              extended
+              key={post._id}
+              link={{
+                href: `/blog/${post.slug}`,
+                target: "_self",
+              }}
+              linkable
+            >
+              <Card.Title>{post.title}</Card.Title>
+              <Card.Body>{post.description}</Card.Body>
+              <Card.Footer>
+                {format(parseISO(post.date), "LLLL d, yyyy")}
+              </Card.Footer>
+            </Card.Base>
+          ))}
         </div>
       </section>
       <section>
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
           <h2 className="text-2xl font-semibold">Projects</h2>
-          <Link
+          {/* <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
             href="/projetos"
           >
-            <span>See more</span>
-          </Link>
+            <span>Veja mais</span>
+          </Link> */}
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Link
@@ -172,26 +161,6 @@ export default function Page(): JSX.Element {
               />
             </div>
           </Link>
-          <Card.Base
-            link={{
-              href: "https://eteczonaleste.com.br/",
-              target: "_blank",
-            }}
-            linkable
-          >
-            <Card.Image
-              alt="Image Example"
-              height={500}
-              quality={75}
-              src="https://d111erjd7vhu4f.cloudfront.net/project_etec_zl.png"
-              width={500}
-            />
-            <Card.Title>Etec Zona Leste - Site institucional</Card.Title>
-            <Card.Body>
-              Site institucional da escola tecnica Etec zona leste e
-              desenvolvimento de admin para gerar novos conteudos para o site.
-            </Card.Body>
-          </Card.Base>
         </div>
       </section>
     </>

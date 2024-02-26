@@ -1,16 +1,18 @@
 import type { IconProps } from "@westeros/ui/icon";
 import { Icon } from "@westeros/ui/icon";
 import Link from "next/link";
+import type { LinkProps } from "next/link";
 
 interface MenuLinkType {
   icon: IconProps["name"];
   children: string;
+  link: LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 
-function MenuItem({ icon, children: label }: MenuLinkType): JSX.Element {
+function MenuItem({ icon, link, children: label }: MenuLinkType): JSX.Element {
   return (
     <li>
-      <Link className="flex hover:underline" href="#">
+      <Link className="flex hover:underline" {...link}>
         <Icon className="mr-xxsmall" color="white" name={icon} />
         {label}
       </Link>

@@ -19,11 +19,23 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`flex min-h-screen justify-center bg-dark text-slate-50 ${inter.className}`}
+      >
         <Container>
           <Menu.Root>
-            <Menu.Item icon="text">Posts</Menu.Item>
-            <Menu.Item icon="file-text">Resume</Menu.Item>
+            <Menu.Item icon="text" link={{ href: "/blog", target: "_self" }}>
+              Blog
+            </Menu.Item>
+            <Menu.Item
+              icon="file-text"
+              link={{
+                href: "https://drive.google.com/file/d/18VNj8VmHDra18t2XIfd9N1-4IkgSG33P/view",
+                target: "_blank",
+              }}
+            >
+              Resume
+            </Menu.Item>
           </Menu.Root>
           <main className="p-4">{children}</main>
         </Container>
