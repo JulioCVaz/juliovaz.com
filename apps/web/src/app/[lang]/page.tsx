@@ -3,9 +3,10 @@ import Image from "next/image";
 import { Icon } from "@westeros/ui/icon";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
-import Card from "../components/card";
+import Card from "../../components/card";
 
-export default function Page(): JSX.Element {
+export default function Page({ params: { lang } }): JSX.Element {
+  console.log({ lang });
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.date), new Date(b.date));
   });

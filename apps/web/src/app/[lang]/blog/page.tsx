@@ -1,6 +1,6 @@
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
-import Card from "../../components/card";
+import Card from "../../../components/card";
 
 export default function Blog() {
   const posts = allPosts.sort((a, b) => {
