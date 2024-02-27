@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
+import { i18n } from './i18n-config'
 
 const i18nConfig = {
     locales: ['en', 'pt'],
@@ -12,8 +13,11 @@ function getLocale(request: NextRequest): string | undefined {
     const negotiatorHeaders: Record<string, string> = {}
     request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
-    const languages = new Negotiator({ headers: negotiatorHeaders }).languages(i18nConfig.locales)
-    const locale = match(languages, i18nConfig.locales, i18nConfig.defaultLocale)
+    // @ts-expect-error locales are readonly
+    const locales: string[] = i18n.locales;
+
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)
+    const locale = match(languages, locales, i18n.defaultLocale)
 
     return locale
 }
