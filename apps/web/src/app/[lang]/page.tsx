@@ -4,9 +4,13 @@ import { Icon } from "@westeros/ui/icon";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 import Card from "../../components/card";
+import type { Locale } from "../../i18n-config";
 
-export default function Page({ params: { lang } }): JSX.Element {
-  console.log({ lang });
+export default function Page({
+  params,
+}: {
+  params: { lang: Locale };
+}): JSX.Element {
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.date), new Date(b.date));
   });

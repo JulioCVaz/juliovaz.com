@@ -1,24 +1,38 @@
 import "./globals.css";
 import "@westeros/ui/styles.css";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Menu from "../../components/menu";
 import Container from "../../components/container";
+import { i18n, type Locale } from "../../i18n-config";
+import { getDictionary } from "../../get-dictionary";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Julio Vaz",
-  description: "Julio Vaz Website homepage",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: Locale };
+}) {
+  const dictionary = await getDictionary(params.lang);
+  return {
+    title: dictionary.metadata.title,
+    description: dictionary.metadata.description,
+  };
+}
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: Locale };
 }): JSX.Element {
   return (
-    <html lang="en">
+    <html lang={params.lang}>
       <body
         className={`flex min-h-screen justify-center bg-dark text-slate-50 ${inter.className}`}
       >
