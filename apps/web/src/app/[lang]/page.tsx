@@ -5,15 +5,18 @@ import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 import Card from "../../components/card";
 import type { Locale } from "../../i18n-config";
+import { getDictionary } from "../../get-dictionary";
 
-export default function Page({
-  params,
+export default async function Page({
+  params: { lang },
 }: {
   params: { lang: Locale };
 }): JSX.Element {
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.date), new Date(b.date));
   });
+
+  const dictionary = await getDictionary(lang);
 
   return (
     <>
@@ -30,25 +33,17 @@ export default function Page({
         </div>
         {/* about */}
         <div className="w-full">
-          <h1 className="mb-2 text-3xl font-bold">Oi, eu sou Julio Vaz 👋</h1>
-          <p className="mb-4">
-            Trabalho com desenvolvimento de software há 6 anos.
-          </p>
-          <p className="mb-4">
-            Durante esses anos, trabalhei com diversas tecnologias, linguagens e
-            frameworks. Pude adquirir experiência para liderar projetos e
-            realizar entregas de qualidade.
-          </p>
-          <p className="mb-4">
-            Atualmente foco em arquitetura de software, CI/CD, testes e
-            monitoramento. Trabalhar na formação de novos desenvolvedores na
-            equipe, compartilhar e adquirir novos conhecimentos.
-          </p>
+          <h1 className="mb-2 text-3xl font-bold">
+            {dictionary.home.greeting}
+          </h1>
+          <p className="mb-4">{dictionary.home.about.experience}</p>
+          <p className="mb-4">{dictionary.home.about.jobs}</p>
+          <p className="mb-4">{dictionary.home.about.focus}</p>
         </div>
       </section>
       {/* social media */}
       <section className="mb-8">
-        <h2 className="mb-4 text-2xl font-semibold">Get in touch</h2>
+        <h2 className="mb-4 text-2xl font-semibold">{dictionary.actions.labels.contact}</h2>
         <div className="flex space-x-4">
           <Link
             className="h-6 w-6"
@@ -95,12 +90,12 @@ export default function Page({
       {/* blog */}
       <section className="mb-8">
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
-          <h2 className="text-2xl font-semibold">Posts</h2>
+          <h2 className="text-2xl font-semibold">{dictionary.actions.labels.posts}</h2>
           <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
             href="/blog"
           >
-            <span>See more</span>
+            <span>{dictionary.actions.labels.see_more}</span>
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4">
@@ -125,13 +120,13 @@ export default function Page({
       </section>
       <section>
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
-          <h2 className="text-2xl font-semibold">Projects</h2>
-          {/* <Link
+          <h2 className="text-2xl font-semibold">{dictionary.actions.labels.projects}</h2>
+          <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
             href="/projetos"
           >
-            <span>Veja mais</span>
-          </Link> */}
+            <span>{dictionary.actions.labels.see_more}</span>
+          </Link>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Link

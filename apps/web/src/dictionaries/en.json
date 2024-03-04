@@ -2,5 +2,25 @@
     "metadata": {
         "title": "Júlio Vaz - Homepage",
         "description": "Júlio Vaz Website - Homepage"
+    },
+    "menu": {
+        "blog": "Blog",
+        "about": "Resume"
+    },
+    "home": {
+        "greeting": "Hello, I'm Julio Vaz 👋",
+        "about": {
+            "experience": "I have been working with software development for 6 years.",
+            "jobs": "During these years, I worked with different technologies, languages and frameworks. I was able to gain experience to lead projects and deliver quality deliveries.",
+            "focus": "Currently focusing on software architecture, CI/CD, testing and monitoring. Work on training new developers on the team, sharing and acquiring new knowledge."
+        }
+    },
+    "actions": {
+        "labels": {
+            "contact": "Get in touch",
+            "posts": "Posts",
+            "see_more": "See more",
+            "projects": "Projects"
+        }
     }
 }

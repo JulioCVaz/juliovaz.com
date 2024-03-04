@@ -2,5 +2,25 @@
     "metadata": {
         "title": "Júlio Vaz - Página Inicial",
         "description": "Júlio Vaz Website - Página Inicial"
+    },
+    "menu": {
+        "blog": "Blog",
+        "about": "Sobre"
+    },
+    "home": {
+        "greeting": "Oi, eu sou Julio Vaz 👋",
+        "about": {
+            "experience": "Trabalho com desenvolvimento de software há 6 anos.",
+            "jobs": "Durante esses anos, trabalhei com diversas tecnologias, linguagens e frameworks. Pude adquirir experiência para liderar projetos e realizar entregas de qualidade.",
+            "focus": "Atualmente foco em arquitetura de software, CI/CD, testes e monitoramento. Trabalhar na formação de novos desenvolvedores na equipe, compartilhar e adquirir novos conhecimentos."
+        } 
+    },
+    "actions": {
+        "labels": {
+            "contact": "Entre em contato",
+            "posts": "Blog",
+            "see_more": "Veja mais",
+            "projects": "Projetos"
+        }
     }
 }

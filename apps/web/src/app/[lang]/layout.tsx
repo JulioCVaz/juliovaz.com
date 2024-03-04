@@ -24,13 +24,15 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { lang: Locale };
-}): JSX.Element {
+}): Promise<JSX.Element> {
+  const dictionary = await getDictionary(params.lang);
+
   return (
     <html lang={params.lang}>
       <body
@@ -39,7 +41,7 @@ export default function RootLayout({
         <Container>
           <Menu.Root>
             <Menu.Item icon="text" link={{ href: "/blog", target: "_self" }}>
-              Blog
+              {dictionary.menu.blog}
             </Menu.Item>
             <Menu.Item
               icon="file-text"
@@ -48,7 +50,7 @@ export default function RootLayout({
                 target: "_blank",
               }}
             >
-              Resume
+              {dictionary.menu.about}
             </Menu.Item>
           </Menu.Root>
           <main className="p-4">{children}</main>
