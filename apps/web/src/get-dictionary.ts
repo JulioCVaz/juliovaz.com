@@ -8,4 +8,6 @@ const dictionaries = {
     pt: () => import("./dictionaries/pt.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) => dictionaries[locale]();
+export const getDictionary = async (locale: Locale) => {
+    return locale === 'pt' ? dictionaries.pt() : dictionaries.en()
+};

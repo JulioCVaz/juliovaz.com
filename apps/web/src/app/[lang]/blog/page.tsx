@@ -2,7 +2,7 @@ import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 import Card from "../../../components/card";
 
-export default function Blog() {
+export default function Blog(): JSX.Element {
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.date), new Date(b.date));
   });
@@ -24,7 +24,6 @@ export default function Blog() {
           <Card.Footer>
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </Card.Footer>
-          {/* Jan 29, 2023 */}
         </Card.Base>
       ))}
     </div>

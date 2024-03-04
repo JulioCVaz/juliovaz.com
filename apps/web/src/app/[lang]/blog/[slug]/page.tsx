@@ -2,15 +2,11 @@ import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 
-export async function generateStaticParams(): { slug: string }[] {
+export function generateStaticParams(): { slug: string }[] {
   return allPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): {
+export function generateMetadata({ params }: { params: { slug: string } }): {
   title: string;
 } {
   const findPostBySlug = allPosts.find(

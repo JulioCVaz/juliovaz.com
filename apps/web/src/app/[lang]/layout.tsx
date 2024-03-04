@@ -12,7 +12,10 @@ export async function generateMetadata({
   params,
 }: {
   params: { lang: Locale };
-}) {
+}): Promise<{
+  title: string;
+  description: string;
+}> {
   const dictionary = await getDictionary(params.lang);
   return {
     title: dictionary.metadata.title,
@@ -20,7 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams(): { lang: string }[] {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 

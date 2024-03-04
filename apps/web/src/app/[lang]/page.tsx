@@ -11,7 +11,7 @@ export default async function Page({
   params: { lang },
 }: {
   params: { lang: Locale };
-}): JSX.Element {
+}): Promise<JSX.Element> {
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.date), new Date(b.date));
   });
@@ -43,7 +43,9 @@ export default async function Page({
       </section>
       {/* social media */}
       <section className="mb-8">
-        <h2 className="mb-4 text-2xl font-semibold">{dictionary.actions.labels.contact}</h2>
+        <h2 className="mb-4 text-2xl font-semibold">
+          {dictionary.actions.labels.contact}
+        </h2>
         <div className="flex space-x-4">
           <Link
             className="h-6 w-6"
@@ -90,7 +92,9 @@ export default async function Page({
       {/* blog */}
       <section className="mb-8">
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
-          <h2 className="text-2xl font-semibold">{dictionary.actions.labels.posts}</h2>
+          <h2 className="text-2xl font-semibold">
+            {dictionary.actions.labels.posts}
+          </h2>
           <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
             href="/blog"
@@ -120,7 +124,9 @@ export default async function Page({
       </section>
       <section>
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
-          <h2 className="text-2xl font-semibold">{dictionary.actions.labels.projects}</h2>
+          <h2 className="text-2xl font-semibold">
+            {dictionary.actions.labels.projects}
+          </h2>
           <Link
             className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
             href="/projetos"

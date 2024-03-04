@@ -6,7 +6,7 @@ export interface IconProps extends LucideProps {
   name: keyof typeof dynamicIconImports;
 }
 
-export function Icon({ name, ...props }: IconProps) {
+export function Icon({ name, ...props }: IconProps): JSX.Element {
   const LucideIcon = lazy(dynamicIconImports[name]);
 
   return (
