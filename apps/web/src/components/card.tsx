@@ -33,6 +33,7 @@ function CardImage({
 }: {
   src: string;
   alt: string;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents -- Necessary create a correct structure to card to not use "unknown" type
   [key: string]: Omit<ImageProps, "quality" | "style"> | unknown;
 }): JSX.Element {
   return (

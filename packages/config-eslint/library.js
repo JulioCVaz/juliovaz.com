@@ -11,6 +11,8 @@ const project = resolve(process.cwd(), "tsconfig.json");
  *
  */
 
+// implementation example: https://github.com/framesjs/frames.js/blob/c44320ffa2d9937f0f72dd1cb2e38ff85025bf2f/.eslintrc.js -  only applies to the package manager root.
+
 module.exports = {
   extends: [
     "@vercel/style-guide/eslint/node",
