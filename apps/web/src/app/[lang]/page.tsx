@@ -12,9 +12,11 @@ export default async function Page({
 }: {
   params: { lang: Locale };
 }): Promise<JSX.Element> {
-  const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.date), new Date(b.date));
-  });
+  const posts = allPosts
+    .sort((a, b) => {
+      return compareDesc(new Date(a.date), new Date(b.date));
+    })
+    .filter((post: Post) => post._id.includes(`/${lang}/`));
 
   const dictionary = await getDictionary(lang);
 
