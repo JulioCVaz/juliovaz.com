@@ -124,53 +124,6 @@ export default async function Page({
           ))}
         </div>
       </section>
-      <section>
-        <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
-          <h2 className="text-2xl font-semibold">
-            {dictionary.actions.labels.projects}
-          </h2>
-          <Link
-            className="mt-4 flex items-center space-x-2 text-sky-500 hover:underline sm:mt-0"
-            href="/projetos"
-          >
-            <span>{dictionary.actions.labels.see_more}</span>
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <Link
-            className="mb-2"
-            href="https://eteczonaleste.com.br/"
-            target="_blank"
-          >
-            <div className="group/item rounded-md bg-gray-700 p-4 transition duration-150 ease-out hover:bg-gray-600 hover:ease-in">
-              {/* add loader = https://nextjs.org/docs/app/api-reference/components/image#loader */}
-              <Image
-                alt="Project 1"
-                className="mb-2 h-48 w-full"
-                height={500}
-                quality={75}
-                src="https://d111erjd7vhu4f.cloudfront.net/project_etec_zl.png"
-                style={{
-                  aspectRatio: "100/100",
-                  objectFit: "cover",
-                }}
-                width={500}
-              />
-              <h3 className="mb-2 text-xl font-bold">
-                Etec Zona Leste - Site institucional
-              </h3>
-              <p className="mb-2">
-                Site institucional da escola tecnica Etec zona leste e
-                desenvolvimento de admin para gerar novos conteudos para o site.
-              </p>
-              <Icon
-                className="group/edit invisible h-6 w-6 text-sky-500 transition duration-150 ease-out hover:ease-in group-hover/item:visible"
-                name="arrow-right"
-              />
-            </div>
-          </Link>
-        </div>
-      </section>
     </>
   );
 }

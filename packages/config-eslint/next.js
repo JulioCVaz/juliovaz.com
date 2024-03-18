@@ -40,9 +40,15 @@ module.exports = {
   ignorePatterns: ["node_modules/", "dist/"],
   // add rules configurations here
   rules: {
-    "import/no-default-export": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-var-requires": "off",
+    "@next/next/no-html-link-for-pages": "off",
+    "import/no-default-export": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/no-var-requires": "warn",
+    "@typescript-eslint/no-unsafe-call": "warn",
+    "@typescript-eslint/no-unsafe-member-access": "warn",
+    "@typescript-eslint/no-unsafe-argument": "warn",
+    "@typescript-eslint/no-unsafe-return": "warn",
     "import/no-unresolved": [
       2,
       {
