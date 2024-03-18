@@ -1,6 +1,7 @@
 import "./globals.css";
 import "@westeros/ui/styles.css";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import Menu from "../../components/menu";
 import Container from "../../components/container";
 import { i18n, type Locale } from "../../i18n-config";
@@ -58,6 +59,7 @@ export default async function RootLayout({
           </Menu.Root>
           <main className="p-4">{children}</main>
         </Container>
+        <Analytics />
       </body>
     </html>
   );
