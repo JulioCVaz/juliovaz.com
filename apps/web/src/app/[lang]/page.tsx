@@ -4,8 +4,8 @@ import { Icon } from "@westeros/ui/icon";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, type Post } from "contentlayer/generated";
 import Card from "../../components/card";
-import type { Locale } from "../../i18n-config";
-import { getDictionary } from "../../get-dictionary";
+import type { Locale } from "../../lib/i18n-config";
+import { getDictionary } from "../../lib/get-dictionary";
 
 export default async function Page({
   params: { lang },

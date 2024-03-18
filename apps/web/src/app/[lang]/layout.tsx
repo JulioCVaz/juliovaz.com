@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Menu from "../../components/menu";
 import Container from "../../components/container";
-import { i18n, type Locale } from "../../i18n-config";
-import { getDictionary } from "../../get-dictionary";
+import { i18n, type Locale } from "../../lib/i18n-config";
+import { getDictionary } from "../../lib/get-dictionary";
 
 const inter = Inter({ subsets: ["latin"] });
 
