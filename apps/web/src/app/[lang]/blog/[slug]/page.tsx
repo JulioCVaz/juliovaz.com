@@ -1,5 +1,6 @@
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
+import { notFound } from "next/navigation";
 import { allPosts, type Post } from "contentlayer/generated";
 
 export function generateStaticParams(): { slug: string }[] {
@@ -30,11 +31,7 @@ export default function PostPage({
   });
 
   if (!findPostBySlug) {
-    return (
-      <div>
-        <h1>Post not found</h1>
-      </div>
-    );
+    notFound();
   }
 
   const Content = getMDXComponent(findPostBySlug.body.code);
