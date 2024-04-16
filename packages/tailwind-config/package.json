@@ -1,0 +1,16 @@
+{
+  "name": "@westeros/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./tailwind.config.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@westeros/typescript-config": "workspace:*",
+    "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.10"
+  }
+}
