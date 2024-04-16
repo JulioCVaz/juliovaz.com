@@ -39,3 +39,5 @@ export const getPostBySlug = (slug: string) => allPosts.find(
 );
 
 export const getPostDate = (post: Post) => format(parseISO(post.date), dateFormat)
+
+export const posts = allPosts

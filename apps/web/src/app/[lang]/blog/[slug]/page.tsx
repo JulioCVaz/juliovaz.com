@@ -1,18 +1,19 @@
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { notFound } from "next/navigation";
-import { allPosts, type Post } from "contentlayer/generated";
+import {
+  getPostBySlug,
+  posts,
+} from "../../../../lib/get-posts";
 
 export function generateStaticParams(): { slug: string }[] {
-  return allPosts.map((post) => ({ slug: post.slug }));
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): {
   title: string;
 } {
-  const findPostBySlug = allPosts.find(
-    (post: Post) => post.slug === params.slug,
-  );
+  const findPostBySlug = getPostBySlug(params.slug);
 
   if (!findPostBySlug) {
     return { title: "Post not found by slug" };
@@ -26,9 +27,7 @@ export default function PostPage({
 }: {
   params: { slug: string };
 }): JSX.Element {
-  const findPostBySlug = allPosts.find((post) => {
-    return post.slug === params.slug;
-  });
+  const findPostBySlug = getPostBySlug(params.slug);
 
   if (!findPostBySlug) {
     notFound();
