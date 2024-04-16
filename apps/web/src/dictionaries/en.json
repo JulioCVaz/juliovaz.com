@@ -21,5 +21,10 @@
       "posts": "Posts",
       "see_more": "See more"
     }
+  },
+  "not_found": {
+    "alert": "404 Not found",
+    "description": "Could not find request resource",
+    "go_home": "Return Home"
   }
 }

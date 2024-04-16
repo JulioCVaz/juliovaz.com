@@ -1,23 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@westeros/ui/icon";
-import { compareDesc, format, parseISO } from "date-fns";
-import { allPosts, type Post } from "contentlayer/generated";
+import { format, parseISO } from "date-fns";
 import Card from "../../components/card";
-import type { Locale } from "../../i18n-config";
-import { getDictionary } from "../../get-dictionary";
+import type { Locale } from "../../lib/i18n-config";
+import { getDictionary } from "../../lib/get-dictionary";
+import { getPosts, type Post } from "../../lib/get-posts";
 
 export default async function Page({
   params: { lang },
 }: {
   params: { lang: Locale };
 }): Promise<JSX.Element> {
-  const posts = allPosts
-    .sort((a, b) => {
-      return compareDesc(new Date(a.date), new Date(b.date));
-    })
-    .filter((post: Post) => post._id.includes(`/${lang}/`));
-
+  const posts = await getPosts(lang);
   const dictionary = await getDictionary(lang);
 
   return (

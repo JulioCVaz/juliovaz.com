@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
-import { i18n } from './i18n-config'
+import { i18n } from './lib/i18n-config'
 
 const i18nConfig = {
     locales: ['en', 'pt'],
@@ -46,6 +46,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    // Matcher ignoring `/_next/` and `/api/`
+    //TODO: fix this Matcher ignoring `/_next/` and `/api/`
     matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

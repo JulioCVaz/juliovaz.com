@@ -21,5 +21,10 @@
       "posts": "Blog",
       "see_more": "Veja mais"
     }
+  },
+  "not_found": {
+    "alert": "404 Não encontrado",
+    "description": "Nao foi possivel acessar o recurso",
+    "go_home": "Página inicial"
   }
 }

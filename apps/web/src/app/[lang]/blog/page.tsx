@@ -1,18 +1,14 @@
-import { compareDesc, format, parseISO } from "date-fns";
-import { allPosts, type Post } from "contentlayer/generated";
+import { format, parseISO } from "date-fns";
+import { getPosts, type Post } from "../../../lib/get-posts";
 import Card from "../../../components/card";
-import type { Locale } from "../../../i18n-config";
+import type { Locale } from "../../../lib/i18n-config";
 
-export default function Blog({
+export default async function Blog({
   params: { lang },
 }: {
   params: { lang: Locale };
-}): JSX.Element {
-  const posts = allPosts
-    .sort((a, b) => {
-      return compareDesc(new Date(a.date), new Date(b.date));
-    })
-    .filter((post: Post) => post._id.includes(`/${lang}/`));
+}): Promise<JSX.Element> {
+  const posts = await getPosts(lang);
 
   return (
     <div className="grid grid-cols-1 gap-4">
