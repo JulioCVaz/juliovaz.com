@@ -1,10 +1,7 @@
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { notFound } from "next/navigation";
-import {
-  getPostBySlug,
-  posts,
-} from "../../../../lib/get-posts";
+import { getPostBySlug, posts } from "../../../../lib/get-posts";
 
 export function generateStaticParams(): { slug: string }[] {
   return posts.map((post) => ({ slug: post.slug }));

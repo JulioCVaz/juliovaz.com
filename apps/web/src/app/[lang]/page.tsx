@@ -1,19 +1,53 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@westeros/ui/icon";
-import { format, parseISO } from "date-fns";
-import Card from "../../components/card";
+// import { format, parseISO } from "date-fns";
+// import Card from "../../components/card";
+import { MDXRemote, compileMDX } from "next-mdx-remote/rsc";
+import ReactMarkdown from "react-markdown";
+// import { getDictionary } from "../../lib/get-dictionary";
+// import { getPosts, type Post } from "../../lib/get-posts";
+import rehypeRaw from "rehype-raw";
+import remarkMdx from "remark-mdx";
+import remarkBreaks from "remark-breaks";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import rehypeCodeTitles from "rehype-code-titles";
+import { getPosts } from "../../lib/get-posts-v2";
 import type { Locale } from "../../lib/i18n-config";
-import { getDictionary } from "../../lib/get-dictionary";
-import { getPosts, type Post } from "../../lib/get-posts";
+
+async function getAllPosts() {
+  const data = await getPosts();
+  const response = data;
+
+  // if (!data.results.length) {
+  //   console.log("Error to fetch all posts", data.results);
+  // }
+
+  return response;
+}
 
 export default async function Page({
   params: { lang },
 }: {
   params: { lang: Locale };
 }): Promise<JSX.Element> {
-  const posts = await getPosts(lang);
-  const dictionary = await getDictionary(lang);
+  // const posts = await getPosts(lang);
+  // const dictionary = await getDictionary(lang);
+
+  const data = await getAllPosts();
+
+  console.log({ data });
+
+  const { content } = await compileMDX({
+    source: data,
+  });
 
   return (
     <>
@@ -30,19 +64,19 @@ export default async function Page({
         </div>
         {/* about */}
         <div className="w-full">
-          <h1 className="mb-2 text-3xl font-bold">
+          {/* <h1 className="mb-2 text-3xl font-bold">
             {dictionary.home.greeting}
           </h1>
           <p className="mb-4">{dictionary.home.about.experience}</p>
           <p className="mb-4">{dictionary.home.about.jobs}</p>
-          <p className="mb-4">{dictionary.home.about.focus}</p>
+          <p className="mb-4">{dictionary.home.about.focus}</p> */}
         </div>
       </section>
       {/* social media */}
       <section className="mb-8">
-        <h2 className="mb-4 text-2xl font-semibold">
+        {/* <h2 className="mb-4 text-2xl font-semibold">
           {dictionary.actions.labels.contact}
-        </h2>
+        </h2> */}
         <div className="flex space-x-4">
           <Link
             className="h-6 w-6"
@@ -89,7 +123,7 @@ export default async function Page({
       {/* blog */}
       <section className="mb-8">
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
-          <h2 className="text-2xl font-semibold">
+          {/* <h2 className="text-2xl font-semibold">
             {dictionary.actions.labels.posts}
           </h2>
           <Link
@@ -97,9 +131,9 @@ export default async function Page({
             href="/blog"
           >
             <span>{dictionary.actions.labels.see_more}</span>
-          </Link>
+          </Link> */}
         </div>
-        <div className="grid grid-cols-1 gap-4">
+        {/* <div className="grid grid-cols-1 gap-4">
           {posts.map((post: Post) => (
             <Card.Base
               extended
@@ -117,7 +151,110 @@ export default async function Page({
               </Card.Footer>
             </Card.Base>
           ))}
-        </div>
+        </div> */}
+        <ReactMarkdown
+          // parserOptions={{ commonmark: true }}
+          // rehypePlugins={[rehypeRaw]}
+          // remarkPlugins={[remarkBreaks]}
+          className="line-break"
+          // rehypePlugins={[
+          //   rehypeSlug, // For generating slugs for headings
+          //   [
+          //     rehypeAutolinkHeadings,
+          //     {
+          //       properties: {
+          //         className: ["anchor"],
+          //       },
+          //     },
+          //   ],
+          //   rehypeCodeTitles,
+          //   [
+          //     rehypePrettyCode,
+          //     {
+          //       theme: "ayu-dark",
+          //       onVisitHighlightedLine(node) {
+          //         if (node.properties.className) {
+          //           const nodeClass = node.properties.className;
+          //           nodeClass.push("line--highlighted");
+          //         } else {
+          //           node.properties = {
+          //             className: ["line--highlighted"],
+          //           };
+          //         }
+          //       },
+          //     },
+          //   ],
+          // ]}
+          remarkPlugins={[
+            // remarkParse,
+            // remarkBreaks,
+            // remarkRehype,
+            // rehypeStringify,
+            remarkGfm,
+            // ,
+            // // ,
+
+            // remarkMdx,
+          ]}
+        >
+          {/* @FIX: https://github.com/remarkjs/react-markdown/issues/273#issuecomment-683754992 */}
+          {data}
+        </ReactMarkdown>
+        <React.Suspense fallback={<>Loading...</>}>
+          <MDXRemote
+            // SOLVE PROBLEM TO IGNORE /N https://stackoverflow.com/a/76972651
+            options={{
+              // parseFrontmatter: true,
+              mdxOptions: {
+                remarkPlugins: [
+                  // remarkParse,
+                  // remarkBreaks,
+                  // remarkRehype,
+                  // rehypeStringify,
+                  remarkGfm,
+                  // ,
+                  // // ,
+
+                  // remarkMdx,
+                ],
+                rehypePlugins: [
+                  rehypeRaw,
+                  rehypeSlug, // For generating slugs for headings
+                  [
+                    rehypeAutolinkHeadings,
+                    {
+                      properties: {
+                        className: ["anchor"],
+                      },
+                    },
+                  ],
+                  rehypeCodeTitles,
+                  [
+                    rehypePrettyCode,
+                    {
+                      theme: "ayu-dark",
+                      onVisitHighlightedLine(node) {
+                        if (node.properties.className) {
+                          const nodeClass = node.properties.className;
+                          nodeClass.push("line--highlighted");
+                        } else {
+                          node.properties = {
+                            className: ["line--highlighted"],
+                          };
+                        }
+                      },
+                    },
+                  ],
+                ],
+                format: "mdx",
+              },
+            }}
+            // https://github.com/remarkjs/react-markdown/issues/278
+            // https://github.com/remarkjs/react-markdown/issues/278#issuecomment-1765161662
+            source={data.replace(/(?<=\n\n)(?![*-])\n/gi, "&nbsp;\n ")}
+          />
+        </React.Suspense>
+        {/* {content} */}
       </section>
     </>
   );

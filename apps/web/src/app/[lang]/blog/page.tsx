@@ -1,6 +1,6 @@
-import { format, parseISO } from "date-fns";
-import { getPosts, type Post } from "../../../lib/get-posts";
-import Card from "../../../components/card";
+// import { format, parseISO } from "date-fns";
+// import { getPosts, type Post } from "../../../lib/get-posts";
+// import Card from "../../../components/card";
 import type { Locale } from "../../../lib/i18n-config";
 
 export default async function Blog({
@@ -8,11 +8,11 @@ export default async function Blog({
 }: {
   params: { lang: Locale };
 }): Promise<JSX.Element> {
-  const posts = await getPosts(lang);
+  // const posts = await getPosts(lang);
 
   return (
     <div className="grid grid-cols-1 gap-4">
-      {posts.map((post: Post) => (
+      {/* {posts.map((post: Post) => (
         <Card.Base
           extended
           key={post._id}
@@ -28,7 +28,7 @@ export default async function Blog({
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </Card.Footer>
         </Card.Base>
-      ))}
+      ))} */}
     </div>
   );
 }

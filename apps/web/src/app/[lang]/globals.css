@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.line-break {
+  white-space: pre-wrap;
+}
+
 .rehype-code-title {
   margin-bottom: -0.6rem;
   padding: 0.5em 1em;

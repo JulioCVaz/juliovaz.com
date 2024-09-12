@@ -1,16 +1,9 @@
-import createMDX from "@next/mdx";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import rehypeCodeTitles from "rehype-code-titles";
-import remarkGfm from "remark-gfm";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
-  transpilePackages: ["lucide-react", "@westeros/ui"],
+  transpilePackages: ["lucide-react", "@westeros/ui", "next-mdx-remote"],
   async redirects() {
     return [
       {
@@ -34,36 +27,4 @@ const nextConfig = {
   },
 };
 
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      rehypeSlug, // For generating slugs for headings
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: {
-            className: ["anchor"],
-          },
-        },
-      ],
-      rehypeCodeTitles,
-      [
-        rehypePrettyCode,
-        {
-          theme: "ayu-dark",
-          onVisitHighlightedLine(node) {
-            if (node.properties.className) {
-              const nodeClass = node.properties.className;
-              nodeClass.push("line--highlighted");
-            } else {
-              node.properties = { className: ["line--highlighted"] };
-            }
-          },
-        },
-      ],
-    ],
-  },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;
