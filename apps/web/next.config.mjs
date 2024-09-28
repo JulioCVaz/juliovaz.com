@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
-  transpilePackages: ["lucide-react", "@westeros/ui", "next-mdx-remote"],
+  transpilePackages: ["lucide-react", "@westeros/ui"],
   async redirects() {
     return [
       {

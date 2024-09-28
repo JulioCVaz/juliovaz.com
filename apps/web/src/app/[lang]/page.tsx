@@ -1,53 +1,38 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Icon } from "@westeros/ui/icon";
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Icon } from '@westeros/ui/icon'
 // import { format, parseISO } from "date-fns";
 // import Card from "../../components/card";
-import { MDXRemote, compileMDX } from "next-mdx-remote/rsc";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from 'react-markdown'
 // import { getDictionary } from "../../lib/get-dictionary";
 // import { getPosts, type Post } from "../../lib/get-posts";
-import rehypeRaw from "rehype-raw";
-import remarkMdx from "remark-mdx";
-import remarkBreaks from "remark-breaks";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import remarkGfm from "remark-gfm";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import rehypeCodeTitles from "rehype-code-titles";
-import { getPosts } from "../../lib/get-posts-v2";
-import type { Locale } from "../../lib/i18n-config";
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { getPosts } from '../../lib/get-posts-v2'
+import type { Locale } from '../../lib/i18n-config'
 
 async function getAllPosts() {
-  const data = await getPosts();
-  const response = data;
+  const data = await getPosts()
+  const response = data
 
   // if (!data.results.length) {
   //   console.log("Error to fetch all posts", data.results);
   // }
 
-  return response;
+  return response
 }
 
 export default async function Page({
   params: { lang },
 }: {
-  params: { lang: Locale };
+  params: { lang: Locale }
 }): Promise<JSX.Element> {
   // const posts = await getPosts(lang);
   // const dictionary = await getDictionary(lang);
 
-  const data = await getAllPosts();
-
-  console.log({ data });
-
-  const { content } = await compileMDX({
-    source: data,
-  });
+  const data = await getAllPosts()
 
   return (
     <>
@@ -153,109 +138,29 @@ export default async function Page({
           ))}
         </div> */}
         <ReactMarkdown
-          // parserOptions={{ commonmark: true }}
-          // rehypePlugins={[rehypeRaw]}
-          // remarkPlugins={[remarkBreaks]}
+          children={data}
           className="line-break"
-          // rehypePlugins={[
-          //   rehypeSlug, // For generating slugs for headings
-          //   [
-          //     rehypeAutolinkHeadings,
-          //     {
-          //       properties: {
-          //         className: ["anchor"],
-          //       },
-          //     },
-          //   ],
-          //   rehypeCodeTitles,
-          //   [
-          //     rehypePrettyCode,
-          //     {
-          //       theme: "ayu-dark",
-          //       onVisitHighlightedLine(node) {
-          //         if (node.properties.className) {
-          //           const nodeClass = node.properties.className;
-          //           nodeClass.push("line--highlighted");
-          //         } else {
-          //           node.properties = {
-          //             className: ["line--highlighted"],
-          //           };
-          //         }
-          //       },
-          //     },
-          //   ],
-          // ]}
-          remarkPlugins={[
-            // remarkParse,
-            // remarkBreaks,
-            // remarkRehype,
-            // rehypeStringify,
-            remarkGfm,
-            // ,
-            // // ,
-
-            // remarkMdx,
-          ]}
-        >
-          {/* @FIX: https://github.com/remarkjs/react-markdown/issues/273#issuecomment-683754992 */}
-          {data}
-        </ReactMarkdown>
-        <React.Suspense fallback={<>Loading...</>}>
-          <MDXRemote
-            // SOLVE PROBLEM TO IGNORE /N https://stackoverflow.com/a/76972651
-            options={{
-              // parseFrontmatter: true,
-              mdxOptions: {
-                remarkPlugins: [
-                  // remarkParse,
-                  // remarkBreaks,
-                  // remarkRehype,
-                  // rehypeStringify,
-                  remarkGfm,
-                  // ,
-                  // // ,
-
-                  // remarkMdx,
-                ],
-                rehypePlugins: [
-                  rehypeRaw,
-                  rehypeSlug, // For generating slugs for headings
-                  [
-                    rehypeAutolinkHeadings,
-                    {
-                      properties: {
-                        className: ["anchor"],
-                      },
-                    },
-                  ],
-                  rehypeCodeTitles,
-                  [
-                    rehypePrettyCode,
-                    {
-                      theme: "ayu-dark",
-                      onVisitHighlightedLine(node) {
-                        if (node.properties.className) {
-                          const nodeClass = node.properties.className;
-                          nodeClass.push("line--highlighted");
-                        } else {
-                          node.properties = {
-                            className: ["line--highlighted"],
-                          };
-                        }
-                      },
-                    },
-                  ],
-                ],
-                format: "mdx",
-              },
-            }}
-            // https://github.com/remarkjs/react-markdown/issues/278
-            // https://github.com/remarkjs/react-markdown/issues/278#issuecomment-1765161662
-            source={data.replace(/(?<=\n\n)(?![*-])\n/gi, "&nbsp;\n ")}
-          />
-        </React.Suspense>
-        {/* {content} */}
+          components={{
+            code(props) {
+              const { children, className, node, ...rest } = props
+              const match = /language-(?:\w+)/.exec(className || '')
+              return match ? (
+                <SyntaxHighlighter
+                  {...rest}
+                  PreTag="div"
+                  children={String(children).replace(/\n$/, '')}
+                  language={match[0].split('language-')[1]}
+                  style={tomorrow}
+                />
+              ) : (
+                <code {...rest} className={className}>
+                  {children}
+                </code>
+              )
+            },
+          }}
+        />
       </section>
     </>
-  );
+  )
 }
