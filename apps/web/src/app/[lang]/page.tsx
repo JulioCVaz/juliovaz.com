@@ -2,26 +2,24 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Icon } from '@westeros/ui/icon'
-// import { format, parseISO } from "date-fns";
-// import Card from "../../components/card";
+import { format, parseISO } from "date-fns";
+import Card from "../../components/card";
 import ReactMarkdown from 'react-markdown'
-// import { getDictionary } from "../../lib/get-dictionary";
-// import { getPosts, type Post } from "../../lib/get-posts";
+import { getDictionary } from "../../lib/get-dictionary";
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { getPosts } from '../../lib/get-posts-v2'
+import { getPosts } from '../../lib/get-posts'
 import type { Locale } from '../../lib/i18n-config'
 
-async function getAllPosts() {
-  const data = await getPosts()
-  const response = data
+async function getAllPosts(lang: 'en' | 'pt') {
+  const data = await getPosts(lang)
+  if (data && data.length < 1) {
+  // @todo: create a message to describe is not possible to list posts
+    console.log("Error to fetch all posts", data);
+  }
 
-  // if (!data.results.length) {
-  //   console.log("Error to fetch all posts", data.results);
-  // }
-
-  return response
+  return data
 }
 
 export default async function Page({
@@ -30,9 +28,8 @@ export default async function Page({
   params: { lang: Locale }
 }): Promise<JSX.Element> {
   // const posts = await getPosts(lang);
-  // const dictionary = await getDictionary(lang);
-
-  const data = await getAllPosts()
+  const dictionary = await getDictionary(lang);
+  const posts = await getAllPosts(lang)
 
   return (
     <>
@@ -49,19 +46,19 @@ export default async function Page({
         </div>
         {/* about */}
         <div className="w-full">
-          {/* <h1 className="mb-2 text-3xl font-bold">
+          <h1 className="mb-2 text-3xl font-bold">
             {dictionary.home.greeting}
           </h1>
           <p className="mb-4">{dictionary.home.about.experience}</p>
           <p className="mb-4">{dictionary.home.about.jobs}</p>
-          <p className="mb-4">{dictionary.home.about.focus}</p> */}
+          <p className="mb-4">{dictionary.home.about.focus}</p>
         </div>
       </section>
       {/* social media */}
       <section className="mb-8">
-        {/* <h2 className="mb-4 text-2xl font-semibold">
+        <h2 className="mb-4 text-2xl font-semibold">
           {dictionary.actions.labels.contact}
-        </h2> */}
+        </h2>
         <div className="flex space-x-4">
           <Link
             className="h-6 w-6"
@@ -108,7 +105,7 @@ export default async function Page({
       {/* blog */}
       <section className="mb-8">
         <div className="mb-4 flex flex-col items-center justify-between sm:flex-row">
-          {/* <h2 className="text-2xl font-semibold">
+          <h2 className="text-2xl font-semibold">
             {dictionary.actions.labels.posts}
           </h2>
           <Link
@@ -116,15 +113,16 @@ export default async function Page({
             href="/blog"
           >
             <span>{dictionary.actions.labels.see_more}</span>
-          </Link> */}
+          </Link>
         </div>
-        {/* <div className="grid grid-cols-1 gap-4">
-          {posts.map((post: Post) => (
+        <div className="grid grid-cols-1 gap-4">
+          {/* @todo: create type for posts */}
+          {posts?.map((post: any) => (
             <Card.Base
               extended
-              key={post._id}
+              key={post.id}
               link={{
-                href: `/blog/${post.slug}`,
+                href: `/blog/${post.id}`,
                 target: "_self",
               }}
               linkable
@@ -132,12 +130,14 @@ export default async function Page({
               <Card.Title>{post.title}</Card.Title>
               <Card.Body>{post.description}</Card.Body>
               <Card.Footer>
-                {format(parseISO(post.date), "LLLL d, yyyy")}
+                {format(parseISO(post.created_at), "LLLL d, yyyy")}
               </Card.Footer>
             </Card.Base>
           ))}
-        </div> */}
-        <ReactMarkdown
+        </div>
+
+        {/* @NOTE: to render posts */}
+        {/* <ReactMarkdown
           children={data}
           className="line-break"
           components={{
@@ -159,7 +159,7 @@ export default async function Page({
               )
             },
           }}
-        />
+        /> */}
       </section>
     </>
   )
