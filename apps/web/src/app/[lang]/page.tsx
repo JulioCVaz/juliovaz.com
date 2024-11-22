@@ -4,11 +4,8 @@ import Image from 'next/image'
 import { Icon } from '@westeros/ui/icon'
 import { format, parseISO } from "date-fns";
 import Card from "../../components/card";
-import ReactMarkdown from 'react-markdown'
 import { getDictionary } from "../../lib/get-dictionary";
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { getPosts } from '../../lib/get-posts'
 import type { Locale } from '../../lib/i18n-config'
 
@@ -136,30 +133,7 @@ export default async function Page({
           ))}
         </div>
 
-        {/* @NOTE: to render posts */}
-        {/* <ReactMarkdown
-          children={data}
-          className="line-break"
-          components={{
-            code(props) {
-              const { children, className, node, ...rest } = props
-              const match = /language-(?:\w+)/.exec(className || '')
-              return match ? (
-                <SyntaxHighlighter
-                  {...rest}
-                  PreTag="div"
-                  children={String(children).replace(/\n$/, '')}
-                  language={match[0].split('language-')[1]}
-                  style={tomorrow}
-                />
-              ) : (
-                <code {...rest} className={className}>
-                  {children}
-                </code>
-              )
-            },
-          }}
-        /> */}
+        
       </section>
     </>
   )

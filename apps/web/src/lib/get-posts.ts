@@ -27,6 +27,7 @@ type ParsedPage = {
 };
 
 export const getPosts = async (locale: Locale = 'pt') => {
+  console.log({ locale })
   const parsePage = (page: Record<string, any>): ParsedPage => ({
     title: page.properties['Title']?.title?.[0]?.plain_text,
     description: page.properties['Description']?.rich_text?.[0]?.plain_text,
@@ -71,6 +72,7 @@ export const getPosts = async (locale: Locale = 'pt') => {
       })
     }
 
+    console.log({ list })
     return list
 
   } catch (e) {
@@ -81,11 +83,10 @@ export const getPosts = async (locale: Locale = 'pt') => {
 
 
 // @note: get post content
-export const getPost = () => {
-
-// const { results } = await notion.blocks.children.list({ block_id: post.id })
-// const x = await n2m.blocksToMarkdown(results)
-    // const mdString = n2m.toMarkdownString(x)
-
-    // return mdString.parent
+export const getPost = async (postId: string) => {
+  console.log({ postId })
+  const { results } = await notion.blocks.children.list({ block_id: postId })
+  const x = await n2m.blocksToMarkdown(results)
+  const mdString = n2m.toMarkdownString(x)
+  return mdString.parent
 }
