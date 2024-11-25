@@ -20,6 +20,8 @@ import ReactMarkdown from 'react-markdown'
 //   return { title: findPostBySlug.title };
 // }
 
+export const revalidate = 3600
+
 export default async function PostPage({
   params,
 }: {

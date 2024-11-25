@@ -9,6 +9,8 @@ import { getDictionary } from "../../lib/get-dictionary";
 import { getPosts } from '../../lib/get-posts'
 import type { Locale } from '../../lib/i18n-config'
 
+export const revalidate = 0
+
 async function getAllPosts(lang: 'en' | 'pt') {
   const data = await getPosts(lang)
   if (data && data.length < 1) {
