@@ -9,6 +9,8 @@ import { getDictionary } from "../../lib/get-dictionary";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const fetchCache = 'default-no-store'
+
 export async function generateMetadata({
   params,
 }: {
