@@ -26,14 +26,13 @@ type ParsedPage = {
   created_at: string | undefined;
 };
 
-export const getPosts = async (locale: Locale = 'pt') => {
-  console.log({ locale })
-  const parsePage = (page: Record<string, any>): ParsedPage => ({
-    title: page.properties['Title']?.title?.[0]?.plain_text,
-    description: page.properties['Description']?.rich_text?.[0]?.plain_text,
-    created_at: page.properties['Created Date']?.created_time,
-  });
+const parsePage = (page: Record<string, any>): ParsedPage => ({
+  title: page.properties['Title']?.title?.[0]?.plain_text,
+  description: page.properties['Description']?.rich_text?.[0]?.plain_text,
+  created_at: page.properties['Created Date']?.created_time,
+});
 
+export const getPosts = async (locale: Locale = 'pt') => {
   try {
     const posts = await notion.databases.query({
       database_id: NOTION_CONFIG[locale].database_id,
@@ -71,8 +70,6 @@ export const getPosts = async (locale: Locale = 'pt') => {
         ...parsePage(page)
       })
     }
-
-    console.log({ list })
     return list
 
   } catch (e) {
@@ -84,9 +81,15 @@ export const getPosts = async (locale: Locale = 'pt') => {
 
 // @note: get post content
 export const getPost = async (postId: string) => {
-  console.log({ postId })
+  const response = await notion.pages.retrieve({ page_id: postId })
+  const parsedResponse = parsePage(response)
+
   const { results } = await notion.blocks.children.list({ block_id: postId })
   const x = await n2m.blocksToMarkdown(results)
   const mdString = n2m.toMarkdownString(x)
-  return mdString.parent
+  return {
+    title: parsedResponse.title,
+    date: parsedResponse.created_at,
+    content: mdString.parent
+  }
 }

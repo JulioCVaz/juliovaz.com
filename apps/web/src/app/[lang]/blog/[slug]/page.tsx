@@ -25,9 +25,7 @@ export default async function PostPage({
 }: {
   params: { slug: string };
 }): Promise<JSX.Element> {
-  console.log({ params })
   const findPostBySlug = await getPost(params.slug);
-  console.log({ findPostBySlug })
 
   if (!findPostBySlug) {
     notFound();
@@ -36,14 +34,14 @@ export default async function PostPage({
   return (
     <div className="mb-8 mt-8">
       <div className="mb-6">
-        {/* <h1 className="mb-2 text-3xl font-bold">{findPostBySlug.title}</h1>
+        <h1 className="mb-2 text-3xl font-bold">{findPostBySlug.title}</h1>
         <time className="text-xs text-gray-600" dateTime={findPostBySlug.date}>
-          {format(parseISO(findPostBySlug.date), "LLLL d, yyyy")}
-        </time> */}
+          {format(parseISO(findPostBySlug.date!), "LLLL d, yyyy")}
+        </time>
       </div>
       <article className="prose prose-invert max-w-none">
         <ReactMarkdown
-          children={findPostBySlug}
+          children={findPostBySlug.content}
           components={{
             code(props) {
               const { children, className, node, ...rest } = props
