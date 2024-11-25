@@ -1,59 +1,56 @@
-const { resolve } = require("node:path");
-
-const project = resolve(process.cwd(), "tsconfig.json");
-
-/*
- * This is a custom ESLint configuration for use with
- * Next.js apps.
- *
- * This config extends the Vercel Engineering Style Guide.
- * For more information, see https://github.com/vercel/style-guide
- *
- */
-
 module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true,
+  },
   extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/react",
-    "@vercel/style-guide/eslint/next",
-    "eslint-config-turbo",
-  ].map(require.resolve),
+    "standard",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+  ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    project,
-  },
-  globals: {
-    React: true,
-    JSX: true,
-  },
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project,
-      },
-      node: {
-        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
-      },
+    ecmaFeatures: {
+      jsx: true,
     },
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  ignorePatterns: ["node_modules/", "dist/"],
-  // add rules configurations here
+  plugins: ["jsx-a11y", "@typescript-eslint"],
   rules: {
-    "@next/next/no-html-link-for-pages": "off",
-    "import/no-default-export": "warn",
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/no-unsafe-assignment": "warn",
-    "@typescript-eslint/no-var-requires": "warn",
-    "@typescript-eslint/no-unsafe-call": "warn",
-    "@typescript-eslint/no-unsafe-member-access": "warn",
-    "@typescript-eslint/no-unsafe-argument": "warn",
-    "@typescript-eslint/no-unsafe-return": "warn",
-    "import/no-unresolved": [
-      2,
+    "prettier/prettier": [
+      "error",
       {
-        ignore: ["contentlayer/generated", "next-contentlayer/hooks"],
+        printWidth: 80,
+        tabWidth: 2,
+        singleQuote: true,
+        trailingComma: "all",
+        arrowParens: "always",
+        semi: false,
+        endOfLine: "auto",
       },
     ],
+    "jsx-a11y/alt-text": [
+      "warn",
+      {
+        elements: ["img"],
+        img: ["Image"],
+      },
+    ],
+    "jsx-a11y/aria-props": "warn",
+    "jsx-a11y/aria-proptypes": "warn",
+    "jsx-a11y/aria-unsupported-elements": "warn",
+    "jsx-a11y/role-has-required-aria-props": "warn",
+    "jsx-a11y/role-supports-aria-props": "warn",
+    "react/no-unknown-property": "error",
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
+    "import/parsers": {
+      [require.resolve("@typescript-eslint/parser")]: [".ts", ".tsx", ".d.ts"],
+    },
   },
 };

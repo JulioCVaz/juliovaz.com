@@ -1,9 +1,8 @@
-const { withContentlayer } = require("next-contentlayer");
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   transpilePackages: ["lucide-react", "@westeros/ui"],
   async redirects() {
     return [
@@ -28,4 +27,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+export default nextConfig;

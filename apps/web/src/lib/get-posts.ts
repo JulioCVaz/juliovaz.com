@@ -1,43 +1,95 @@
-// import { Functional } from "@westeros/sdk"
-import { compareAsc, compareDesc, format, parseISO } from "date-fns";
-import { allPosts, type Post as ContentLayerPost } from "contentlayer/generated";
+import { Client, isFullPageOrDatabase } from '@notionhq/client'
+import { NotionToMarkdown } from 'notion-to-md'
 
-// utils
-const dateFormat = "LLLL d, yyyy"
+const NOTION_CONFIG = {
+  secret: 'secret_Bsj0GoBK8c5qDxSfka889FbOtgVbwqJcm5MWKqKNaoK',
+  pt: { database_id: '1172cb4e5fa680daa157c548c3cf3a20' },
+  en: { database_id: '1172cb4e5fa68072809fe8e22f11fcb8' },
+};
 
-type PostsOrder = "desc" | "asc"
+const notion = new Client({ auth: NOTION_CONFIG.secret })
 
-export type Post = ContentLayerPost
-
-const filterPostsByLang = (lang: string): Post[] => {
-    return allPosts.filter((post: Post) => post._id.includes(`/${lang}/`))
-}
-
-const sortPostByOrder = (posts: Post[], order: string): Post[] => {
-    if (order === 'desc') {
-        return posts.sort((a, b) => {
-            return compareDesc(new Date(a.date), new Date(b.date))
-
-        })
-    }
-
-    return posts.sort((a, b) => {
-        return compareAsc(new Date(a.date), new Date(b.date));
-    })
-
-}
-
-// TODO: apply functional programming
-export const getPosts = (lang: string, order: PostsOrder = 'desc'): Promise<Post[]> => new Promise((resolve) => {
-    const filteredPosts = filterPostsByLang(lang)
-    const sortedPosts = sortPostByOrder(filteredPosts, order)
-    resolve(sortedPosts)
+const n2m = new NotionToMarkdown({
+  notionClient: notion,
+  config: {
+    separateChildPage: true, // default: false
+    parseChildPages: false,
+  },
 })
 
-export const getPostBySlug = (slug: string) => allPosts.find(
-    (post: Post) => post.slug === slug,
-);
+type Locale = 'pt' | 'en'
 
-export const getPostDate = (post: Post) => format(parseISO(post.date), dateFormat)
 
-export const posts = allPosts
+type ParsedPage = {
+  title: string | undefined;
+  description: string | undefined;
+  created_at: string | undefined;
+};
+
+const parsePage = (page: Record<string, any>): ParsedPage => ({
+  title: page.properties['Title']?.title?.[0]?.plain_text,
+  description: page.properties['Description']?.rich_text?.[0]?.plain_text,
+  created_at: page.properties['Created Date']?.created_time,
+});
+
+export const getPosts = async (locale: Locale = 'pt') => {
+  try {
+    const posts = await notion.databases.query({
+      database_id: NOTION_CONFIG[locale].database_id,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Done',
+            },
+          },
+          {
+            property: 'Select',
+            select: {
+              equals: 'Publishable',
+            },
+          },
+        ],
+      },
+    })
+
+    if (posts.results.length < 1) {
+      return posts.results
+    }
+
+    const list = []
+
+    for (const page of posts.results) {
+      if (!isFullPageOrDatabase(page)) {
+        continue
+      }
+
+      list.push({
+        id: page.id,
+        ...parsePage(page)
+      })
+    }
+    return list
+
+  } catch (e) {
+    // @todo: redirect to a 500 page error
+    console.error(e)
+  }
+}
+
+
+// @note: get post content
+export const getPost = async (postId: string) => {
+  const response = await notion.pages.retrieve({ page_id: postId })
+  const parsedResponse = parsePage(response)
+
+  const { results } = await notion.blocks.children.list({ block_id: postId })
+  const x = await n2m.blocksToMarkdown(results)
+  const mdString = n2m.toMarkdownString(x)
+  return {
+    title: parsedResponse.title,
+    date: parsedResponse.created_at,
+    content: mdString.parent
+  }
+}

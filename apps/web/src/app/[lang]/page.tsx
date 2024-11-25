@@ -1,19 +1,32 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Icon } from "@westeros/ui/icon";
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Icon } from '@westeros/ui/icon'
 import { format, parseISO } from "date-fns";
 import Card from "../../components/card";
-import type { Locale } from "../../lib/i18n-config";
 import { getDictionary } from "../../lib/get-dictionary";
-import { getPosts, type Post } from "../../lib/get-posts";
+
+import { getPosts } from '../../lib/get-posts'
+import type { Locale } from '../../lib/i18n-config'
+
+async function getAllPosts(lang: 'en' | 'pt') {
+  const data = await getPosts(lang)
+  if (data && data.length < 1) {
+  // @todo: create a message to describe is not possible to list posts
+    console.log("Error to fetch all posts", data);
+  }
+
+  return data
+}
 
 export default async function Page({
   params: { lang },
 }: {
-  params: { lang: Locale };
+  params: { lang: Locale }
 }): Promise<JSX.Element> {
-  const posts = await getPosts(lang);
+  // const posts = await getPosts(lang);
   const dictionary = await getDictionary(lang);
+  const posts = await getAllPosts(lang)
 
   return (
     <>
@@ -100,12 +113,13 @@ export default async function Page({
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4">
-          {posts.map((post: Post) => (
+          {/* @todo: create type for posts */}
+          {posts?.map((post: any) => (
             <Card.Base
               extended
-              key={post._id}
+              key={post.id}
               link={{
-                href: `/blog/${post.slug}`,
+                href: `/blog/${post.id}`,
                 target: "_self",
               }}
               linkable
@@ -113,12 +127,14 @@ export default async function Page({
               <Card.Title>{post.title}</Card.Title>
               <Card.Body>{post.description}</Card.Body>
               <Card.Footer>
-                {format(parseISO(post.date), "LLLL d, yyyy")}
+                {format(parseISO(post.created_at), "LLLL d, yyyy")}
               </Card.Footer>
             </Card.Base>
           ))}
         </div>
+
+        
       </section>
     </>
-  );
+  )
 }
