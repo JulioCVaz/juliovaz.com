@@ -1,41 +1,48 @@
+'use server'
+
 import { Client, isFullPageOrDatabase } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
 
-const NOTION_CONFIG = {
-  secret: 'secret_Bsj0GoBK8c5qDxSfka889FbOtgVbwqJcm5MWKqKNaoK',
-  pt: { database_id: '1172cb4e5fa680daa157c548c3cf3a20' },
-  en: { database_id: '1172cb4e5fa68072809fe8e22f11fcb8' },
+const NOTION_ACCESS = {
+  secret: process.env.NOTION_SECRET as string,
+  pt: { database_id: process.env.NOTION_PT_DB_ID as string },
+  en: { database_id: process.env.NOTION_EN_DB_ID as string },
 };
 
-const notion = new Client({ auth: NOTION_CONFIG.secret })
+const notionClient = new Client({ auth: NOTION_ACCESS.secret })
+const notionConfig = {
+  separateChildPage: true, // default: false
+  parseChildPages: false,
+}
 
 const n2m = new NotionToMarkdown({
-  notionClient: notion,
-  config: {
-    separateChildPage: true, // default: false
-    parseChildPages: false,
-  },
+  notionClient,
+  config: notionConfig,
 })
 
 type Locale = 'pt' | 'en'
 
-
-type ParsedPage = {
-  title: string | undefined;
-  description: string | undefined;
-  created_at: string | undefined;
+type PageProps = {
+  title?: string;
+  description?: string;
+  created_at?: string;
 };
 
-const parsePage = (page: Record<string, any>): ParsedPage => ({
+const parsePage = (page: Record<string, any>): PageProps => ({
   title: page.properties['Title']?.title?.[0]?.plain_text,
   description: page.properties['Description']?.rich_text?.[0]?.plain_text,
   created_at: page.properties['Created Date']?.created_time,
 });
 
+/**
+ * getPosts
+ * @param locale 
+ * @returns 
+ */
 export const getPosts = async (locale: Locale = 'pt') => {
   try {
-    const posts = await notion.databases.query({
-      database_id: NOTION_CONFIG[locale].database_id,
+    const { results } = await notionClient.databases.query({
+      database_id: NOTION_ACCESS[locale].database_id,
       filter: {
         and: [
           {
@@ -53,43 +60,51 @@ export const getPosts = async (locale: Locale = 'pt') => {
         ],
       },
     })
-
-    if (posts.results.length < 1) {
-      return posts.results
+  
+    if (results.length < 1) {
+      return results
     }
-
-    const list = []
-
-    for (const page of posts.results) {
+  
+    const posts = []
+    for (const page of results) {
       if (!isFullPageOrDatabase(page)) {
         continue
       }
-
-      list.push({
+  
+      posts.push({
         id: page.id,
         ...parsePage(page)
       })
     }
-    return list
-
-  } catch (e) {
-    // @todo: redirect to a 500 page error
-    console.error(e)
-  }
+  
+    return posts
+  } catch (error) {
+    throw new Error('Failed to loading posts')
+  } 
 }
 
-
-// @note: get post content
+/**
+ * getPost
+ * @param postId 
+ * @returns 
+ */
 export const getPost = async (postId: string) => {
-  const response = await notion.pages.retrieve({ page_id: postId })
-  const parsedResponse = parsePage(response)
+  try {
+    const response = await notionClient.pages.retrieve({ page_id: postId })
+    const parsedResponse = parsePage(response)
+  
+    const { results } = await notionClient.blocks.children.list({ block_id: postId })
+    const convertBlocksToMarkdown = await n2m.blocksToMarkdown(results)
+    const { parent: markdown } = n2m.toMarkdownString(convertBlocksToMarkdown)
+  
+    const post = {
+      title: parsedResponse.title,
+      date: parsedResponse.created_at,
+      content: markdown
+    }
 
-  const { results } = await notion.blocks.children.list({ block_id: postId })
-  const x = await n2m.blocksToMarkdown(results)
-  const mdString = n2m.toMarkdownString(x)
-  return {
-    title: parsedResponse.title,
-    date: parsedResponse.created_at,
-    content: mdString.parent
+    return post
+  } catch (error) {
+    throw new Error('Failed to loading post')
   }
 }

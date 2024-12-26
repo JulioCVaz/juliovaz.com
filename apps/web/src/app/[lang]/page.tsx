@@ -8,17 +8,13 @@ import { getDictionary } from "../../lib/get-dictionary";
 
 import { getPosts } from '../../lib/get-posts'
 import type { Locale } from '../../lib/i18n-config'
+import type { Post } from '../../types'
 
-export const revalidate = 0
+export const revalidate = 300
 
-async function getAllPosts(lang: 'en' | 'pt') {
-  const data = await getPosts(lang)
-  if (data && data.length < 1) {
-  // @todo: create a message to describe is not possible to list posts
-    console.log("Error to fetch all posts", data);
-  }
-
-  return data
+async function loadContent(lang: 'en' | 'pt'): Promise<Post[]>{
+  const posts = await getPosts(lang)
+  return posts as Post[]
 }
 
 export default async function Page({
@@ -26,9 +22,8 @@ export default async function Page({
 }: {
   params: { lang: Locale }
 }): Promise<JSX.Element> {
-  // const posts = await getPosts(lang);
   const dictionary = await getDictionary(lang);
-  const posts = await getAllPosts(lang)
+  const posts = await loadContent(lang)
 
   return (
     <>
@@ -115,13 +110,12 @@ export default async function Page({
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4">
-          {/* @todo: create type for posts */}
-          {posts?.map((post: any) => (
+          {posts?.map((post: Post) => (
             <Card.Base
               extended
-              key={post.id}
+              key={post.id!}
               link={{
-                href: `/blog/${post.id}`,
+                href: `/blog/${post.id!}`,
                 target: "_self",
               }}
               linkable
