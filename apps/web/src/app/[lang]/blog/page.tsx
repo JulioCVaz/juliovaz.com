@@ -3,7 +3,7 @@ import { getPosts} from "../../../lib/get-posts";
 import Card from "../../../components/card";
 import type { Locale } from "../../../lib/i18n-config";
 
-export const revalidate = 0
+export const revalidate = 300
 
 export default async function Blog({
   params: { lang },
