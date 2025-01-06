@@ -22,8 +22,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export const revalidate = 3600
 
-export const revalidate = 3600
-
 export default async function PostPage({
   params,
 }: {
