@@ -1,13 +1,10 @@
 import "./globals.css";
 import "@westeros/ui/styles.css";
-import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Menu from "../../components/menu";
 import Container from "../../components/container";
 import { i18n, type Locale } from "../../lib/i18n-config";
 import { getDictionary } from "../../lib/get-dictionary";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata({
   params,
@@ -40,7 +37,7 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <body
-        className={`flex min-h-screen justify-center bg-dark text-slate-50 ${inter.className}`}
+        className={`flex min-h-screen justify-center bg-dark text-slate-50 font-JetBrainsMono`}
       >
         <Container>
           <Menu.Root>

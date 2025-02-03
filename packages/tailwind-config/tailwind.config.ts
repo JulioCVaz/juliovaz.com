@@ -7,7 +7,6 @@ const config: Omit<Config, "content"> = {
         dark: "#0e1317",
         primary: "#4651e5",
         white: "#fefefe",
-        // gray: "#929495",
       },
       fontSize: {
         small: "14px",
@@ -18,6 +17,9 @@ const config: Omit<Config, "content"> = {
         regular: "400",
         medium: "500",
         bold: "600",
+      },
+      fontFamily: {
+        'JetBrainsMono': ['JetBrainsMono', 'sans-serif']
       },
       spacing: {
         xxxsmall: "2px",

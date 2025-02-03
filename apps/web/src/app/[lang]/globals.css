@@ -6,3 +6,20 @@
   padding: 0;
   background-color: transparent;
 }
+
+/* @jetbrains font */
+@font-face {
+  font-family: 'JetBrainsMono';
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("../../../public/fonts/JetBrainsMono[wght].ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'JetBrainsMono';
+  font-style: italic;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("../../../public/fonts/JetBrainsMono-Italic[wght].ttf") format("truetype");
+}
