@@ -19,7 +19,8 @@ const config: Omit<Config, "content"> = {
         bold: "600",
       },
       fontFamily: {
-        'JetBrainsMono': ['JetBrainsMono', 'sans-serif']
+        sans: ['var(--font-sans)'],
+        mono: ['var(--font-monospace)'],
       },
       spacing: {
         xxxsmall: "2px",

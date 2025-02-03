@@ -6,6 +6,20 @@ import Container from "../../components/container";
 import { i18n, type Locale } from "../../lib/i18n-config";
 import { getDictionary } from "../../lib/get-dictionary";
 
+import { Inter, JetBrains_Mono } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans'
+})
+
+const JetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-monospace'
+})
+
 export async function generateMetadata({
   params,
 }: {
@@ -37,7 +51,7 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <body
-        className={`flex min-h-screen justify-center bg-dark text-slate-50 font-JetBrainsMono`}
+        className={`flex min-h-screen justify-center bg-dark text-slate-50 ${JetBrainsMono.className} ${inter.className}`}
       >
         <Container>
           <Menu.Root>
